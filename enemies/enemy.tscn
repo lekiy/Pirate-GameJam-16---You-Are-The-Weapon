@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://vx6xatp8vc82"]
+
+[ext_resource type="Texture2D" uid="uid://boox4teqgmwqc" path="res://temp/test enemy.png" id="1_nvr0f"]
+[ext_resource type="PackedScene" uid="uid://dv8lehch81km2" path="res://components/healthComponent/health_component.tscn" id="2_qfyhs"]
+[ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/hitbox/hitbox.tscn" id="3_jvi0j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ncice"]
+radius = 64.0
+
+[node name="Enemy" type="CharacterBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -48)
+shape = SubResource("CircleShape2D_ncice")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -112)
+texture = ExtResource("1_nvr0f")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_qfyhs")]
+
+[node name="Hitbox" parent="." instance=ExtResource("3_jvi0j")]

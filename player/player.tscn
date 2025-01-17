@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbnqh6rady7mi"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_xn11u"]
+[ext_resource type="Texture2D" uid="uid://d1v4a155bk3f8" path="res://temp/Test Ghost.png" id="2_3p31x"]
+[ext_resource type="PackedScene" uid="uid://d3f8qsqolqysc" path="res://components/interactionManager/InteractionManager.tscn" id="3_het5s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctrty"]
+radius = 72.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txs1p"]
+radius = 249.159
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
+script = ExtResource("1_xn11u")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -72)
+shape = SubResource("CircleShape2D_ctrty")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -152)
+texture = ExtResource("2_3p31x")
+
+[node name="InteractionManager" parent="." instance=ExtResource("3_het5s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionManager"]
+position = Vector2(0, -48)
+shape = SubResource("CircleShape2D_txs1p")
