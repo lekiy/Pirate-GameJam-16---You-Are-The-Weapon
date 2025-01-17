@@ -1,11 +1,14 @@
 extends Area2D
 
+@export var attack_damage := 10
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	area_entered.connect(on_hitbox_area_entered)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func on_hitbox_area_entered(area: Area2D):
+	if area is Hitbox:
+		var attack = Attack.new()
+		attack.attack_damage = attack_damage
+		
+		area.damage(attack)
+		get_parent().queue_free()

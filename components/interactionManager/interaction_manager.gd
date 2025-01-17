@@ -20,13 +20,15 @@ func _input(event: InputEvent) -> void:
 			can_interact = true
 			
 
-func _register_area(area: InteractionArea):
-	active_areas.push_back(area)
+func _register_area(area: Area2D):
+	if area is InteractionArea:
+		active_areas.push_back(area)
 	
-func _unregister_area(area: InteractionArea):
-	var index = active_areas.find(area)
-	if index != -1:
-		active_areas.remove_at(index)
+func _unregister_area(area: Area2D):
+	if area is InteractionArea:
+		var index = active_areas.find(area)
+		if index != -1:
+			active_areas.remove_at(index)
 
 func sort_areas_by_distance(area1, area2):
 	var dist1 = global_position.distance_to(area1.global_position)
