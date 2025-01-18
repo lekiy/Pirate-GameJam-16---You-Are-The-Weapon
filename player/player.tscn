@@ -1,14 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbnqh6rady7mi"]
+[gd_scene load_steps=12 format=3 uid="uid://dbnqh6rady7mi"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_xn11u"]
 [ext_resource type="Texture2D" uid="uid://d1v4a155bk3f8" path="res://temp/Test Ghost.png" id="2_3p31x"]
 [ext_resource type="PackedScene" uid="uid://d3f8qsqolqysc" path="res://components/interactionManager/InteractionManager.tscn" id="3_het5s"]
+[ext_resource type="PackedScene" uid="uid://dv8lehch81km2" path="res://components/healthComponent/health_component.tscn" id="3_ovxj7"]
+[ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/hitbox/hitbox.tscn" id="4_o1fef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctrty"]
 radius = 72.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0i5ah"]
+radius = 83.5225
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_txs1p"]
-radius = 249.159
+radius = 184.0
+
+[sub_resource type="Animation" id="Animation_karx4"]
+resource_name = "hover"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(0.68302, 1.68179, 0.466516, 1.86607),
+"update": 0,
+"values": [Vector2(0, -152), Vector2(0, -132), Vector2(0, -152), Vector2(0, -172)]
+}
+
+[sub_resource type="Animation" id="Animation_glkgm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -152)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7f2ub"]
+_data = {
+"RESET": SubResource("Animation_glkgm"),
+"hover": SubResource("Animation_karx4")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
@@ -24,8 +67,22 @@ y_sort_enabled = true
 position = Vector2(0, -152)
 texture = ExtResource("2_3p31x")
 
+[node name="HealthComponent" parent="." instance=ExtResource("3_ovxj7")]
+
+[node name="Hitbox" parent="." instance=ExtResource("4_o1fef")]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -80)
+shape = SubResource("CircleShape2D_0i5ah")
+
 [node name="InteractionManager" parent="." instance=ExtResource("3_het5s")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionManager"]
-position = Vector2(0, -48)
+position = Vector2(0, -72)
 shape = SubResource("CircleShape2D_txs1p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7f2ub")
+}

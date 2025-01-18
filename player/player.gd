@@ -1,10 +1,14 @@
 class_name Player extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-const SPEED = 300.0
+const SPEED = 400.0
 
 var possessing = false
+
+func _ready() -> void:
+	animation_player.play("hover")
 
 func _physics_process(delta: float) -> void:
 	handle_movement()
@@ -31,7 +35,7 @@ func _physics_process(delta: float) -> void:
 					
 					
 func handle_movement():
-	var move_direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
+	var move_direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
 	
 	velocity = move_direction*SPEED
 	move_and_slide()
