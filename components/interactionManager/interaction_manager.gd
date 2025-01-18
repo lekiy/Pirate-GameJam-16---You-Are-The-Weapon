@@ -32,5 +32,5 @@ func _unregister_area(area: Area2D):
 
 func sort_areas_by_distance(area1, area2):
 	var dist1 = global_position.distance_to(area1.global_position)
-	var dist2 = global_position.direction_to(area2.global_position)
+	var dist2 = global_position.distance_to(area2.global_position)
 	return dist1 < dist2

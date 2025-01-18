@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bmegb2skim406" path="res://temp/Isometric Assets 1.png" id="1_0o67w"]
 [ext_resource type="Script" path="res://scenes/main_camera.gd" id="1_07fqp"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_7frtn"]
 [ext_resource type="PackedScene" uid="uid://dbnqh6rady7mi" path="res://player/player.tscn" id="2_q7qf7"]
-[ext_resource type="PackedScene" uid="uid://vx6xatp8vc82" path="res://enemies/enemy.tscn" id="3_p7as1"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="4_2buy2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_itp6e"]
@@ -35,6 +35,7 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_itp6e")
 
 [node name="Main" type="Node"]
+script = ExtResource("1_7frtn")
 
 [node name="Main Camera" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -49,7 +50,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="MainLayer" instance=ExtResource("2_q7qf7")]
 
-[node name="Enemy" parent="MainLayer" instance=ExtResource("3_p7as1")]
-position = Vector2(-336, 172)
-
 [node name="Posessable" parent="MainLayer" instance=ExtResource("4_2buy2")]
+
+[node name="Respawn Timer" type="Timer" parent="."]
+autostart = true
