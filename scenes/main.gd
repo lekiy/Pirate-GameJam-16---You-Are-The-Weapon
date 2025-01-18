@@ -12,7 +12,8 @@ var respawn_delay = 1
 var possessables_count = 20
 
 func _ready() -> void:
-	respawn_timer.timeout.connect(spawn_enemy)
+	#respawn_timer.timeout.connect(spawn_enemy)
+	pass
 	
 func _process(delta: float) -> void:
 	respawn_possessables()

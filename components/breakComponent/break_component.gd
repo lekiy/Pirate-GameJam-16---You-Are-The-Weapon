@@ -1,0 +1,14 @@
+extends Node2D
+
+@export var texture: Texture2D
+
+func _ready() -> void:
+	$GPUParticles2D.texture = texture
+
+func on_break():
+	var position = get_parent().global_position
+	var layer = get_tree().get_first_node_in_group("MainLayer")
+	get_parent().remove_child(self)
+	layer.add_child(self)
+	global_position = position
+	$AnimationPlayer.play("default")

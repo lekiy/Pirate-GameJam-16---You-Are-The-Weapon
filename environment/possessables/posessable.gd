@@ -2,24 +2,37 @@ class_name Possessable extends Node2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var collision_shape: CollisionShape2D = $Hurtbox/CollisionShape2D
 
 
 var can_be_possessed = true
 var can_be_unpossessed = false
 var unpossess_delay = 0.2
-var speed = 1100
+var speed: float = 700
 var velocity = Vector2.ZERO
-
-@onready var collision_shape: CollisionShape2D = $Hurtbox/CollisionShape2D
-
+var z_pos: float = 0
+var z_vel: float = 0
+const GRAVITY: float = 9.8
+var is_possessed = false
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
 	collision_shape.disabled = true
+	$Hurtbox.hit.connect($BreakComponent.on_break)
 	
 func _physics_process(delta: float):
-	global_position += velocity*delta
-	
+	$Label.text = str(get_launch_vel())
+	if z_pos < 0:
+		if not is_possessed:
+			z_vel += GRAVITY
+	else:
+		z_pos = 0
+		z_vel = 0
+		velocity *= 0.8
+	if z_vel > 100:
+		$Hurtbox.hit.emit()
+	z_pos += z_vel*delta
+	global_position += Vector2(velocity.x, velocity.y + z_vel)*delta
 	
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("Player")
@@ -37,11 +50,13 @@ func _on_get_possessed(player: Player):
 		interaction_area.is_interactable = false
 		await get_tree().create_timer(unpossess_delay).timeout
 		can_be_unpossessed = true
+		z_pos = -100
+		is_possessed = true
 
 func _on_unpossess():
 	interaction_area.is_interactable = true
 	can_be_possessed = true
-	
+	is_possessed = false
 	
 func on_attack():
 	var target = get_global_mouse_position()
@@ -49,6 +64,12 @@ func on_attack():
 	collision_shape.disabled = false
 	animation_player.play("Throw")
 	velocity = Vector2.RIGHT.rotated(angle)*speed
+	z_vel = get_launch_vel()
+	is_possessed = false
 	
+func get_launch_vel():
+	return -global_position.distance_to(get_global_mouse_position())*0.5
+
 func play_possession_idle():
 	animation_player.play("idle")
+	
