@@ -1,0 +1,185 @@
+[gd_scene load_steps=15 format=3 uid="uid://dlwfdq6mg1ffy"]
+
+[ext_resource type="Texture2D" uid="uid://crtlcmhk23uy7" path="res://temp/Isometric Assets 2.png" id="1_0xagk"]
+[ext_resource type="Script" path="res://environment/possessables/posessable.gd" id="1_siqfg"]
+[ext_resource type="PackedScene" uid="uid://dg57cxopla6dl" path="res://components/breakComponent/break_component.tscn" id="2_ovgd7"]
+[ext_resource type="Script" path="res://components/interactionArea/interaction_area.gd" id="2_qshgi"]
+[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="3_o6m6n"]
+[ext_resource type="Texture2D" uid="uid://bdhvy6e1fm7nv" path="res://temp/pot_broken.png" id="5_jibvh"]
+
+[sub_resource type="Animation" id="Animation_42ik6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -56)]
+}
+
+[sub_resource type="Animation" id="Animation_07012"]
+resource_name = "Throw"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 4.71239, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_qqu2m"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -58), Vector2(0, -56), Vector2(0, -72), Vector2(0, -58)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.698132, 0.0, -0.698132, -0.329867]
+}
+
+[sub_resource type="Animation" id="Animation_gvv31"]
+resource_name = "possession"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.392291, 0.392291),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.21914, 2.21914),
+"update": 0,
+"values": [0.0, 0.698132]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_possession_idle"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjl0k"]
+_data = {
+"RESET": SubResource("Animation_42ik6"),
+"Throw": SubResource("Animation_07012"),
+"idle": SubResource("Animation_qqu2m"),
+"possession": SubResource("Animation_gvv31")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62psp"]
+atlas = ExtResource("1_0xagk")
+region = Rect2(812.182, 313.182, 167.273, 170.909)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u3p1h"]
+radius = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7oorc"]
+radius = 160.2
+
+[node name="Posessable" type="Node2D" groups=["Possessable"]]
+script = ExtResource("1_siqfg")
+
+[node name="BreakComponent" parent="." instance=ExtResource("2_ovgd7")]
+texture = ExtResource("5_jibvh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qjl0k")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -56)
+texture = SubResource("AtlasTexture_62psp")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_o6m6n")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -40)
+shape = SubResource("CircleShape2D_u3p1h")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("2_qshgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_7oorc")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

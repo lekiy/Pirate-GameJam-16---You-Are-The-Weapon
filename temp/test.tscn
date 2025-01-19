@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://6vw3ilw2iemx"]
+
+[ext_resource type="Script" path="res://temp/test.gd" id="1_tfbrr"]
+[ext_resource type="Texture2D" uid="uid://bdhvy6e1fm7nv" path="res://temp/pot_broken.png" id="2_4flum"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_tfbrr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4flum")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

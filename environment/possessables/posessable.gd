@@ -26,11 +26,12 @@ func _physics_process(delta: float):
 		if not is_possessed:
 			z_vel += GRAVITY
 	else:
+		if z_vel > 100:
+			$Hurtbox.hit.emit()
 		z_pos = 0
 		z_vel = 0
 		velocity *= 0.8
-	if z_vel > 100:
-		$Hurtbox.hit.emit()
+	
 	z_pos += z_vel*delta
 	global_position += Vector2(velocity.x, velocity.y + z_vel)*delta
 	
@@ -50,7 +51,7 @@ func _on_get_possessed(player: Player):
 		interaction_area.is_interactable = false
 		await get_tree().create_timer(unpossess_delay).timeout
 		can_be_unpossessed = true
-		z_pos = -100
+		z_pos = -1
 		is_possessed = true
 
 func _on_unpossess():
@@ -68,7 +69,9 @@ func on_attack():
 	is_possessed = false
 	
 func get_launch_vel():
-	return -global_position.distance_to(get_global_mouse_position())*0.5
+	var distance = global_position.distance_to(get_global_mouse_position())
+	var steps = distance / (speed*get_process_delta_time())
+	return steps * -GRAVITY*0.5
 
 func play_possession_idle():
 	animation_player.play("idle")
