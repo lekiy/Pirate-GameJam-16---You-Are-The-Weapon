@@ -4,7 +4,6 @@ class_name Possessable extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape: CollisionShape2D = $Hurtbox/CollisionShape2D
 
-
 var can_be_possessed = true
 var can_be_unpossessed = false
 var unpossess_delay = 0.2
@@ -51,7 +50,7 @@ func _on_get_possessed(player: Player):
 		interaction_area.is_interactable = false
 		await get_tree().create_timer(unpossess_delay).timeout
 		can_be_unpossessed = true
-		z_pos = -1
+		z_pos = -100
 		is_possessed = true
 
 func _on_unpossess():

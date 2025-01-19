@@ -1,17 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlwfdq6mg1ffy"]
-
-[ext_resource type="Texture2D" uid="uid://crtlcmhk23uy7" path="res://temp/Isometric Assets 2.png" id="1_0xagk"]
-[ext_resource type="Script" path="res://environment/possessables/posessable.gd" id="1_siqfg"]
-[ext_resource type="PackedScene" uid="uid://dg57cxopla6dl" path="res://components/breakComponent/break_component.tscn" id="2_ovgd7"]
-[ext_resource type="Script" path="res://components/interactionArea/interaction_area.gd" id="2_qshgi"]
-[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="3_o6m6n"]
-[ext_resource type="Texture2D" uid="uid://bdhvy6e1fm7nv" path="res://temp/pot_broken.png" id="5_jibvh"]
+[gd_scene load_steps=6 format=3 uid="uid://cif0pi10lk048"]
 
 [sub_resource type="Animation" id="Animation_42ik6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -141,48 +134,7 @@ _data = {
 "possession": SubResource("Animation_gvv31")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_62psp"]
-atlas = ExtResource("1_0xagk")
-region = Rect2(812.182, 313.182, 167.273, 170.909)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u3p1h"]
-radius = 56.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7oorc"]
-radius = 160.2
-
-[node name="Posessable" type="Node2D" groups=["Possessable"]]
-script = ExtResource("1_siqfg")
-
-[node name="BreakComponent" parent="." instance=ExtResource("2_ovgd7")]
-texture = ExtResource("5_jibvh")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer"]
 libraries = {
 "": SubResource("AnimationLibrary_qjl0k")
 }
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -56)
-texture = SubResource("AtlasTexture_62psp")
-
-[node name="Hurtbox" parent="." instance=ExtResource("3_o6m6n")]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -40)
-shape = SubResource("CircleShape2D_u3p1h")
-
-[node name="InteractionArea" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("2_qshgi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(0, -16)
-shape = SubResource("CircleShape2D_7oorc")
-
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0

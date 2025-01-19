@@ -1,8 +1,6 @@
-extends CharacterBody2D
-
+class_name Enemy extends CharacterBody2D
 
 const SPEED = 200.0
-
 
 func _physics_process(delta: float) -> void:
 	var target = global_position
