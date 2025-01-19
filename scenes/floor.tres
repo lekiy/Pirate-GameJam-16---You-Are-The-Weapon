@@ -1,0 +1,32 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c7gko7aw3jt0b"]
+
+[ext_resource type="Texture2D" uid="uid://bmegb2skim406" path="res://temp/Isometric Assets 1.png" id="1_hvnjd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_itp6e"]
+texture = ExtResource("1_hvnjd")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -64)
+6:3/0 = 0
+6:3/0/texture_origin = Vector2i(0, -64)
+6:3/0/probability = 0.1
+9:3/0 = 0
+9:3/0/texture_origin = Vector2i(0, -64)
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(111.808, 121.608, 0, 60, -103.79, 121.608, -1.33633, 185.752)
+5:3/0 = 0
+5:3/0/texture_origin = Vector2i(0, -64)
+5:3/0/probability = 0.1
+4:3/0 = 0
+4:3/0/texture_origin = Vector2i(0, -64)
+4:3/0/probability = 0.1
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(0, -64)
+3:3/0/probability = 0.1
+
+[resource]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(208, 120)
+physics_layer_0/collision_layer = 0
+physics_layer_0/collision_mask = 0
+sources/2 = SubResource("TileSetAtlasSource_itp6e")

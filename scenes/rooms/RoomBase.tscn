@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=4 uid="uid://h4shxwd1j8pk"]
+
+[ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="1_6gti2"]
+[ext_resource type="Script" path="res://scenes/rooms/room_base.gd" id="1_eya12"]
+[ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://scenes/floor.tres" id="2_40tv3"]
+[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="4_qixy7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6cqb8"]
+radius = 129.244
+
+[node name="RoomBase" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_eya12")
+
+[node name="Main Camera" parent="." instance=ExtResource("1_6gti2")]
+
+[node name="FloorLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD5//r/AgAJAAMAAAD5//z/AgAJAAMAAAD5//7/AgAJAAMAAAD5////AgAJAAMAAAD5/wAAAgAJAAMAAAD5/wEAAgAJAAMAAAD5/wMAAgAJAAMAAAD5/wQAAgAJAAMAAAD5/wUAAgAJAAMAAAD5/wYAAgAJAAMAAAD6//v/AgAJAAMAAAD6//z/AgAJAAMAAAD6//3/AgAJAAMAAAD6//7/AgAJAAMAAAD6/wAAAgAJAAMAAAD6/wIAAgAJAAMAAAD6/wMAAgAJAAMAAAD6/wQAAgAJAAMAAAD6/wYAAgAJAAMAAAD7//r/AgAJAAMAAAD7//z/AgAJAAMAAAD7//3/AgAJAAMAAAD7////AgAJAAMAAAD7/wEAAgAJAAMAAAD7/wIAAgAJAAMAAAD7/wQAAgAJAAMAAAD7/wYAAgAJAAMAAAD8//r/AgAJAAMAAAD8//v/AgAJAAMAAAD8//7/AgAJAAMAAAD8////AgAJAAMAAAD8/wAAAgAJAAMAAAD8/wEAAgAJAAMAAAD8/wIAAgAJAAMAAAD8/wMAAgAJAAMAAAD8/wQAAgAJAAMAAAD8/wYAAgAJAAMAAAD9//v/AgAJAAMAAAD9//7/AgAJAAMAAAD9////AgAJAAMAAAD9/wAAAgAJAAMAAAD9/wEAAgAJAAMAAAD9/wIAAgAJAAMAAAD9/wQAAgAJAAMAAAD9/wUAAgAJAAMAAAD+//v/AgAJAAMAAAD+//3/AgAJAAMAAAD+//7/AgAJAAMAAAD+////AgAJAAMAAAD+/wAAAgAJAAMAAAD+/wEAAgAJAAMAAAD+/wMAAgAJAAMAAAD+/wQAAgAJAAMAAAD+/wUAAgAJAAMAAAD+/wYAAgAJAAMAAAD///r/AgAJAAMAAAD///z/AgAJAAMAAAD///3/AgAJAAMAAAD///7/AgAJAAMAAAD/////AgAJAAMAAAD//wAAAgAJAAMAAAD//wEAAgAJAAMAAAD//wMAAgAJAAMAAAD//wUAAgAJAAMAAAD//wYAAgAJAAMAAAAAAPr/AgAJAAMAAAAAAPv/AgAJAAMAAAAAAPz/AgAJAAMAAAAAAP7/AgAJAAMAAAAAAAAAAgAJAAMAAAAAAAEAAgAJAAMAAAAAAAIAAgAJAAMAAAAAAAMAAgAJAAMAAAAAAAQAAgAJAAMAAAABAPr/AgAJAAMAAAABAPv/AgAJAAMAAAABAPz/AgAJAAMAAAABAP3/AgAJAAMAAAABAAAAAgAJAAMAAAABAAEAAgAJAAMAAAABAAIAAgAJAAMAAAABAAUAAgAJAAMAAAABAAYAAgAJAAMAAAACAPr/AgAJAAMAAAACAPv/AgAJAAMAAAACAPz/AgAJAAMAAAACAP7/AgAJAAMAAAACAP//AgAJAAMAAAACAAEAAgAJAAMAAAACAAIAAgAJAAMAAAACAAQAAgAJAAMAAAACAAYAAgAJAAMAAAADAPv/AgAJAAMAAAADAP7/AgAJAAMAAAADAAEAAgAJAAMAAAADAAIAAgAJAAMAAAADAAMAAgAJAAMAAAADAAQAAgAJAAMAAAAEAPr/AgAJAAMAAAAEAPv/AgAJAAMAAAAEAPz/AgAJAAMAAAAEAP3/AgAJAAMAAAAEAP7/AgAJAAMAAAAEAP//AgAJAAMAAAAEAAAAAgAJAAMAAAAEAAEAAgAJAAMAAAAEAAMAAgAJAAMAAAAEAAQAAgAJAAMAAAAEAAUAAgAJAAMAAAAFAPr/AgAJAAMAAAAFAPv/AgAJAAMAAAAFAPz/AgAJAAMAAAAFAP7/AgAJAAMAAAAFAP//AgAJAAMAAAAFAAEAAgAJAAMAAAAFAAMAAgAJAAMAAAAFAAQAAgAJAAMAAAAFAAUAAgAJAAMAAAAFAAYAAgAJAAMAAAD5//v/AgAJAAMAAAD5//3/AgAJAAMAAAD5/wIAAgAJAAMAAAD6//r/AgAJAAMAAAD6////AgAJAAMAAAD6/wEAAgAJAAMAAAD6/wUAAgAJAAMAAAD7//v/AgAJAAMAAAD7//7/AgAJAAMAAAD7/wAAAgAJAAMAAAD7/wMAAgAJAAMAAAD7/wUAAgAJAAMAAAD8//z/AgAJAAMAAAD8//3/AgAJAAMAAAD8/wUAAgAJAAMAAAD9//r/AgAJAAMAAAD9//z/AgAJAAMAAAD9//3/AgAJAAMAAAD9/wMAAgAJAAMAAAD9/wYAAgAJAAMAAAD+//r/AgAJAAMAAAD+//z/AgAJAAMAAAD+/wIAAgAJAAMAAAD///v/AgAJAAMAAAD//wIAAgAJAAMAAAD//wQAAgAJAAMAAAAAAP3/AgAJAAMAAAAAAP//AgAJAAMAAAAAAAUAAgAJAAMAAAAAAAYAAgAJAAMAAAABAP7/AgAJAAMAAAABAP//AgAJAAMAAAABAAMAAgAJAAMAAAABAAQAAgAJAAMAAAACAP3/AgAJAAMAAAACAAAAAgAJAAMAAAACAAMAAgAJAAMAAAACAAUAAgAJAAMAAAADAPr/AgAJAAMAAAADAPz/AgAJAAMAAAADAP3/AgAJAAMAAAADAP//AgAJAAMAAAADAAAAAgAJAAMAAAADAAUAAgAJAAMAAAADAAYAAgAJAAMAAAAEAAIAAgAJAAMAAAAEAAYAAgAJAAMAAAAFAP3/AgAJAAMAAAAFAAAAAgAJAAMAAAAFAAIAAgAJAAMAAAAGAAEAAgAJAAMAAAAGAAAAAgAJAAMAAAD+//n/AgAJAAMAAAD///n/AgAJAAMAAAD4//r/AgAJAAMAAAD4//v/AgAJAAMAAAD4//z/AgAJAAMAAAD4//3/AgAJAAMAAAD4//7/AgAJAAMAAAD4////AgAJAAMAAAD4/wAAAgAJAAMAAAD4/wEAAgAJAAMAAAD4/wIAAgAJAAMAAAD4/wMAAgAJAAMAAAD4/wQAAgAJAAMAAAD4/wUAAgAJAAMAAAD4/wYAAgAJAAMAAAD4/wcAAgAJAAMAAAD5/wcAAgAJAAMAAAD6/wcAAgAJAAMAAAD7/wcAAgAJAAMAAAD8/wcAAgAJAAMAAAD9/wcAAgAJAAMAAAD+/wcAAgAJAAMAAAD//wcAAgAJAAMAAAAAAAcAAgAJAAMAAAABAAcAAgAJAAMAAAACAAcAAgAJAAMAAAADAAcAAgAJAAMAAAAEAAcAAgAJAAMAAAAFAAcAAgAJAAMAAAD//wgAAgAJAAMAAAD3/wAAAgAJAAMAAAD+/wgAAgAJAAMAAAD3/wEAAgAJAAMAAAAHAAEAAgAJAAMAAAAHAAAAAgAJAAMAAAD+//j/AgAJAAMAAAD///j/AgAJAAMAAAD2/wAAAgAJAAMAAAD2/wEAAgAJAAMAAAD+/wkAAgAJAAMAAAD//wkAAgAJAAMAAAA=")
+tile_set = ExtResource("2_40tv3")
+
+[node name="EntityLayer" type="Node" parent="." groups=["MainLayer"]]
+
+[node name="EntryTriggerComponent" parent="." groups=["Entry"] instance=ExtResource("4_qixy7")]
+collision_layer = 0
+target_entry_name = "north_west"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryTriggerComponent"]
+position = Vector2(864, 592)
+shape = SubResource("CircleShape2D_6cqb8")
+
+[node name="EntryPoint" type="Marker2D" parent="EntryTriggerComponent"]
+position = Vector2(648, 424)
+
+[node name="EntryTriggerComponent2" parent="." groups=["Entry"] instance=ExtResource("4_qixy7")]
+collision_layer = 0
+entry_name = "north_west"
+target_entry_name = "south_east"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryTriggerComponent2"]
+position = Vector2(-1040, -584)
+shape = SubResource("CircleShape2D_6cqb8")
+
+[node name="EntryPoint" type="Marker2D" parent="EntryTriggerComponent2"]
+position = Vector2(-824, -408)
+
+[node name="EntryTriggerComponent3" parent="." groups=["Entry"] instance=ExtResource("4_qixy7")]
+collision_layer = 0
+entry_name = "south_west"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryTriggerComponent3"]
+position = Vector2(-1072, 584)
+shape = SubResource("CircleShape2D_6cqb8")
+
+[node name="EntryPoint" type="Marker2D" parent="EntryTriggerComponent3"]
+position = Vector2(-888, 440)
+
+[node name="EntryTriggerComponent4" parent="." groups=["Entry"] instance=ExtResource("4_qixy7")]
+collision_layer = 0
+entry_name = "north_east"
+target_entry_name = "south_west"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryTriggerComponent4"]
+position = Vector2(840, -584)
+shape = SubResource("CircleShape2D_6cqb8")
+
+[node name="EntryPoint" type="Marker2D" parent="EntryTriggerComponent4"]
+position = Vector2(640, -432)

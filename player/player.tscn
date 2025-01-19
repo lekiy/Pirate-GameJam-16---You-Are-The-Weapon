@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/hitbox/hitbox.tscn" id="4_o1fef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctrty"]
-radius = 72.0
+radius = 72.0069
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0i5ah"]
-radius = 83.5225
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqotx"]
+radius = 53.0
+height = 170.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_txs1p"]
 radius = 184.0
@@ -74,9 +75,11 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -80)
-shape = SubResource("CircleShape2D_0i5ah")
+shape = SubResource("CapsuleShape2D_gqotx")
 
 [node name="InteractionManager" parent="." instance=ExtResource("3_het5s")]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionManager"]
 position = Vector2(0, -72)

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Pirate Game Jam 16 - You Are The Weapon - Unfinished Business"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/rooms/RoomBase.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+RoomController="*res://autoloads/room_controller.gd"
 
 [debug]
 
@@ -30,6 +34,7 @@ window/size/initial_position_type=2
 Player=""
 Possessable=""
 MainLayer=""
+Entry=""
 
 [input]
 
