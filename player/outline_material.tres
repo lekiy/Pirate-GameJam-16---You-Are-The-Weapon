@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cwl1lmixhvju5"]
+
+[ext_resource type="Shader" path="res://player/outline.gdshader" id="1_vicgj"]
+
+[resource]
+shader = ExtResource("1_vicgj")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 4.0

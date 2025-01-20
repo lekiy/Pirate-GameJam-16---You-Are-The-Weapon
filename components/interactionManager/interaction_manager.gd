@@ -10,6 +10,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if active_areas.size() > 0:
 		active_areas.sort_custom(sort_areas_by_distance)
+		var index = 0
+		for area in active_areas:
+			if index == 0:
+				area.toggle_outline(true)
+			else:
+				area.toggle_outline(false)
+			index += 1
+			
 		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
@@ -28,6 +36,7 @@ func _unregister_area(area: Area2D):
 	if area is InteractionArea:
 		var index = active_areas.find(area)
 		if index != -1:
+			active_areas[index].toggle_outline(false)
 			active_areas.remove_at(index)
 
 func sort_areas_by_distance(area1, area2):

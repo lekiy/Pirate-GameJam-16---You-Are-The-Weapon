@@ -13,6 +13,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	handle_movement()
 	
+	if possessing:
+		$InteractionManager.can_interact = false
+	
 	if Input.is_action_just_pressed("interact"):
 		if possessing:
 			for child in get_children():
@@ -48,3 +51,4 @@ func on_possess(object: Possessable):
 func on_unpossess():
 	sprite.visible = true
 	possessing = false
+	$InteractionManager.can_interact = true 

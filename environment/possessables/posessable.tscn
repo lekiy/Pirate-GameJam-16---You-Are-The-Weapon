@@ -166,6 +166,8 @@ libraries = {
 position = Vector2(0, -56)
 texture = SubResource("AtlasTexture_62psp")
 
+[node name="Visuals" type="Node2D" parent="."]
+
 [node name="Hurtbox" parent="." instance=ExtResource("3_o6m6n")]
 collision_mask = 2
 
@@ -173,10 +175,11 @@ collision_mask = 2
 position = Vector2(0, -40)
 shape = SubResource("CircleShape2D_u3p1h")
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("sprite_ref")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_qshgi")
+sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, -16)
