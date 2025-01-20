@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddg7mq65v2hwo"]
+
+[ext_resource type="Script" path="res://components/State/Idle/state_idle.gd" id="1_pqdfs"]
+
+[node name="StateIdle" type="Node2D" node_paths=PackedStringArray("body")]
+script = ExtResource("1_pqdfs")
+body = NodePath("")

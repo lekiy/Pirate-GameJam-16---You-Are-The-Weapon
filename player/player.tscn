@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_xn11u"]
 [ext_resource type="Texture2D" uid="uid://d1v4a155bk3f8" path="res://temp/Test Ghost.png" id="2_3p31x"]
-[ext_resource type="PackedScene" uid="uid://d3f8qsqolqysc" path="res://components/interactionManager/InteractionManager.tscn" id="3_het5s"]
-[ext_resource type="PackedScene" uid="uid://dv8lehch81km2" path="res://components/healthComponent/health_component.tscn" id="3_ovxj7"]
-[ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/hitbox/hitbox.tscn" id="4_o1fef"]
+[ext_resource type="PackedScene" uid="uid://d3f8qsqolqysc" path="res://components/Interaction/interactionManager/InteractionManager.tscn" id="3_het5s"]
+[ext_resource type="PackedScene" uid="uid://dv8lehch81km2" path="res://components/HealthComponent/health_component.tscn" id="3_ovxj7"]
+[ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/Hitbox/hitbox.tscn" id="4_o1fef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctrty"]
 radius = 72.0069

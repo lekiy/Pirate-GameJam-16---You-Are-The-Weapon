@@ -43,6 +43,12 @@ func handle_movement():
 	velocity = move_direction*SPEED
 	move_and_slide()
 
+	if velocity.x > 0:
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+		
+
 
 func on_possess(object: Possessable):
 	sprite.visible = false

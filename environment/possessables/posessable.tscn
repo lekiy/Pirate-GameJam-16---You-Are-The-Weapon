@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://crtlcmhk23uy7" path="res://temp/Isometric Assets 2.png" id="1_0xagk"]
 [ext_resource type="Script" path="res://environment/possessables/posessable.gd" id="1_siqfg"]
-[ext_resource type="PackedScene" uid="uid://dg57cxopla6dl" path="res://components/breakComponent/break_component.tscn" id="2_ovgd7"]
-[ext_resource type="Script" path="res://components/interactionArea/interaction_area.gd" id="2_qshgi"]
-[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="3_o6m6n"]
+[ext_resource type="PackedScene" uid="uid://dg57cxopla6dl" path="res://components/BreakableComponent/breakable_component.tscn" id="2_ovgd7"]
+[ext_resource type="Script" path="res://components/Interaction/interactionArea/interaction_area.gd" id="2_qshgi"]
+[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/Hurtbox/hurtbox.tscn" id="3_o6m6n"]
 [ext_resource type="Texture2D" uid="uid://bdhvy6e1fm7nv" path="res://temp/pot_broken.png" id="5_jibvh"]
 
 [sub_resource type="Animation" id="Animation_42ik6"]

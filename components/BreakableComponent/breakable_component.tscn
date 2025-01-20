@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dg57cxopla6dl"]
 
-[ext_resource type="Script" path="res://components/breakComponent/break_component.gd" id="1_7bjwu"]
+[ext_resource type="Script" path="res://components/BreakableComponent/breakable_component.gd" id="1_7bjwu"]
 [ext_resource type="Texture2D" uid="uid://bdhvy6e1fm7nv" path="res://temp/pot_broken.png" id="2_mngq5"]
 
 [sub_resource type="Animation" id="Animation_ossy2"]
@@ -50,7 +50,7 @@ gravity = Vector3(0, 98, 0)
 alpha_curve = SubResource("CurveTexture_55pu6")
 anim_offset_max = 1.0
 
-[node name="BreakComponent" type="Node2D"]
+[node name="BreakableComponent" type="Node2D"]
 script = ExtResource("1_7bjwu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

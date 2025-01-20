@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpph15y70d6vv"]
+
+[ext_resource type="Script" path="res://components/State/Follow/state_follow.gd" id="1_hd2bl"]
+
+[node name="StateFollow" type="Node2D" node_paths=PackedStringArray("body")]
+script = ExtResource("1_hd2bl")
+body = NodePath("")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ou314k04y2nk"]
+
+[ext_resource type="Script" path="res://components/State/state_manager.gd" id="1_n41ql"]
+
+[node name="StateManager" type="Node2D" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_n41ql")
+initial_state = NodePath("")
