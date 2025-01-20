@@ -36,9 +36,6 @@ body = NodePath("../..")
 
 [node name="StateFollow" parent="StateManager" node_paths=PackedStringArray("body") instance=ExtResource("4_ro05p")]
 body = NodePath("../..")
-move_speed = 300.0
-circle_range = 500.0
-idle_range = 1000.0
 
 [node name="StateCircle" parent="StateManager" node_paths=PackedStringArray("body") instance=ExtResource("5_5lcyi")]
 body = NodePath("../..")
