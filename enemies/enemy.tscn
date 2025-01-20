@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://vx6xatp8vc82"]
+[gd_scene load_steps=13 format=3 uid="uid://vx6xatp8vc82"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_8lx8u"]
 [ext_resource type="Texture2D" uid="uid://boox4teqgmwqc" path="res://temp/test enemy.png" id="1_nvr0f"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/Hitbox/hitbox.tscn" id="3_jvi0j"]
 [ext_resource type="PackedScene" uid="uid://ddg7mq65v2hwo" path="res://components/State/Idle/state_idle.tscn" id="3_pminm"]
 [ext_resource type="PackedScene" uid="uid://cpph15y70d6vv" path="res://components/State/Follow/state_follow.tscn" id="4_ro05p"]
+[ext_resource type="PackedScene" uid="uid://ca06gf8tvwyfg" path="res://components/State/Circle/state_circle.tscn" id="5_5lcyi"]
+[ext_resource type="PackedScene" uid="uid://orsdd6ivwo5n" path="res://components/State/Lunge/state_lunge_attack.tscn" id="6_ewrm1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncice"]
 radius = 64.0
@@ -17,7 +19,14 @@ radius = 86.1626
 
 [node name="Enemy" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_8lx8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -40)
+shape = SubResource("CircleShape2D_ncice")
 
 [node name="StateManager" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_74xj5")]
 initial_state = NodePath("StateIdle")
@@ -27,11 +36,19 @@ body = NodePath("../..")
 
 [node name="StateFollow" parent="StateManager" node_paths=PackedStringArray("body") instance=ExtResource("4_ro05p")]
 body = NodePath("../..")
+move_speed = 300.0
+circle_range = 500.0
+idle_range = 1000.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, -40)
-shape = SubResource("CircleShape2D_ncice")
+[node name="StateCircle" parent="StateManager" node_paths=PackedStringArray("body") instance=ExtResource("5_5lcyi")]
+body = NodePath("../..")
+
+[node name="StateLungeAttack" parent="StateManager" node_paths=PackedStringArray("body") instance=ExtResource("6_ewrm1")]
+body = NodePath("../..")
+
+[node name="Label" type="Label" parent="StateManager"]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true

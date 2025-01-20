@@ -2,6 +2,7 @@ class_name StateIdle extends State
 
 @export var body : CharacterBody2D
 @export var move_speed := 100
+@export var idle_range := 1000
 
 var move_direction : Vector2
 var wander_time: float
@@ -27,5 +28,5 @@ func state_physics_process(delta: float):
 		body.velocity = move_direction * move_speed
 		
 	var direction = player.global_position - body.global_position
-	if direction.length() < 300:
+	if direction.length() < idle_range:
 		transitioned.emit(self, "StateFollow")

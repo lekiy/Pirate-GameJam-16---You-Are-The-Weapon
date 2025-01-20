@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" path="res://components/State/Follow/state_follow.gd" id="1_hd2bl"]
 
-[node name="StateFollow" type="Node2D" node_paths=PackedStringArray("body")]
+[node name="StateFollow" type="Node2D"]
 script = ExtResource("1_hd2bl")
-body = NodePath("")

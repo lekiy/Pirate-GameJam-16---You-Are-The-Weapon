@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca06gf8tvwyfg"]
+
+[ext_resource type="Script" path="res://components/State/Circle/state_circle.gd" id="1_254sj"]
+
+[node name="StateCircle" type="Node2D"]
+script = ExtResource("1_254sj")

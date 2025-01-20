@@ -18,6 +18,7 @@ func _ready():
 func _process(delta: float) -> void:
 	if current_state: 
 		current_state.state_process(delta)
+		#$Label.text = current_state.name
 		
 
 func _physics_process(delta: float) -> void:

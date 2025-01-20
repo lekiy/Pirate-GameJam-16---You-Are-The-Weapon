@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://orsdd6ivwo5n"]
+
+[ext_resource type="Script" path="res://components/State/Lunge/state_lunge_attack.gd" id="1_eko2w"]
+
+[node name="StateLungeAttack" type="Node2D" node_paths=PackedStringArray("body")]
+script = ExtResource("1_eko2w")
+body = NodePath("")

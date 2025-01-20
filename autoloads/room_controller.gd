@@ -8,6 +8,10 @@ var room_dict = {
 	"room_base": ROOM_BASE
 }
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Reset"):
+		get_tree().reload_current_scene()
+
 func move_to_room(room_name, entry_name):
 	print("moving to room "+str(room_name)+" at entry "+str(entry_name))
 	var room = room_dict[room_name]

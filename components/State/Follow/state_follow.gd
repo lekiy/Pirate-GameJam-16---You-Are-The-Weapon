@@ -1,7 +1,9 @@
 class_name StateFollow extends State
 
 @export var body : CharacterBody2D
-@export var move_speed := 400
+@export var move_speed := 300.0
+@export var circle_range := 500.0
+@export var idle_range := 1000.0
 
 var target: CharacterBody2D
 
@@ -11,10 +13,10 @@ func state_enter():
 func state_physics_process(delta: float):
 	var direction = target.global_position - body.global_position
 	
-	if direction.length() > 250:
+	if direction.length() > circle_range:
 		body.velocity = direction.normalized() * move_speed
 	else:
-		body.velocity = Vector2()
+		transitioned.emit(self, "StateCircle")
 		
-	if direction.length() > 500:
+	if direction.length() > idle_range:
 		transitioned.emit(self, "StateIdle")
