@@ -1,6 +1,8 @@
-extends Area2D
+class_name HurtBox extends Area2D
 
 @export var attack_damage := 10
+
+
 
 signal hit
 
@@ -14,8 +16,6 @@ func on_hitbox_area_entered(area: Area2D):
 		attack.attack_damage = attack_damage
 		hit.emit()
 		area.damage(attack)
-		
-		
 		
 func on_hit():
 	get_parent().queue_free()

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqsyww5qmx340"]
+
+[ext_resource type="Texture2D" uid="uid://dynl02jmksmhc" path="res://components/Telegraph/arrow__telegraph.png" id="1_p21ji"]
+[ext_resource type="Script" path="res://components/Telegraph/arrow_telegraph.gd" id="1_tigp3"]
+
+[node name="ArrowTelegraph" type="Node2D"]
+scale = Vector2(1, 0.5)
+script = ExtResource("1_tigp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p21ji")
+offset = Vector2(0, 192)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true

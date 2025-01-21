@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqkkoboe6lgd1"]
+
+[ext_resource type="Texture2D" uid="uid://cfyb1sitvvd07" path="res://player/fog_particle.png" id="1_ba7la"]
+
+[sub_resource type="Curve" id="Curve_0cqrw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.122363, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_utyk3"]
+curve = SubResource("Curve_0cqrw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uabnj"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 2, 1)
+emission_shape = 1
+emission_sphere_radius = 60.0
+direction = Vector3(1, 1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, -5, 0)
+linear_accel_min = -10.0
+linear_accel_max = 10.0
+radial_accel_min = -10.0
+radial_accel_max = 10.0
+scale_max = 5.0
+alpha_curve = SubResource("CurveTexture_utyk3")
+hue_variation_min = -0.01
+hue_variation_max = 0.00999998
+
+[sub_resource type="GDScript" id="GDScript_a7uxs"]
+script/source = "extends GPUParticles2D
+
+
+func _ready() -> void:
+	emitting = true
+	$Timer.timeout.connect(queue_free)
+"
+
+[node name="GhostBurstParticles" type="GPUParticles2D"]
+position = Vector2(1, -110)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_uabnj")
+texture = ExtResource("1_ba7la")
+one_shot = true
+explosiveness = 1.0
+script = SubResource("GDScript_a7uxs")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true

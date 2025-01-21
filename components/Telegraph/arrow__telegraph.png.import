@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boox4teqgmwqc"
-path="res://.godot/imported/test enemy.png-13495097326ed7fb4f84c8318421ff81.ctex"
+uid="uid://dynl02jmksmhc"
+path="res://.godot/imported/arrow__telegraph.png-bf16dc1787a163e4eee63585631d4cae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/test enemy.png"
-dest_files=["res://.godot/imported/test enemy.png-13495097326ed7fb4f84c8318421ff81.ctex"]
+source_file="res://components/Telegraph/arrow__telegraph.png"
+dest_files=["res://.godot/imported/arrow__telegraph.png-bf16dc1787a163e4eee63585631d4cae.ctex"]
 
 [params]
 

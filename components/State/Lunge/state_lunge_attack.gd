@@ -5,6 +5,10 @@ class_name StateLungeAttack extends State
 @export var lunge_distance := 800.0
 @export var lunge_charge_time := 1
 
+@export var hurtbox = HurtBox
+
+const ARROW_TELEGRAPH = preload("res://components/Telegraph/arrow_telegraph.tscn")
+
 var lunge_direction
 var lunge_start_pos
 var lunge_wait_time
@@ -16,6 +20,11 @@ func state_enter():
 	lunge_direction = (target.global_position - body.global_position).normalized()
 	lunge_start_pos = body.global_position
 	lunge_wait_time = lunge_charge_time
+	
+	var telegraph: Telegraph = ARROW_TELEGRAPH.instantiate()
+	telegraph.duration = lunge_wait_time
+	telegraph.direction = lunge_direction
+	body.add_child(telegraph)
 	
 func state_physics_process(delta: float):
 	lunge_wait_time -= delta

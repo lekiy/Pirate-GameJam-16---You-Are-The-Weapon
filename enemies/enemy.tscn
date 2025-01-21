@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://vx6xatp8vc82"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_8lx8u"]
-[ext_resource type="Texture2D" uid="uid://boox4teqgmwqc" path="res://temp/test enemy.png" id="1_nvr0f"]
+[ext_resource type="Texture2D" uid="uid://b04xoxvm3fq7f" path="res://enemies/enemy_sprite.png" id="2_3mxg2"]
 [ext_resource type="PackedScene" uid="uid://ou314k04y2nk" path="res://components/State/state_manager.tscn" id="2_74xj5"]
 [ext_resource type="PackedScene" uid="uid://dv8lehch81km2" path="res://components/HealthComponent/health_component.tscn" id="2_qfyhs"]
 [ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/Hurtbox/hurtbox.tscn" id="3_axpu4"]
@@ -12,20 +12,24 @@
 [ext_resource type="PackedScene" uid="uid://orsdd6ivwo5n" path="res://components/State/Lunge/state_lunge_attack.tscn" id="6_ewrm1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncice"]
-radius = 64.0
+radius = 80.399
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5nj4d"]
-radius = 86.1626
+radius = 120.0
 
 [node name="Enemy" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("1_8lx8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -112)
+texture = ExtResource("2_3mxg2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -40)
 shape = SubResource("CircleShape2D_ncice")
 
 [node name="StateManager" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_74xj5")]
@@ -47,17 +51,11 @@ body = NodePath("../..")
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, -112)
-texture = ExtResource("1_nvr0f")
-
 [node name="Hurtbox" parent="." instance=ExtResource("3_axpu4")]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 y_sort_enabled = true
-position = Vector2(0, -40)
 shape = SubResource("CircleShape2D_ncice")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_jvi0j")]
@@ -65,7 +63,6 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -56)
 shape = SubResource("CircleShape2D_5nj4d")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qfyhs")]

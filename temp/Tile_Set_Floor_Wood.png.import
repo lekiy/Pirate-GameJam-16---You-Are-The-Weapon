@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b23rphuq3e2o6"
-path="res://.godot/imported/Tile_Set_Plank_Floor_512x512.png-5adc86afd7a1980c3c1746107c2dc051.ctex"
+uid="uid://8u46j4av4i7n"
+path="res://.godot/imported/Tile_Set_Floor_Wood.png-080f922789c76a348e71d00982dc24f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/Tile_Set_Plank_Floor_512x512.png"
-dest_files=["res://.godot/imported/Tile_Set_Plank_Floor_512x512.png-5adc86afd7a1980c3c1746107c2dc051.ctex"]
+source_file="res://temp/Tile_Set_Floor_Wood.png"
+dest_files=["res://.godot/imported/Tile_Set_Floor_Wood.png-080f922789c76a348e71d00982dc24f9.ctex"]
 
 [params]
 

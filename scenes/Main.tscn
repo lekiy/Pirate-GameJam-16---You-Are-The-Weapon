@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_7frtn"]
 [ext_resource type="PackedScene" uid="uid://dbnqh6rady7mi" path="res://player/player.tscn" id="2_q7qf7"]
 [ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="2_xvtrn"]
-[ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://scenes/floor.tres" id="3_sn8fw"]
+[ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="3_sn8fw"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="4_2buy2"]
 
 [node name="Main" type="Node"]

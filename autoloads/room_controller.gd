@@ -1,6 +1,6 @@
 extends Node
 
-const ROOM_BASE = preload("res://scenes/rooms/RoomBase.tscn")
+const ROOM_BASE = preload("res://rooms/RoomBase.tscn")
 
 var spawn_position : Vector2 = Vector2.ZERO
 

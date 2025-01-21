@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxr75i7ury2oo"]
+
+[ext_resource type="Texture2D" uid="uid://cp3wn4ej8jmm5" path="res://temp/Red_Iso_Test.png" id="1_ra2ju"]
+[ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="2_ivhiv"]
+
+[node name="BookShelf" type="Node2D"]
+
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("2_ivhiv")]
+sprite_ref = NodePath("../Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ra2ju")
