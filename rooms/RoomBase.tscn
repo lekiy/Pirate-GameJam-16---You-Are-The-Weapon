@@ -88,6 +88,7 @@ position = Vector2(1250, -860)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_vvgud")]
 position = Vector2(-184, -565)
+enabled = false
 
 [node name="BookShelf" parent="." instance=ExtResource("7_5u481")]
 position = Vector2(-442, -281)

@@ -18,6 +18,7 @@ config/icon="res://temp/icon.svg"
 [autoload]
 
 RoomController="*res://autoloads/room_controller.gd"
+SignalBuss="*res://autoloads/signal_buss.gd"
 
 [debug]
 

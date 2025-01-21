@@ -9,6 +9,7 @@ var possessing = false
 
 func _ready() -> void:
 	animation_player.play("hover")
+	SignalBuss.possessed.connect(on_possess)
 
 func _physics_process(delta: float) -> void:
 	handle_movement()
@@ -50,9 +51,12 @@ func handle_movement():
 		
 
 
-func on_possess(object: Possessable):
-	sprite.visible = false
-	possessing = true
+func on_possess(value):
+	if value:
+		sprite.visible = false
+	else:
+		on_unpossess()
+	#possessing = true
 	
 func on_unpossess():
 	sprite.visible = true
