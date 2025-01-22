@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://vfr0kjcxddix"]
+
+[sub_resource type="GDScript" id="GDScript_hc2aj"]
+script/source = "class_name Shootable extends AttackAction
+
+@export var ammo: Ammo
+var current_ammo
+signal fire
+
+func _ready() -> void:
+	
+	current_ammo = ammo.amount
+
+func attack(callback: Callable):
+	if ammo:
+		if current_ammo > 0:
+			var bullet = ammo.bullet_scene.instantiate()
+			bullet.global_position = global_position
+			bullet.velocity = bullet.global_position.direction_to(get_global_mouse_position())*ammo.speed
+			#bullet.hurtbox.damage = ammo.damage
+			var layer = get_tree().get_first_node_in_group(\"MainLayer\")
+			layer.add_child(bullet)
+	fire.emit()
+	#callback.call()
+"
+
+[node name="Shootable" type="Node2D"]
+script = SubResource("GDScript_hc2aj")

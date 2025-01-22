@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://orsdd6ivwo5n"]
+[gd_scene load_steps=6 format=3 uid="uid://orsdd6ivwo5n"]
 
 [ext_resource type="Script" path="res://components/State/Lunge/state_lunge_attack.gd" id="1_eko2w"]
+[ext_resource type="Texture2D" uid="uid://b04xoxvm3fq7f" path="res://enemies/enemy_sprite.png" id="2_pm654"]
+
+[sub_resource type="Curve" id="Curve_042vv"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1bp02"]
+curve = SubResource("Curve_042vv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vh7ct"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_1bp02")
 
 [node name="StateLungeAttack" type="Node2D"]
 script = ExtResource("1_eko2w")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -120)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_vh7ct")
+texture = ExtResource("2_pm654")
+lifetime = 0.5

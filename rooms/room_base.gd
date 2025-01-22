@@ -7,9 +7,17 @@ func _ready() -> void:
 	spawn_player(RoomController.spawn_position)
 	
 
-func spawn_player(position: Vector2):
-	if not player:
-		var node = PLAYER.instantiate()
+func spawn_player(spawn_position: Vector2):
+	if RoomController.player:
+		if player:
+			player.queue_free()
+		player = RoomController.player
 		var layer = get_tree().get_first_node_in_group("MainLayer")
-		node.global_position = position
-		layer.add_child.call_deferred(node)
+		layer.add_child(player)
+		player.global_position = spawn_position
+	else:
+		var layer = get_tree().get_first_node_in_group("MainLayer")
+		player = PLAYER.instantiate()
+		player.global_position = spawn_position
+		layer.add_child.call_deferred(player)
+		RoomController.player = player

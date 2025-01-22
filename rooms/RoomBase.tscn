@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="1_6gti2"]
 [ext_resource type="Script" path="res://rooms/room_base.gd" id="1_eya12"]
 [ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="2_40tv3"]
+[ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/BookShelf.tscn" id="4_2nm70"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/pot.tscn" id="4_o0ods"]
 [ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="4_qixy7"]
 [ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="5_vvgud"]
-[ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://BookShelf.tscn" id="7_5u481"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cqb8"]
 radius = 261.553
@@ -33,6 +33,9 @@ position = Vector2(-386, 515)
 
 [node name="Pot4" parent="EntityLayer" instance=ExtResource("4_o0ods")]
 position = Vector2(275, 234)
+
+[node name="BookShelf" parent="EntityLayer" instance=ExtResource("4_2nm70")]
+position = Vector2(-1906, -54)
 
 [node name="Doors" type="Node" parent="."]
 
@@ -88,7 +91,3 @@ position = Vector2(1250, -860)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_vvgud")]
 position = Vector2(-184, -565)
-enabled = false
-
-[node name="BookShelf" parent="." instance=ExtResource("7_5u481")]
-position = Vector2(-442, -281)

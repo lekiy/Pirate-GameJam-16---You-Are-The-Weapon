@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxr75i7ury2oo"]
+
+[ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="1_la0tp"]
+[ext_resource type="Texture2D" uid="uid://cp3wn4ej8jmm5" path="res://temp/Red_Iso_Test.png" id="2_oqidb"]
+[ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="3_ur3pl"]
+[ext_resource type="PackedScene" uid="uid://vfr0kjcxddix" path="res://components/Interaction/interactionArea/shootable.tscn" id="4_lttot"]
+[ext_resource type="PackedScene" uid="uid://n546udew5q7e" path="res://components/Ammo.tscn" id="5_ilkuf"]
+[ext_resource type="Script" path="res://components/ammo.gd" id="6_ewcd7"]
+[ext_resource type="PackedScene" uid="uid://bsgo7sjeqpjnv" path="res://components/bullet.tscn" id="7_m3fs5"]
+
+[sub_resource type="GDScript" id="GDScript_1u4im"]
+script/source = "extends Node2D
+
+
+func _ready() -> void:
+	$InteractionArea.interact = Callable(self, \"_on_interact\")
+
+
+func _on_interact():
+	var player = get_tree().get_first_node_in_group(\"Player\")
+	if player:
+		$Posessable.possess(player)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cvtv"]
+radius = 205.088
+
+[node name="BookShelf" type="Node2D"]
+script = SubResource("GDScript_1u4im")
+
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("1_la0tp")]
+sprite_ref = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_2cvtv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 68)
+texture = ExtResource("2_oqidb")
+offset = Vector2(1, -101)
+
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("3_ur3pl")]
+sprite = NodePath("../Sprite2D")
+attack_action = NodePath("../Shootable")
+
+[node name="Shootable" parent="." node_paths=PackedStringArray("ammo") instance=ExtResource("4_lttot")]
+ammo = NodePath("../Ammo")
+
+[node name="Ammo" parent="." instance=ExtResource("5_ilkuf")]
+script = ExtResource("6_ewcd7")
+bullet_scene = ExtResource("7_m3fs5")

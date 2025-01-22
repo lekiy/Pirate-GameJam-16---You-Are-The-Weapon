@@ -1,9 +1,9 @@
 extends Node2D
 
-@export var texture: Texture2D
+@export var sprite: Sprite2D
 
 func _ready() -> void:
-	$GPUParticles2D.texture = texture
+	$GPUParticles2D.texture = sprite.texture
 
 func on_break():
 	var position = get_parent().global_position

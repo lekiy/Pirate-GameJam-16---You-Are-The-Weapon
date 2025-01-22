@@ -1,7 +1,7 @@
 class_name Possessable extends Node2D
 
 @export var sprite : Sprite2D
-
+@export var attack_action : AttackAction
 #@onready var interaction_area: InteractionArea = $InteractionArea
 #@onready var animation_player: AnimationPlayer = $AnimationPlayer
 #@onready var collision_shape: CollisionShape2D = $Hurtbox/CollisionShape2D
@@ -13,11 +13,13 @@ var can_be_unpossessed = false
 var unpossess_delay = 0.2
 var is_possessed = false
 var z_pos: float = 0
-
-#func _ready() -> void:
-	#interaction_area.interact = Callable(self, "_on_interact")
-	#collision_shape.disabled = true
-	#$Hurtbox.hit.connect($BreakComponent.on_break)
+	
+	
+func  _process(delta: float):
+	if is_possessed:
+		if Input.is_action_just_pressed("attack"):
+			if attack_action:
+				attack_action.attack(_on_unpossess_instant)
 	
 func possess(node: Node2D):
 	if is_possessed:
@@ -46,40 +48,22 @@ func possess(node: Node2D):
 		is_possessed = true
 
 
-#func _on_interact():
-	#var player = get_tree().get_first_node_in_group("Player")
-	#if player:
-		#_on_get_possessed(player)
-
-#func _on_get_possessed(player: Player):
-	#if can_be_possessed:
-		#var particles = GHOST_BURST_PARTICLES.instantiate()
-		#particles.global_position = player.global_position
-		#get_parent().add_child(particles)
-		#player.global_position = global_position
-		##player.on_possess(self)
-		#reparent(player)
-		#animation_player.play("possession")
-		#can_be_unpossessed = false
-		#can_be_possessed = false
-		#interaction_area.is_interactable = false
-		#await get_tree().create_timer(unpossess_delay).timeout
-		#can_be_unpossessed = true
-		#z_pos = -100
-		#is_possessed = true
-
 func _on_unpossess():
-	var anim_possess: Animation = $AnimationPlayer.get_animation("possession")
+	var anim_possess: Animation = $AnimationPlayer.get_animation("unpossess")
 	anim_possess.track_set_path(0, "../Sprite2D:position")
-	anim_possess.track_set_path(2, "../Sprite2D:rotation")
-	$AnimationPlayer.play_backwards("possession")
+	anim_possess.track_set_path(1, "../Sprite2D:rotation")
+	$AnimationPlayer.play_backwards("unpossess")
 	can_be_possessed = true
 	is_possessed = false
 	SignalBuss.possessed.emit(false)
 	get_parent().reparent(get_tree().get_first_node_in_group("MainLayer"))
-	
-func on_attack():
-	pass
+
+func _on_unpossess_instant():
+	$AnimationPlayer.stop()
+	can_be_possessed = true
+	is_possessed = false
+	SignalBuss.possessed.emit(false)
+	get_parent().reparent(get_tree().get_first_node_in_group("MainLayer"))
 	
 
 func play_possession_idle():

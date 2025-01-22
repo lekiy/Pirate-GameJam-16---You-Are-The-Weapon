@@ -2,6 +2,7 @@ extends Node
 
 const ROOM_BASE = preload("res://rooms/RoomBase.tscn")
 
+var player: Player
 var spawn_position : Vector2 = Vector2.ZERO
 
 var room_dict = {
@@ -14,6 +15,8 @@ func _process(delta: float) -> void:
 
 func move_to_room(room_name, entry_name):
 	print("moving to room "+str(room_name)+" at entry "+str(entry_name))
+	
+	player.get_parent().remove_child(player)
 	var room = room_dict[room_name]
 	if room:
 		get_tree().change_scene_to_packed.call_deferred(room)

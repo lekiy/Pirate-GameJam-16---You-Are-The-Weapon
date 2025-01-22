@@ -25,6 +25,7 @@ func state_enter():
 	telegraph.duration = lunge_wait_time
 	telegraph.direction = lunge_direction
 	body.add_child(telegraph)
+	$GPUParticles2D.emitting = true
 	
 func state_physics_process(delta: float):
 	lunge_wait_time -= delta
@@ -35,3 +36,6 @@ func state_physics_process(delta: float):
 		
 	if body.global_position.distance_to(lunge_start_pos) > lunge_distance:
 		transitioned.emit(self, "StateCircle")
+
+func state_exit():
+	$GPUParticles2D.emitting = false

@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8nyixvn0sn6b"]
+[gd_scene load_steps=11 format=3 uid="uid://b8nyixvn0sn6b"]
 
 [ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="1_4cxfe"]
 [ext_resource type="Texture2D" uid="uid://crtlcmhk23uy7" path="res://temp/Isometric Assets 2.png" id="1_vl3ye"]
-[ext_resource type="PackedScene" uid="uid://bj1mcugunx4lx" path="res://environment/possessables/throwable.tscn" id="2_vfupj"]
+[ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_cnsna"]
+[ext_resource type="PackedScene" uid="uid://bj1mcugunx4lx" path="res://components/Attack/throwable.tscn" id="2_vfupj"]
+[ext_resource type="PackedScene" uid="uid://dg57cxopla6dl" path="res://components/Breakable/breakable.tscn" id="5_rm5el"]
+[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/Hurtbox/hurtbox.tscn" id="6_ge2bu"]
 
 [sub_resource type="GDScript" id="GDScript_ldmnu"]
 script/source = "extends Node2D
@@ -11,15 +14,28 @@ script/source = "extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$InteractionArea.interact = Callable(self, \"_on_interact\")
-	
+	$Hurtbox.hit.connect($Breakable.on_break)
+	$Hurtbox.collision_shape.disabled = true
 
 func _on_interact():
-	$Throwable.throw_at(get_global_mouse_position())
+	var player = get_tree().get_first_node_in_group(\"Player\")
+	if player:
+		$Posessable.possess(player)
+		
+#func _on_interact():
+	##$Throwable.throw_at(get_global_mouse_position())
+	#
 "
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpyck"]
+radius = 82.3772
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ruwaj"]
 atlas = ExtResource("1_vl3ye")
 region = Rect2(812.182, 313.182, 167.273, 170.909)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ot6dd"]
+radius = 52.2398
 
 [node name="Pot" type="Node2D"]
 script = SubResource("GDScript_ldmnu")
@@ -28,7 +44,28 @@ script = SubResource("GDScript_ldmnu")
 position = Vector2(2, 33)
 sprite_ref = NodePath("../Sprite2D")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_bpyck")
+
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("2_cnsna")]
+position = Vector2(2, 33)
+sprite = NodePath("../Sprite2D")
+attack_action = NodePath("../Throwable")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_ruwaj")
 
-[node name="Throwable" parent="." instance=ExtResource("2_vfupj")]
+[node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite") instance=ExtResource("2_vfupj")]
+hurtbox = NodePath("../Hurtbox")
+sprite = NodePath("../Sprite2D")
+
+[node name="Breakable" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_rm5el")]
+sprite = NodePath("../Sprite2D")
+
+[node name="Hurtbox" parent="." instance=ExtResource("6_ge2bu")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 20)
+shape = SubResource("CircleShape2D_ot6dd")

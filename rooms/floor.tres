@@ -1,20 +1,13 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c7gko7aw3jt0b"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c7gko7aw3jt0b"]
 
-[ext_resource type="Texture2D" uid="uid://cp3wn4ej8jmm5" path="res://temp/Red_Iso_Test.png" id="1_tfocg"]
 [ext_resource type="Texture2D" uid="uid://8u46j4av4i7n" path="res://temp/Tile_Set_Floor_Wood.png" id="2_vn2wl"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4hqm1"]
-texture = ExtResource("1_tfocg")
-texture_region_size = Vector2i(400, 400)
-0:1/0 = 0
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -80)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iuv1p"]
 texture = ExtResource("2_vn2wl")
 texture_region_size = Vector2i(400, 462)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -115)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -122, -208, 0, 0, 122, 208, 0)
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, -115)
 
@@ -23,5 +16,4 @@ tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(400, 231)
 physics_layer_0/collision_layer = 8
-sources/1 = SubResource("TileSetAtlasSource_4hqm1")
 sources/2 = SubResource("TileSetAtlasSource_iuv1p")
