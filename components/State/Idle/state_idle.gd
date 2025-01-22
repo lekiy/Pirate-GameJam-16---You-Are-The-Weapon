@@ -27,6 +27,7 @@ func state_physics_process(delta: float):
 	if body:
 		body.velocity = move_direction * move_speed
 		
-	var direction = player.global_position - body.global_position
-	if direction.length() < idle_range:
-		transitioned.emit(self, "StateFollow")
+	if is_instance_valid(player):
+		var direction = player.global_position - body.global_position
+		if direction.length() < idle_range:
+			transitioned.emit(self, "StateFollow")

@@ -91,3 +91,5 @@ position = Vector2(1250, -860)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_vvgud")]
 position = Vector2(-184, -565)
+spawn_min_count = 4
+spawn_max_count = 4

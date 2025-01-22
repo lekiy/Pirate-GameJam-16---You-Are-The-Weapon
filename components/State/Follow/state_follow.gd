@@ -11,12 +11,13 @@ func state_enter():
 	target = get_tree().get_first_node_in_group("Player")
 	
 func state_physics_process(delta: float):
-	var direction = target.global_position - body.global_position
-	
-	if direction.length() > circle_range:
-		body.velocity = direction.normalized() * move_speed
-	else:
-		transitioned.emit(self, "StateCircle")
+	if is_instance_valid(target):
+		var direction = target.global_position - body.global_position
 		
-	if direction.length() > idle_range:
-		transitioned.emit(self, "StateIdle")
+		if direction.length() > circle_range:
+			body.velocity = direction.normalized() * move_speed
+		else:
+			transitioned.emit(self, "StateCircle")
+			
+		if direction.length() > idle_range:
+			transitioned.emit(self, "StateIdle")

@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 
 func spawn_player(spawn_position: Vector2):
-	if RoomController.player:
+	if RoomController.player and is_instance_valid(player):
 		if player:
 			player.queue_free()
 		player = RoomController.player

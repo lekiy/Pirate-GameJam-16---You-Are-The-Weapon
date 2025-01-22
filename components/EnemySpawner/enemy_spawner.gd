@@ -13,9 +13,9 @@ func _ready() -> void:
 	
 func spawn_enemy():
 	if enabled:
-		var enemy: Enemy = enemy_scene.instantiate()
 		var layer = get_tree().get_first_node_in_group("MainLayer")
 		if layer:
 			for i in randi_range(spawn_min_count, spawn_max_count):
+				var enemy: Enemy = enemy_scene.instantiate()
 				enemy.global_position = global_position
 				layer.add_child(enemy)

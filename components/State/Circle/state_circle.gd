@@ -17,12 +17,15 @@ func state_enter():
 	
 func state_physics_process(delta: float):
 	wait_time -= delta
-	var direction = target.global_position - body.global_position
-	
-	if wait_time <= 0:
-		transitioned.emit(self, "StateLungeAttack")
+	if is_instance_valid(target):
+		var direction = target.global_position - body.global_position
 		
-	body.velocity = direction.normalized().rotated(deg_to_rad(strafe_direction)) * move_speed
-		
-	if direction.length() > attack_range:
-		transitioned.emit(self, "StateFollow")
+		if wait_time <= 0:
+			transitioned.emit(self, "StateLungeAttack")
+			
+		body.velocity = direction.normalized().rotated(deg_to_rad(strafe_direction)) * move_speed
+			
+		if direction.length() > attack_range:
+			transitioned.emit(self, "StateFollow")
+	else:
+		transitioned.emit(self, "StateIdle")
