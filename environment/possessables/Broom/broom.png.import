@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnfwilwext13r"
-path="res://.godot/imported/tissue_box_empty.png-51e68dd53a05efbc8f3425730a1c10aa.ctex"
+uid="uid://bi11f0kj100rg"
+path="res://.godot/imported/broom.png-2b2513341f3ae654f05b007fbf2acb73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/tissue_box_empty.png"
-dest_files=["res://.godot/imported/tissue_box_empty.png-51e68dd53a05efbc8f3425730a1c10aa.ctex"]
+source_file="res://environment/possessables/Broom/broom.png"
+dest_files=["res://.godot/imported/broom.png-2b2513341f3ae654f05b007fbf2acb73.ctex"]
 
 [params]
 

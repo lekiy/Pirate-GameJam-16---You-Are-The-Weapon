@@ -2,7 +2,7 @@ class_name Possessable extends Node2D
 
 @export var sprite : Sprite2D
 @export var attack_action : AttackAction
-
+@onready var interaction_area: InteractionArea = $"../InteractionArea"
 
 const GHOST_BURST_PARTICLES = preload("res://player/ghost_burst_particles.tscn")
 
@@ -12,7 +12,14 @@ var unpossess_delay = 0.2
 var is_possessed = false
 var z_pos: float = 0
 var can_attack = true
-	
+
+func _ready() -> void:
+	interaction_area.interact = Callable(self, "_on_interact")
+
+func _on_interact():
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		possess(player)
 	
 func  _process(delta: float):
 	if is_possessed:
@@ -35,11 +42,11 @@ func possess(node: Node2D):
 		node.global_position = global_position
 		SignalBuss.possessed.emit(true)
 		get_parent().reparent(node)
-		
-		var anim_possess: Animation = $AnimationPlayer.get_animation("possession")
-		anim_possess.track_set_path(0, "../:position")
-		anim_possess.track_set_path(2, "../:rotation")
-		$AnimationPlayer.play("possession")
+		#
+		#var anim_possess: Animation = $AnimationPlayer.get_animation("possession")
+		#anim_possess.track_set_path(0, "../:position")
+		#anim_possess.track_set_path(2, "../:rotation")
+		#$AnimationPlayer.play("possession")
 		
 		can_be_unpossessed = false
 		can_be_possessed = false

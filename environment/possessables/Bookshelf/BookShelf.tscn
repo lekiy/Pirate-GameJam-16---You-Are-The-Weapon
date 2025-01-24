@@ -4,16 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cnr5ap3t0c1iy" path="res://environment/possessables/Bookshelf/bookshelf_empty.png" id="2_2jjej"]
 [ext_resource type="Texture2D" uid="uid://dc4dxtwucyfp2" path="res://environment/possessables/Bookshelf/bookshelf_full.png" id="2_144vf"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="3_kysi6"]
-[ext_resource type="PackedScene" uid="uid://vfr0kjcxddix" path="res://components/Interaction/interactionArea/shootable.tscn" id="4_h3cxk"]
+[ext_resource type="PackedScene" uid="uid://vfr0kjcxddix" path="res://components/Interaction/shootable.tscn" id="4_h3cxk"]
 [ext_resource type="Resource" uid="uid://bcaalt4od0fy2" path="res://environment/possessables/Bookshelf/book_ammo.tres" id="5_kpg84"]
 
 [sub_resource type="GDScript" id="GDScript_1u4im"]
 script/source = "extends Node2D
 
-
 func _ready() -> void:
 	$InteractionArea.interact = Callable(self, \"_on_interact\")
-
 
 func _on_interact():
 	var player = get_tree().get_first_node_in_group(\"Player\")
@@ -55,4 +53,4 @@ ammo = ExtResource("5_kpg84")
 bullet_spawn_point = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="Shootable"]
-position = Vector2(51, -297)
+position = Vector2(2, 38)

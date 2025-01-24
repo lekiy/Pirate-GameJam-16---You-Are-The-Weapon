@@ -1,15 +1,17 @@
-[gd_scene load_steps=12 format=4 uid="uid://h4shxwd1j8pk"]
+[gd_scene load_steps=14 format=4 uid="uid://h4shxwd1j8pk"]
 
 [ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="1_6gti2"]
 [ext_resource type="Script" path="res://rooms/room_base.gd" id="1_eya12"]
 [ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="2_40tv3"]
 [ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="4_2nm70"]
-[ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/pot.tscn" id="4_o0ods"]
+[ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Pot/pot.tscn" id="4_o0ods"]
 [ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="4_qixy7"]
 [ext_resource type="PackedScene" uid="uid://brcvvwxlabycb" path="res://environment/Cauldren.tscn" id="5_6n1c6"]
 [ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="5_vvgud"]
+[ext_resource type="PackedScene" uid="uid://s5v7wlj8hcb8" path="res://environment/possessables/Broom/Broom.tscn" id="5_y4hhm"]
 [ext_resource type="PackedScene" uid="uid://742ncn8cl614" path="res://environment/possessables/Ingredients/SpellIngredient.tscn" id="6_086tk"]
 [ext_resource type="Script" path="res://rooms/health_bar.gd" id="9_p7dr6"]
+[ext_resource type="PackedScene" uid="uid://rbojf6mi5agk" path="res://environment/possessables/TissueBox/TissueBox.tscn" id="11_x26hw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cqb8"]
 radius = 261.553
@@ -60,6 +62,8 @@ tile_set = ExtResource("2_40tv3")
 [node name="EntityLayer" type="Node2D" parent="." groups=["MainLayer"]]
 y_sort_enabled = true
 
+[node name="Broom" parent="EntityLayer" instance=ExtResource("5_y4hhm")]
+
 [node name="BookShelf" parent="EntityLayer" instance=ExtResource("4_2nm70")]
 position = Vector2(-288, 78)
 
@@ -71,6 +75,9 @@ position = Vector2(507, 515)
 
 [node name="Pot" parent="EntityLayer" instance=ExtResource("4_o0ods")]
 position = Vector2(-1393, 161)
+
+[node name="TissueBox" parent="EntityLayer" instance=ExtResource("11_x26hw")]
+position = Vector2(1101, 131)
 
 [node name="Doors" type="Node" parent="."]
 
@@ -126,3 +133,4 @@ position = Vector2(1250, -860)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_vvgud")]
 position = Vector2(-184, -565)
+enabled = false

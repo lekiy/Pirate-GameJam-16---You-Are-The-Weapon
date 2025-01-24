@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://s5v7wlj8hcb8"]
+
+[ext_resource type="Texture2D" uid="uid://bi11f0kj100rg" path="res://environment/possessables/Broom/broom.png" id="1_2qwm1"]
+[ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_oj3vm"]
+[ext_resource type="Script" path="res://components/Interaction/interactionArea/interaction_area.gd" id="3_jl5iv"]
+[ext_resource type="Resource" uid="uid://batra12n6l675" path="res://environment/possessables/Broom/broom_stats.tres" id="4_mq3oa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1mqjx"]
+radius = 98.0459
+
+[sub_resource type="GDScript" id="GDScript_p8htd"]
+script/source = "class_name Swingable extends AttackAction
+
+@export var weapon_stats: WeaponStats
+@export var hurtbox: HurtBox
+
+
+func attack(callback: Callable):
+	pass
+	
+	
+
+func _process(delta: float) -> void:
+	get_parent().look_at(get_global_mouse_position().rotated(deg_to_rad(90)))
+"
+
+[node name="Broom" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, 0)
+texture = ExtResource("1_2qwm1")
+offset = Vector2(10, -170)
+
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("2_oj3vm")]
+sprite = NodePath("../Sprite2D")
+attack_action = NodePath("../Swingable")
+
+[node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("sprite_ref")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_jl5iv")
+sprite_ref = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(1, 0.994698)
+shape = SubResource("CircleShape2D_1mqjx")
+
+[node name="Swingable" type="Node2D" parent="."]
+script = SubResource("GDScript_p8htd")
+weapon_stats = ExtResource("4_mq3oa")

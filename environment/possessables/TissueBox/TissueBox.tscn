@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://rbojf6mi5agk"]
+
+[ext_resource type="Texture2D" uid="uid://cnfwilwext13r" path="res://environment/possessables/TissueBox/tissue_box_empty.png" id="1_bsg1w"]
+[ext_resource type="Texture2D" uid="uid://dgoumx7lem0nr" path="res://environment/possessables/TissueBox/tissue_box_full.png" id="1_mgpbb"]
+[ext_resource type="Script" path="res://components/Interaction/interactionArea/interaction_area.gd" id="2_t0h6k"]
+[ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="4_d3k1e"]
+[ext_resource type="PackedScene" uid="uid://vfr0kjcxddix" path="res://components/Interaction/shootable.tscn" id="4_p24hy"]
+[ext_resource type="Resource" uid="uid://ddas8vtu2lbuc" path="res://environment/possessables/TissueBox/tissue.tres" id="6_sdhui"]
+
+[sub_resource type="GDScript" id="GDScript_uwnm3"]
+script/source = "extends Node2D
+
+
+func _ready() -> void:
+	$InteractionArea.interact = Callable(self, \"_on_interact\")
+
+
+func _on_interact():
+	var player = get_tree().get_first_node_in_group(\"Player\")
+	if player:
+		$Posessable.possess(player)
+		
+func _process(delta: float) -> void:
+	if $Shootable.current_ammo <= 0:
+		$Sprite2D/Sprite2D.visible = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7i140"]
+radius = 136.825
+
+[node name="TissueBox" type="Node2D"]
+script = SubResource("GDScript_uwnm3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -82)
+texture = ExtResource("1_bsg1w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("1_mgpbb")
+
+[node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("sprite_ref")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_t0h6k")
+sprite_ref = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_7i140")
+
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("4_d3k1e")]
+sprite = NodePath("../Sprite2D")
+attack_action = NodePath("../Shootable")
+
+[node name="Shootable" parent="." node_paths=PackedStringArray("bullet_spawn_point") instance=ExtResource("4_p24hy")]
+ammo = ExtResource("6_sdhui")
+bullet_spawn_point = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Shootable"]
+position = Vector2(0, -123)

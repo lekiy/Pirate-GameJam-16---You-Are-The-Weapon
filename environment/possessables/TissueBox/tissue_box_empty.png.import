@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg5eg3kfpconn"
-path="res://.godot/imported/tissue.png-cc046bdd504beb2f196120234d22b91c.ctex"
+uid="uid://cnfwilwext13r"
+path="res://.godot/imported/tissue_box_empty.png-f4ea172393b7769c033b95d686f132ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/tissue.png"
-dest_files=["res://.godot/imported/tissue.png-cc046bdd504beb2f196120234d22b91c.ctex"]
+source_file="res://environment/possessables/TissueBox/tissue_box_empty.png"
+dest_files=["res://.godot/imported/tissue_box_empty.png-f4ea172393b7769c033b95d686f132ab.ctex"]
 
 [params]
 

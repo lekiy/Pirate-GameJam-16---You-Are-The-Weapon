@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgoumx7lem0nr"
-path="res://.godot/imported/tissue_box_full.png-5bca0ef7c7c42c5a6676057fcc1b7da4.ctex"
+uid="uid://dg5eg3kfpconn"
+path="res://.godot/imported/tissue.png-ee1ce7cbe59efcad6f9b5d74aa67d758.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/tissue_box_full.png"
-dest_files=["res://.godot/imported/tissue_box_full.png-5bca0ef7c7c42c5a6676057fcc1b7da4.ctex"]
+source_file="res://environment/possessables/TissueBox/tissue.png"
+dest_files=["res://.godot/imported/tissue.png-ee1ce7cbe59efcad6f9b5d74aa67d758.ctex"]
 
 [params]
 

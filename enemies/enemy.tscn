@@ -52,7 +52,6 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_axpu4")]
-visible = false
 collision_layer = 0
 attack_damage = 2
 
@@ -61,7 +60,6 @@ y_sort_enabled = true
 shape = SubResource("CircleShape2D_ncice")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_jvi0j")]
-visible = false
 collision_layer = 2
 collision_mask = 0
 

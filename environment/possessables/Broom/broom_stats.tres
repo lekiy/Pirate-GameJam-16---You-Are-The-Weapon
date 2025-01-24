@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://batra12n6l675"]
+
+[ext_resource type="Script" path="res://components/weapon_stats.gd" id="1_s6dt0"]
+
+[resource]
+script = ExtResource("1_s6dt0")
+attack_rate = 0.5
+damage = 1.0
+knockback = 1.0

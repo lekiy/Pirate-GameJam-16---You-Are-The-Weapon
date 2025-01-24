@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="1_4cxfe"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_cnsna"]
 [ext_resource type="PackedScene" uid="uid://bj1mcugunx4lx" path="res://components/Attack/throwable.tscn" id="2_vfupj"]
-[ext_resource type="Texture2D" uid="uid://byngpood1xise" path="res://environment/possessables/plant.png" id="3_wf71t"]
+[ext_resource type="Texture2D" uid="uid://byngpood1xise" path="res://environment/possessables/Pot/plant.png" id="3_wf71t"]
 [ext_resource type="PackedScene" uid="uid://dg57cxopla6dl" path="res://components/Breakable/breakable.tscn" id="5_rm5el"]
-[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/Hurtbox/hurtbox.tscn" id="6_ge2bu"]
-[ext_resource type="PackedScene" uid="uid://clgd20vol2or8" path="res://components/velocity_component.tscn" id="7_dyp7i"]
+[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="6_ge2bu"]
+[ext_resource type="PackedScene" uid="uid://clgd20vol2or8" path="res://components/VelocityComponent/velocity_component.tscn" id="7_dyp7i"]
 
 [sub_resource type="GDScript" id="GDScript_ldmnu"]
 script/source = "extends Node2D
@@ -23,9 +23,6 @@ func _on_interact():
 	if player:
 		$Posessable.possess(player)
 		
-#func _on_interact():
-	##$Throwable.throw_at(get_global_mouse_position())
-	#
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpyck"]
@@ -64,6 +61,7 @@ sprite = NodePath("../Sprite2D")
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_ge2bu")]
 collision_layer = 4
 collision_mask = 2
+destroy_on_collide = true
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
