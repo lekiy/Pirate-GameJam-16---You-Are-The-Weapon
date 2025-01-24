@@ -17,6 +17,7 @@ func spawn_player(spawn_position: Vector2):
 		var layer = get_tree().get_first_node_in_group("MainLayer")
 		layer.add_child(player)
 		player.global_position = spawn_position
+		player.on_enter_room()
 	else:
 		print("spawning new player")
 		var layer = get_tree().get_first_node_in_group("MainLayer")

@@ -2,8 +2,10 @@ class_name HurtBox extends Area2D
 
 @export var attack_damage := 10
 @export var knock_back := 2000
+@export var destroy_on_collide : bool = false
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 
 signal hit
 
@@ -23,5 +25,6 @@ func on_hitbox_area_entered(area: Area2D):
 
 		
 func on_hit():
-	get_parent().queue_free()
+	if destroy_on_collide:
+		get_parent().queue_free()
 	

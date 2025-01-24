@@ -8,7 +8,11 @@ const SPEED = 600.0
 func _ready() -> void:
 	animation_player.play("hover")
 	SignalBuss.possessed.connect(on_possess)
+	$HealthComponent.health_changed.connect(on_player_health_changed)
+	on_enter_room()
 
+func on_enter_room():
+	on_player_health_changed($HealthComponent.MAX_HEALTH, $HealthComponent.health)
 
 func _physics_process(delta: float) -> void:
 	handle_movement()
@@ -36,3 +40,6 @@ func on_possess(value):
 func on_unpossess():
 	sprite.visible = true
 	$InteractionManager.can_interact = true 
+
+func on_player_health_changed(new_max_value, new_value):
+	SignalBuss.health_changed.emit(new_max_value, new_value)

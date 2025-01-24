@@ -32,6 +32,7 @@ texture = ExtResource("1_c4mor")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_ciirb")
+destroy_on_collide = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_uqavh")
