@@ -1,9 +1,9 @@
 class_name StateLungeAttack extends State
 
 @export var body : CharacterBody2D
-@export var lunge_speed := 700.0
+@export var lunge_speed := 1000.0
 @export var lunge_distance := 800.0
-@export var lunge_charge_time := 1
+@export var lunge_charge_time := 0.7
 
 @export var hurtbox = HurtBox
 

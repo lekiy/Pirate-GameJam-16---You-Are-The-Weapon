@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbrdkr56365gt"]
+
+[ext_resource type="Script" path="res://components/State/state_passive.gd" id="1_yl4i3"]
+
+[node name="StatePassive" type="Node2D"]
+script = ExtResource("1_yl4i3")

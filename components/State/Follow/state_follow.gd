@@ -1,9 +1,9 @@
 class_name StateFollow extends State
 
 @export var body : CharacterBody2D
-@export var move_speed := 300.0
-@export var circle_range := 500.0
-@export var idle_range := 1000.0
+@export var move_speed := 500.0
+@export var circle_range := 600.0
+@export var idle_range := 1200.0
 
 var target: CharacterBody2D
 

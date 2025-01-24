@@ -8,14 +8,17 @@ func _ready() -> void:
 	
 
 func spawn_player(spawn_position: Vector2):
-	if RoomController.player and is_instance_valid(player):
-		if player:
-			player.queue_free()
+	print(RoomController.player)
+	if RoomController.player and is_instance_valid(RoomController.player):
+		print("using old player")
+		#if player:
+			#player.queue_free()
 		player = RoomController.player
 		var layer = get_tree().get_first_node_in_group("MainLayer")
 		layer.add_child(player)
 		player.global_position = spawn_position
 	else:
+		print("spawning new player")
 		var layer = get_tree().get_first_node_in_group("MainLayer")
 		player = PLAYER.instantiate()
 		player.global_position = spawn_position

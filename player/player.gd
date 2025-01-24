@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-const SPEED = 400.0
+const SPEED = 600.0
 
 func _ready() -> void:
 	animation_player.play("hover")

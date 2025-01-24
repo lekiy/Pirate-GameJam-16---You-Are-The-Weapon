@@ -1,8 +1,8 @@
 class_name StateCircle extends State
 
 @export var body : CharacterBody2D
-@export var move_speed := 200.0
-@export var attack_range := 550.0
+@export var move_speed := 400.0
+@export var attack_range := 1000.0
 @export var attack_delay_min := 1.0
 @export var attack_delay_max := 2.0
 

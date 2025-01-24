@@ -25,6 +25,7 @@ func move_to_room(room_name, entry_name):
 		
 	var entry: EntryTrigger = get_entry(entry_name)
 	spawn_position = entry.entry_point.global_position
+	
 
 
 func get_entry(entry_name):

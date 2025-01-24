@@ -1,6 +1,8 @@
-class_name Ammo extends Node
+class_name Ammo extends Resource
 
-@export var amount := 1
-@export var damage := 1
-@export var speed := 700
-@export var bullet_scene : PackedScene
+@export var speed : float
+@export var texture : Texture2D
+@export var damage : float
+@export var knockback : float
+@export var amount : int
+@export var fire_rate : float

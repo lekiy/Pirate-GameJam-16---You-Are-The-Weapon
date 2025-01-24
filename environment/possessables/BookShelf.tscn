@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cp3wn4ej8jmm5" path="res://temp/Red_Iso_Test.png" id="2_oqidb"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="3_ur3pl"]
 [ext_resource type="PackedScene" uid="uid://vfr0kjcxddix" path="res://components/Interaction/interactionArea/shootable.tscn" id="4_lttot"]
-[ext_resource type="PackedScene" uid="uid://n546udew5q7e" path="res://components/Ammo.tscn" id="5_ilkuf"]
+[ext_resource type="Texture2D" uid="uid://bshgpppb30ij8" path="res://temp/icon.svg" id="6_bfoma"]
 [ext_resource type="Script" path="res://components/ammo.gd" id="6_ewcd7"]
-[ext_resource type="PackedScene" uid="uid://bsgo7sjeqpjnv" path="res://components/bullet.tscn" id="7_m3fs5"]
 
 [sub_resource type="GDScript" id="GDScript_1u4im"]
 script/source = "extends Node2D
@@ -24,6 +23,15 @@ func _on_interact():
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2cvtv"]
 radius = 205.088
+
+[sub_resource type="Resource" id="Resource_4ccv1"]
+script = ExtResource("6_ewcd7")
+speed = 900.0
+texture = ExtResource("6_bfoma")
+damage = 2.0
+knockback = 1800.0
+amount = -1
+fire_rate = 0.5
 
 [node name="BookShelf" type="Node2D"]
 script = SubResource("GDScript_1u4im")
@@ -43,9 +51,5 @@ offset = Vector2(1, -101)
 sprite = NodePath("../Sprite2D")
 attack_action = NodePath("../Shootable")
 
-[node name="Shootable" parent="." node_paths=PackedStringArray("ammo") instance=ExtResource("4_lttot")]
-ammo = NodePath("../Ammo")
-
-[node name="Ammo" parent="." instance=ExtResource("5_ilkuf")]
-script = ExtResource("6_ewcd7")
-bullet_scene = ExtResource("7_m3fs5")
+[node name="Shootable" parent="." instance=ExtResource("4_lttot")]
+ammo = SubResource("Resource_4ccv1")

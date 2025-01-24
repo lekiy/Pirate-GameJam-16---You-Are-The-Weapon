@@ -1,13 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsgo7sjeqpjnv"]
 
 [ext_resource type="Texture2D" uid="uid://bshgpppb30ij8" path="res://temp/icon.svg" id="1_c4mor"]
-[ext_resource type="Script" path="res://components/Hurtbox/hurtbox.gd" id="2_ciirb"]
+[ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="2_ciirb"]
 
 [sub_resource type="GDScript" id="GDScript_46eus"]
 script/source = "class_name Bullet extends Node2D
 
 var velocity : Vector2
-@export var hurtbox : HurtBox
+var damage : float
+var knockback : float
+
+func _ready() -> void:
+	$HurtBox.attack_damage = damage
+	$HurtBox.knock_back = knockback
+	
 
 func _process(delta: float) -> void:
 	global_position += velocity*delta
@@ -16,9 +22,8 @@ func _process(delta: float) -> void:
 [sub_resource type="CircleShape2D" id="CircleShape2D_uqavh"]
 radius = 66.7533
 
-[node name="Bullet" type="Node2D" node_paths=PackedStringArray("hurtbox")]
+[node name="Bullet" type="Node2D"]
 script = SubResource("GDScript_46eus")
-hurtbox = NodePath("HurtBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_c4mor")

@@ -2,9 +2,7 @@ class_name Possessable extends Node2D
 
 @export var sprite : Sprite2D
 @export var attack_action : AttackAction
-#@onready var interaction_area: InteractionArea = $InteractionArea
-#@onready var animation_player: AnimationPlayer = $AnimationPlayer
-#@onready var collision_shape: CollisionShape2D = $Hurtbox/CollisionShape2D
+
 
 const GHOST_BURST_PARTICLES = preload("res://player/ghost_burst_particles.tscn")
 
@@ -13,14 +11,18 @@ var can_be_unpossessed = false
 var unpossess_delay = 0.2
 var is_possessed = false
 var z_pos: float = 0
+var can_attack = true
 	
 	
 func  _process(delta: float):
 	if is_possessed:
-		if Input.is_action_just_pressed("attack"):
-			if attack_action:
-				attack_action.attack(_on_unpossess_instant)
-	
+		if Input.is_action_pressed("attack"):
+			if attack_action and can_attack:
+				can_attack = false
+				await attack_action.attack(_on_unpossess_instant)
+				can_attack = true
+				
+			
 func possess(node: Node2D):
 	if is_possessed:
 		_on_unpossess()

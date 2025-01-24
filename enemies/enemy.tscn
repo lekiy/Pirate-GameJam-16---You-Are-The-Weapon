@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vx6xatp8vc82"]
+[gd_scene load_steps=14 format=3 uid="uid://vx6xatp8vc82"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_8lx8u"]
 [ext_resource type="Texture2D" uid="uid://b04xoxvm3fq7f" path="res://enemies/enemy_sprite.png" id="2_3mxg2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dv8lehch81km2" path="res://components/HealthComponent/health_component.tscn" id="2_qfyhs"]
 [ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/Hurtbox/hurtbox.tscn" id="3_axpu4"]
 [ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/Hitbox/hitbox.tscn" id="3_jvi0j"]
+[ext_resource type="PackedScene" uid="uid://cbrdkr56365gt" path="res://components/State/StatePassive.tscn" id="3_m27th"]
 [ext_resource type="PackedScene" uid="uid://ddg7mq65v2hwo" path="res://components/State/Idle/state_idle.tscn" id="3_pminm"]
 [ext_resource type="PackedScene" uid="uid://cpph15y70d6vv" path="res://components/State/Follow/state_follow.tscn" id="4_ro05p"]
 [ext_resource type="PackedScene" uid="uid://ca06gf8tvwyfg" path="res://components/State/Circle/state_circle.tscn" id="5_5lcyi"]
@@ -30,6 +31,9 @@ shape = SubResource("CircleShape2D_ncice")
 
 [node name="StateManager" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_74xj5")]
 initial_state = NodePath("StateIdle")
+
+[node name="StatePassive" parent="StateManager" node_paths=PackedStringArray("body") instance=ExtResource("3_m27th")]
+body = NodePath("../..")
 
 [node name="StateIdle" parent="StateManager" node_paths=PackedStringArray("body") instance=ExtResource("3_pminm")]
 body = NodePath("../..")
