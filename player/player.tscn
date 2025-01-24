@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bad8pubprglpv" path="res://player/player_ghost_sprite.png" id="3_q5c3u"]
 [ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/Hitbox/hitbox.tscn" id="4_o1fef"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctrty"]
+radius = 48.6621
+
 [sub_resource type="Curve" id="Curve_0cqrw"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.122363, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -35,9 +38,6 @@ scale_max = 5.0
 alpha_curve = SubResource("CurveTexture_utyk3")
 hue_variation_min = -0.01
 hue_variation_max = 0.00999998
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ctrty"]
-radius = 72.0069
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ur6wl"]
 noise_type = 0
@@ -102,17 +102,17 @@ y_sort_enabled = true
 collision_mask = 8
 script = ExtResource("1_xn11u")
 
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_ctrty")
+
 [node name="GhostTrailParticles" type="GPUParticles2D" parent="."]
 position = Vector2(1, -110)
 amount = 40
 process_material = SubResource("ParticleProcessMaterial_uabnj")
 texture = ExtResource("2_kg5od")
 lifetime = 3.0
-
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, -16)
-shape = SubResource("CircleShape2D_ctrty")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true

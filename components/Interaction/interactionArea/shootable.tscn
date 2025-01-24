@@ -20,6 +20,7 @@ func attack(callback: Callable):
 				bullet.global_position = bullet_spawn_point.global_position
 			else: 
 				bullet.global_position = global_position
+			bullet.texture = ammo.texture
 			bullet.velocity = bullet.global_position.direction_to(get_global_mouse_position())*ammo.speed
 			bullet.damage = ammo.damage
 			bullet.knockback = ammo.knockback

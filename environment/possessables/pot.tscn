@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8nyixvn0sn6b"]
+[gd_scene load_steps=10 format=3 uid="uid://b8nyixvn0sn6b"]
 
 [ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="1_4cxfe"]
-[ext_resource type="Texture2D" uid="uid://crtlcmhk23uy7" path="res://temp/Isometric Assets 2.png" id="1_vl3ye"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_cnsna"]
 [ext_resource type="PackedScene" uid="uid://bj1mcugunx4lx" path="res://components/Attack/throwable.tscn" id="2_vfupj"]
+[ext_resource type="Texture2D" uid="uid://byngpood1xise" path="res://environment/possessables/plant.png" id="3_wf71t"]
 [ext_resource type="PackedScene" uid="uid://dg57cxopla6dl" path="res://components/Breakable/breakable.tscn" id="5_rm5el"]
 [ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/Hurtbox/hurtbox.tscn" id="6_ge2bu"]
 
@@ -30,10 +30,6 @@ func _on_interact():
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpyck"]
 radius = 82.3772
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruwaj"]
-atlas = ExtResource("1_vl3ye")
-region = Rect2(812.182, 313.182, 167.273, 170.909)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6dd"]
 radius = 52.2398
 
@@ -53,7 +49,7 @@ sprite = NodePath("../Sprite2D")
 attack_action = NodePath("../Throwable")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_ruwaj")
+texture = ExtResource("3_wf71t")
 
 [node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite") instance=ExtResource("2_vfupj")]
 hurtbox = NodePath("../Hurtbox")

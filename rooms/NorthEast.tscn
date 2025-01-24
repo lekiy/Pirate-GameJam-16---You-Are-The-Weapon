@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://rooms/room_base.gd" id="1_8jdqi"]
 [ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="2_gic76"]
 [ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="3_bcgki"]
-[ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/BookShelf.tscn" id="4_em0no"]
+[ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="4_em0no"]
 [ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="5_n3pk2"]
 [ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="6_2u7t2"]
 

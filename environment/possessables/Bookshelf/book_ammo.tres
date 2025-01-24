@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ammo" load_steps=3 format=3 uid="uid://bcaalt4od0fy2"]
+
+[ext_resource type="Script" path="res://components/ammo.gd" id="1_ivae6"]
+[ext_resource type="Texture2D" uid="uid://bmtu1g7qt8ylq" path="res://environment/possessables/Bookshelf/book.png" id="2_fg7de"]
+
+[resource]
+script = ExtResource("1_ivae6")
+speed = 700.0
+texture = ExtResource("2_fg7de")
+damage = 2.0
+knockback = 1000.0
+amount = 20
+fire_rate = 0.7

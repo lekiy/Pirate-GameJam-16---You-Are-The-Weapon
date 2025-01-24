@@ -37,8 +37,8 @@ func possess(node: Node2D):
 		get_parent().reparent(node)
 		
 		var anim_possess: Animation = $AnimationPlayer.get_animation("possession")
-		anim_possess.track_set_path(0, "../Sprite2D:position")
-		anim_possess.track_set_path(2, "../Sprite2D:rotation")
+		anim_possess.track_set_path(0, "../:position")
+		anim_possess.track_set_path(2, "../:rotation")
 		$AnimationPlayer.play("possession")
 		
 		can_be_unpossessed = false

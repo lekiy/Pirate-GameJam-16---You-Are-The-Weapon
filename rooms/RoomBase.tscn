@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://h4shxwd1j8pk"]
+[gd_scene load_steps=12 format=4 uid="uid://h4shxwd1j8pk"]
 
 [ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="1_6gti2"]
 [ext_resource type="Script" path="res://rooms/room_base.gd" id="1_eya12"]
 [ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="2_40tv3"]
-[ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/BookShelf.tscn" id="4_2nm70"]
+[ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="4_2nm70"]
+[ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/pot.tscn" id="4_o0ods"]
 [ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="4_qixy7"]
 [ext_resource type="PackedScene" uid="uid://brcvvwxlabycb" path="res://environment/Cauldren.tscn" id="5_6n1c6"]
 [ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="5_vvgud"]
@@ -67,6 +68,9 @@ position = Vector2(-11, 866)
 
 [node name="SpellIngredient" parent="EntityLayer" instance=ExtResource("6_086tk")]
 position = Vector2(507, 515)
+
+[node name="Pot" parent="EntityLayer" instance=ExtResource("4_o0ods")]
+position = Vector2(-1393, 161)
 
 [node name="Doors" type="Node" parent="."]
 

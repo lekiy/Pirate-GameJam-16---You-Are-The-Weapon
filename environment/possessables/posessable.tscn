@@ -1,9 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlwfdq6mg1ffy"]
+[gd_scene load_steps=6 format=3 uid="uid://dlwfdq6mg1ffy"]
 
 [ext_resource type="Script" path="res://environment/possessables/posessable.gd" id="1_vuhw4"]
-
-[sub_resource type="Animation" id="Animation_42ik6"]
-length = 0.001
 
 [sub_resource type="Animation" id="Animation_qqu2m"]
 resource_name = "idle"
@@ -92,7 +89,6 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjl0k"]
 _data = {
-"RESET": SubResource("Animation_42ik6"),
 "idle": SubResource("Animation_qqu2m"),
 "possession": SubResource("Animation_gvv31"),
 "unpossess": SubResource("Animation_8xokb")
