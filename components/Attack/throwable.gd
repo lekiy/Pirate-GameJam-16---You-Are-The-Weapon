@@ -3,7 +3,7 @@ class_name Throwable extends AttackAction
 @export var throw_speed := 700
 @export var hurtbox : HurtBox
 @export var sprite : Sprite2D
-
+@export var velocity_component : VelocityComponent
 
 const GRAVITY := 9.8
 var velocity : Vector3 = Vector3()
@@ -18,23 +18,9 @@ func attack(callback: Callable):
 	callback.call()
 
 func _physics_process(delta: float):
-	if z_pos < 0:
-		if apply_gravity:
-			velocity.z += GRAVITY
-	else:
-		if velocity.z > 50:
-			if hurtbox:
-				hurtbox.hit.emit()
-				
-		else:
-			velocity.z = -velocity.z
-		velocity *= 0.8
-	
 	if sprite:
-		sprite.rotation_degrees += Vector2(velocity.x, velocity.y).length()*delta
-	z_pos += velocity.z*delta
-	get_parent().global_position += Vector2(velocity.x, velocity.y + velocity.z)*delta
-
+		sprite.rotation_degrees += velocity_component.velocity3.length()*delta
+		
 
 func throw_at_mouse():
 	throw_at(get_global_mouse_position())
@@ -44,10 +30,8 @@ func throw_at(target: Vector2):
 	if hurtbox:
 		hurtbox.collision_shape.disabled = false
 	var vel = Vector2.RIGHT.rotated(angle)*throw_speed
-	z_pos = -1
-	velocity.x = vel.x
-	velocity.y = vel.y
-	velocity.z = get_launch_vel(target)
+	velocity_component.z_pos = -1
+	velocity_component.set_velocity3D(Vector3(vel.x, vel.y, get_launch_vel(target)))
 	thrown.emit()
 	
 
