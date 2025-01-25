@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsgo7sjeqpjnv"]
 
-[ext_resource type="Texture2D" uid="uid://bshgpppb30ij8" path="res://temp/icon.svg" id="1_gl1uj"]
+[ext_resource type="Texture2D" uid="uid://bmtu1g7qt8ylq" path="res://environment/possessables/Bookshelf/book.png" id="1_jpqed"]
 [ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="2_17jck"]
 
 [sub_resource type="GDScript" id="GDScript_46eus"]
@@ -40,10 +40,11 @@ func _physics_process(delta: float) -> void:
 radius = 66.7533
 
 [node name="Bullet" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_46eus")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_gl1uj")
+texture = ExtResource("1_jpqed")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0

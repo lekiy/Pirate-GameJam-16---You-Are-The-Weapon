@@ -2,10 +2,10 @@ class_name EntryTrigger extends Area2D
 
 @export var entry_name: String = "south_east"
 @export var target_entry_name: String = "north_east"
-@export var room_name: String = "room_base"
-@export var target_room_name: = "room_base" 
+@export var room_name: String = "room_test"
+@export var target_room_name: = "room_test" 
 
-@onready var entry_point: Marker2D = $EntryPoint
+@export var entry_point: Marker2D
 
 func _ready() -> void:
 	area_entered.connect(on_area_entered)

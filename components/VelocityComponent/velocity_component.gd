@@ -1,6 +1,6 @@
 class_name VelocityComponent extends Node2D
 
-@onready var node : Node2D = get_parent()
+@onready var body : CharacterBody2D = get_parent()
 
 @export var ground_friction := 0.8
 @export var apply_gravity = true
@@ -26,7 +26,9 @@ func _physics_process(delta: float) -> void:
 	
 func move(delta: float):
 	z_pos += velocity3.z*delta
-	node.global_position += Vector2(velocity3.x, velocity3.y + velocity3.z)*delta
+	body.global_position += Vector2(velocity3.x, velocity3.y + velocity3.z)*delta
+	
+	body.move_and_slide()
 
 func set_velocity(velocity: Vector2):
 	velocity3 = Vector3(velocity.x, velocity.y, 0)

@@ -18,8 +18,7 @@ func attack(callback: Callable):
 	callback.call()
 
 func _physics_process(delta: float):
-	if sprite:
-		sprite.rotation_degrees += velocity_component.velocity3.length()*delta
+	get_parent().rotation_degrees += velocity_component.velocity3.length()*delta
 		
 
 func throw_at_mouse():

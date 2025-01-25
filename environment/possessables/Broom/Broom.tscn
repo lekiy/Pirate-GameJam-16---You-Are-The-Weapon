@@ -1,12 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://s5v7wlj8hcb8"]
+[gd_scene load_steps=8 format=3 uid="uid://s5v7wlj8hcb8"]
 
 [ext_resource type="Texture2D" uid="uid://bi11f0kj100rg" path="res://environment/possessables/Broom/broom.png" id="1_2qwm1"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_oj3vm"]
 [ext_resource type="Script" path="res://components/Interaction/interactionArea/interaction_area.gd" id="3_jl5iv"]
 [ext_resource type="Resource" uid="uid://batra12n6l675" path="res://environment/possessables/Broom/broom_stats.tres" id="4_mq3oa"]
 
+[sub_resource type="GDScript" id="GDScript_dfrlr"]
+script/source = "extends Node2D
+
+func _process(delta: float) -> void:
+	if $Posessable.is_possessed:
+		look_at(get_global_mouse_position())
+		rotation_degrees += 90.0
+	else:
+		rotation_degrees += 0.0
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_1mqjx"]
-radius = 98.0459
+radius = 135.732
 
 [sub_resource type="GDScript" id="GDScript_p8htd"]
 script/source = "class_name Swingable extends AttackAction
@@ -18,17 +29,14 @@ script/source = "class_name Swingable extends AttackAction
 func attack(callback: Callable):
 	pass
 	
-	
-
-func _process(delta: float) -> void:
-	get_parent().look_at(get_global_mouse_position() + Vector2.LEFT)
 "
 
 [node name="Broom" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = SubResource("GDScript_dfrlr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, 0)
-rotation = 1.5708
 texture = ExtResource("1_2qwm1")
 offset = Vector2(10, -170)
 
@@ -43,7 +51,10 @@ script = ExtResource("3_jl5iv")
 sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(12, 14)
+rotation = 0.523599
 scale = Vector2(1, 0.994698)
+skew = 0.523599
 shape = SubResource("CircleShape2D_1mqjx")
 
 [node name="Swingable" type="Node2D" parent="."]

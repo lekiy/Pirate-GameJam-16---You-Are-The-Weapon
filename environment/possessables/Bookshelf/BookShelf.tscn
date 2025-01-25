@@ -21,13 +21,24 @@ func _on_interact():
 func _process(delta: float) -> void:
 	if $Shootable.current_ammo <= 0:
 		$Sprite2D/Sprite2D.visible = false
+		
+	if $Posessable.is_possessed:
+		scale.x = sign(get_global_mouse_position().x - global_position.x)*0.5
+	else:
+		scale.x = 1*0.5
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2cvtv"]
-radius = 547.033
+radius = 373.41
 
-[node name="BookShelf" type="Node2D"]
+[node name="BookShelf" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 12
 script = SubResource("GDScript_1u4im")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(280, -92, -128, 146, -330, 32, 80, -204)
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("1_03ssd")]
 position = Vector2(-16, -59)
@@ -35,22 +46,26 @@ sprite_ref = NodePath("../Sprite2D/Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(-13, 0)
+rotation = 0.523599
+skew = 0.523599
 shape = SubResource("CircleShape2D_2cvtv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-52, -261)
 texture = ExtResource("2_2jjej")
+offset = Vector2(-30, -390)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
 texture = ExtResource("2_144vf")
+offset = Vector2(-30, -390)
 
-[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("3_kysi6")]
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action", "collider") instance=ExtResource("3_kysi6")]
 sprite = NodePath("../Sprite2D/Sprite2D")
 attack_action = NodePath("../Shootable")
+collider = NodePath("../CollisionPolygon2D")
 
 [node name="Shootable" parent="." node_paths=PackedStringArray("bullet_spawn_point") instance=ExtResource("4_h3cxk")]
 ammo = ExtResource("5_kpg84")
 bullet_spawn_point = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="Shootable"]
-position = Vector2(2, 38)
+position = Vector2(62, -330)

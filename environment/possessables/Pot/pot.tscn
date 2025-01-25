@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8nyixvn0sn6b"]
+[gd_scene load_steps=12 format=3 uid="uid://b8nyixvn0sn6b"]
 
 [ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="1_4cxfe"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_cnsna"]
@@ -25,20 +25,35 @@ func _on_interact():
 		
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anbfu"]
+size = Vector2(127.196, 116.804)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpyck"]
 radius = 107.117
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6dd"]
-radius = 52.2398
+radius = 83.4426
 
-[node name="Pot" type="Node2D"]
+[node name="Pot" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 12
 script = SubResource("GDScript_ldmnu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-07, 2.84217e-14)
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("RectangleShape2D_anbfu")
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("1_4cxfe")]
 position = Vector2(2, 33)
 sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-3, -33)
+rotation = 0.523599
+skew = 0.523599
 shape = SubResource("CircleShape2D_bpyck")
 
 [node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("2_cnsna")]
@@ -47,8 +62,8 @@ sprite = NodePath("../Sprite2D")
 attack_action = NodePath("../Throwable")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, -169)
 texture = ExtResource("3_wf71t")
+offset = Vector2(0, -175)
 
 [node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("2_vfupj")]
 hurtbox = NodePath("../Hurtbox")
@@ -60,12 +75,14 @@ sprite = NodePath("../Sprite2D")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_ge2bu")]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 14
 destroy_on_collide = true
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(1, 20)
+position = Vector2(2.02656e-06, 1.90735e-06)
+rotation = 0.523599
+skew = 0.523599
 shape = SubResource("CircleShape2D_ot6dd")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("7_dyp7i")]

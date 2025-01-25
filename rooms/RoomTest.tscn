@@ -1,36 +1,90 @@
-[gd_scene load_steps=8 format=4 uid="uid://bm24so081dq3s"]
+[gd_scene load_steps=14 format=4 uid="uid://h4shxwd1j8pk"]
 
-[ext_resource type="Script" path="res://rooms/room_base.gd" id="1_8jdqi"]
-[ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="2_gic76"]
-[ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="3_bcgki"]
-[ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="4_em0no"]
-[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="5_n3pk2"]
-[ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="6_2u7t2"]
+[ext_resource type="Script" path="res://rooms/room_base.gd" id="1_3b44c"]
+[ext_resource type="Script" path="res://rooms/health_bar.gd" id="2_y7320"]
+[ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="3_7lue6"]
+[ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="4_gkmoh"]
+[ext_resource type="PackedScene" uid="uid://s5v7wlj8hcb8" path="res://environment/possessables/Broom/Broom.tscn" id="5_81lr5"]
+[ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="6_lsjn1"]
+[ext_resource type="PackedScene" uid="uid://brcvvwxlabycb" path="res://environment/Cauldren.tscn" id="7_ndp24"]
+[ext_resource type="PackedScene" uid="uid://742ncn8cl614" path="res://environment/possessables/Ingredients/SpellIngredient.tscn" id="8_frvkl"]
+[ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Pot/pot.tscn" id="9_p1eti"]
+[ext_resource type="PackedScene" uid="uid://rbojf6mi5agk" path="res://environment/possessables/TissueBox/TissueBox.tscn" id="10_50s5a"]
+[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="11_jytlm"]
+[ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="12_rx6sv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cqb8"]
 radius = 261.553
 
-[node name="RoomBase" type="Node2D"]
-script = ExtResource("1_8jdqi")
+[node name="RoomTest" type="Node2D"]
+script = ExtResource("1_3b44c")
 
-[node name="Main Camera" parent="." instance=ExtResource("2_gic76")]
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="HealthBar" type="ProgressBar" parent="HUD/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -159.0
+offset_top = -43.0
+offset_right = 159.0
+grow_horizontal = 2
+grow_vertical = 0
+rounded = true
+show_percentage = false
+script = ExtResource("2_y7320")
+
+[node name="Main Camera" parent="." instance=ExtResource("3_7lue6")]
 
 [node name="FloorLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD5/wAAAgABAAAAAAD5/wEAAgABAAAAAAD6//z/AgABAAAAAAD6//3/AgABAAAAAAD6//7/AgABAAAAAAD6/wAAAgABAAAAAAD6/wIAAgABAAAAAAD6/wMAAgABAAAAAAD6/wQAAgABAAAAAAD7//z/AgABAAAAAAD7//3/AgABAAAAAAD7////AgABAAAAAAD7/wEAAgABAAAAAAD7/wIAAgABAAAAAAD7/wQAAgABAAAAAAD8//7/AgABAAAAAAD8////AgABAAAAAAD8/wAAAgABAAAAAAD8/wEAAgABAAAAAAD8/wIAAgABAAAAAAD8/wMAAgABAAAAAAD8/wQAAgABAAAAAAD9//7/AgABAAAAAAD9////AgABAAAAAAD9/wAAAgABAAAAAAD9/wEAAgABAAAAAAD9/wIAAgABAAAAAAD9/wQAAgABAAAAAAD9/wUAAgABAAAAAAD+//v/AgABAAAAAAD+//3/AgABAAAAAAD+//7/AgABAAAAAAD+////AgABAAAAAAD+/wAAAgABAAAAAAD+/wEAAgABAAAAAAD+/wMAAgABAAAAAAD+/wQAAgABAAAAAAD+/wUAAgABAAAAAAD+/wYAAgABAAAAAAD///r/AgABAAAAAAD///z/AgABAAAAAAD///3/AgABAAAAAAD///7/AgABAAAAAAD/////AgABAAAAAAD//wAAAgABAAAAAAD//wEAAgABAAAAAAD//wMAAgABAAAAAAD//wUAAgABAAAAAAD//wYAAgABAAAAAAAAAPz/AgABAAAAAAAAAP7/AgABAAAAAAAAAAAAAgABAAAAAAAAAAEAAgABAAAAAAAAAAIAAgABAAAAAAAAAAMAAgABAAAAAAAAAAQAAgABAAAAAAABAPz/AgABAAAAAAABAP3/AgABAAAAAAABAAAAAgABAAAAAAABAAEAAgABAAAAAAABAAIAAgABAAAAAAABAAUAAgABAAAAAAACAPz/AgABAAAAAAACAP7/AgABAAAAAAACAP//AgABAAAAAAACAAEAAgABAAAAAAACAAIAAgABAAAAAAACAAQAAgABAAAAAAADAP7/AgABAAAAAAADAAEAAgABAAAAAAADAAIAAgABAAAAAAADAAMAAgABAAAAAAADAAQAAgABAAAAAAAEAAAAAgABAAAAAAAEAAEAAgABAAAAAAAFAAEAAgABAAAAAAD6////AgABAAAAAAD6/wEAAgABAAAAAAD6/wUAAgABAAAAAAD7//7/AgABAAAAAAD7/wAAAgABAAAAAAD7/wMAAgABAAAAAAD7/wUAAgABAAAAAAD8//z/AgABAAAAAAD8//3/AgABAAAAAAD8/wUAAgABAAAAAAD9//z/AgABAAAAAAD9//3/AgABAAAAAAD9/wMAAgABAAAAAAD+//r/AgABAAAAAAD+//z/AgABAAAAAAD+/wIAAgABAAAAAAD///v/AgABAAAAAAD//wIAAgABAAAAAAD//wQAAgABAAAAAAAAAP3/AgABAAAAAAAAAP//AgABAAAAAAAAAAUAAgABAAAAAAABAP7/AgABAAAAAAABAP//AgABAAAAAAABAAMAAgABAAAAAAABAAQAAgABAAAAAAACAP3/AgABAAAAAAACAAAAAgABAAAAAAACAAMAAgABAAAAAAACAAUAAgABAAAAAAADAPz/AgABAAAAAAADAP3/AgABAAAAAAADAP//AgABAAAAAAADAAAAAgABAAAAAAADAAUAAgABAAAAAAAFAAAAAgABAAAAAAD4/wAAAgABAAAAAAD4/wEAAgABAAAAAAD+/wcAAgABAAAAAAD//wcAAgABAAAAAAAGAAAAAgABAAAAAAAGAAEAAgABAAAAAAAEAPz/AgABAAAAAAAEAP3/AgABAAAAAAAEAP7/AgABAAAAAAAEAP//AgABAAAAAAAEAAIAAgABAAAAAAAEAAMAAgABAAAAAAAEAAQAAgABAAAAAAAEAAUAAgABAAAAAAAAAAcAAgAAAAAAAAABAAcAAgAAAAAAAAACAAcAAgAAAAAAAAADAAcAAgAAAAAAAAAAAAYAAgAAAAAAAAABAAYAAgAAAAAAAAACAAYAAgAAAAAAAAADAAYAAgAAAAAAAAAEAAYAAgAAAAAAAAAFAAYAAgAAAAAAAAAFAAUAAgAAAAAAAAAFAAQAAgAAAAAAAAAFAAMAAgAAAAAAAAAFAAIAAgAAAAAAAAD6/wYAAgAAAAAAAAD7/wYAAgAAAAAAAAD8/wYAAgAAAAAAAAD9/wYAAgAAAAAAAAD9/wcAAgAAAAAAAAD+/wgAAgAAAAAAAAD//wgAAgAAAAAAAAAAAAgAAgAAAAAAAAD9/wgAAgAAAAAAAAAGAAIAAgAAAAAAAAAHAAIAAgAAAAAAAAAHAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAHAP//AgAAAAAAAAAGAP//AgAAAAAAAAAFAP//AgAAAAAAAAAFAP7/AgAAAAAAAAAFAP3/AgAAAAAAAAAFAPz/AgAAAAAAAAAFAPv/AgAAAAAAAAAEAPv/AgAAAAAAAAADAPv/AgAAAAAAAAACAPv/AgAAAAAAAAABAPv/AgAAAAAAAAAAAPv/AgAAAAAAAAAAAPr/AgAAAAAAAAAAAPn/AgAAAAAAAAD///n/AgAAAAAAAAD+//n/AgAAAAAAAAD9//n/AgAAAAAAAAD9//r/AgAAAAAAAAD9//v/AgAAAAAAAAD8//v/AgAAAAAAAAD7//v/AgAAAAAAAAD6//v/AgAAAAAAAAD5//v/AgAAAAAAAAD5//z/AgAAAAAAAAD5//3/AgAAAAAAAAD5//7/AgAAAAAAAAD5////AgAAAAAAAAD4////AgAAAAAAAAD3////AgAAAAAAAAD3/wAAAgAAAAAAAAD3/wEAAgAAAAAAAAD3/wIAAgAAAAAAAAD4/wIAAgAAAAAAAAD5/wIAAgAAAAAAAAD5/wMAAgAAAAAAAAD5/wQAAgAAAAAAAAD5/wUAAgAAAAAAAAD5/wYAAgAAAAAAAAA=")
-tile_set = ExtResource("3_bcgki")
+tile_set = ExtResource("4_gkmoh")
 
 [node name="EntityLayer" type="Node2D" parent="." groups=["MainLayer"]]
 y_sort_enabled = true
 
-[node name="BookShelf" parent="EntityLayer" instance=ExtResource("4_em0no")]
+[node name="Broom" parent="EntityLayer" instance=ExtResource("5_81lr5")]
+
+[node name="BookShelf" parent="EntityLayer" instance=ExtResource("6_lsjn1")]
 position = Vector2(-288, 78)
+
+[node name="Couldren" parent="EntityLayer" instance=ExtResource("7_ndp24")]
+position = Vector2(-11, 866)
+
+[node name="SpellIngredient" parent="EntityLayer" instance=ExtResource("8_frvkl")]
+position = Vector2(507, 515)
+
+[node name="Pot" parent="EntityLayer" instance=ExtResource("9_p1eti")]
+position = Vector2(-1393, 161)
+
+[node name="TissueBox" parent="EntityLayer" instance=ExtResource("10_50s5a")]
+position = Vector2(1101, 131)
 
 [node name="Doors" type="Node" parent="."]
 
-[node name="EntryTriggerComponent" parent="Doors" groups=["Entry"] instance=ExtResource("5_n3pk2")]
+[node name="EntryTriggerComponent" parent="Doors" node_paths=PackedStringArray("entry_point") instance=ExtResource("11_jytlm")]
 position = Vector2(-384, -208)
-collision_layer = 0
 target_entry_name = "north_west"
+entry_point = NodePath("EntryPoint")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntryTriggerComponent"]
 position = Vector2(1643, 1119)
@@ -39,11 +93,11 @@ shape = SubResource("CircleShape2D_6cqb8")
 [node name="EntryPoint" type="Marker2D" parent="Doors/EntryTriggerComponent"]
 position = Vector2(1265, 820)
 
-[node name="EntryTriggerComponent2" parent="Doors" groups=["Entry"] instance=ExtResource("5_n3pk2")]
+[node name="EntryTriggerComponent2" parent="Doors" node_paths=PackedStringArray("entry_point") instance=ExtResource("11_jytlm")]
 position = Vector2(412, 200)
-collision_layer = 0
 entry_name = "north_west"
 target_entry_name = "south_east"
+entry_point = NodePath("EntryPoint")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntryTriggerComponent2"]
 position = Vector2(-2058, -1136)
@@ -52,10 +106,10 @@ shape = SubResource("CircleShape2D_6cqb8")
 [node name="EntryPoint" type="Marker2D" parent="Doors/EntryTriggerComponent2"]
 position = Vector2(-1688, -831)
 
-[node name="EntryTriggerComponent3" parent="Doors" groups=["Entry"] instance=ExtResource("5_n3pk2")]
+[node name="EntryTriggerComponent3" parent="Doors" node_paths=PackedStringArray("entry_point") instance=ExtResource("11_jytlm")]
 position = Vector2(496, -288)
-collision_layer = 0
 entry_name = "south_west"
+entry_point = NodePath("EntryPoint")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntryTriggerComponent3"]
 position = Vector2(-2099, 1155)
@@ -64,11 +118,11 @@ shape = SubResource("CircleShape2D_6cqb8")
 [node name="EntryPoint" type="Marker2D" parent="Doors/EntryTriggerComponent3"]
 position = Vector2(-1680, 843)
 
-[node name="EntryTriggerComponent4" parent="Doors" groups=["Entry"] instance=ExtResource("5_n3pk2")]
+[node name="EntryTriggerComponent4" parent="Doors" node_paths=PackedStringArray("entry_point") instance=ExtResource("11_jytlm")]
 position = Vector2(-460, 276)
-collision_layer = 0
 entry_name = "north_east"
 target_entry_name = "south_west"
+entry_point = NodePath("EntryPoint")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntryTriggerComponent4"]
 position = Vector2(1629, -1155)
@@ -77,5 +131,6 @@ shape = SubResource("CircleShape2D_6cqb8")
 [node name="EntryPoint" type="Marker2D" parent="Doors/EntryTriggerComponent4"]
 position = Vector2(1250, -860)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("6_2u7t2")]
+[node name="EnemySpawner" parent="." instance=ExtResource("12_rx6sv")]
 position = Vector2(-184, -565)
+enabled = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwa86rebmalxy"
-path="res://.godot/imported/shelves.png-ee5b3cfb6e37a79d9048162949aea7a9.ctex"
+uid="uid://bjajbbjd42ism"
+path="res://.godot/imported/door.png-9871edc75a0db962d3f9220f1f631f80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/shelves.png"
-dest_files=["res://.godot/imported/shelves.png-ee5b3cfb6e37a79d9048162949aea7a9.ctex"]
+source_file="res://components/EntryTrigger/door.png"
+dest_files=["res://.godot/imported/door.png-9871edc75a0db962d3f9220f1f631f80.ctex"]
 
 [params]
 

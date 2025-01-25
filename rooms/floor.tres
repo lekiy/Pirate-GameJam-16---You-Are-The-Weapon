@@ -1,15 +1,17 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c7gko7aw3jt0b"]
 
-[ext_resource type="Texture2D" uid="uid://8u46j4av4i7n" path="res://temp/Tile_Set_Floor_Wood.png" id="2_vn2wl"]
+[ext_resource type="Texture2D" uid="uid://8u46j4av4i7n" path="res://rooms/Tile_Set_Floor_Wood.png" id="1_algjv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iuv1p"]
-texture = ExtResource("2_vn2wl")
+texture = ExtResource("1_algjv")
 texture_region_size = Vector2i(400, 462)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -115)
+0:0/0/y_sort_origin = -64
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -122, -208, 0, 0, 122, 208, 0)
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, -115)
+1:0/0/y_sort_origin = -64
 
 [resource]
 tile_shape = 1

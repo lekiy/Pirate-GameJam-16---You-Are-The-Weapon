@@ -1,12 +1,20 @@
 extends Node
 
-const ROOM_BASE = preload("res://rooms/RoomBase.tscn")
+const ROOM_TEST = preload("res://rooms/RoomTest.tscn")
+const ROOM_ENTRY = preload("res://rooms/room_entry.tscn")
+const ROOM_LIVING = preload("res://rooms/room_living.tscn")
+const ROOM_LIBRARY = preload("res://rooms/room_library.tscn")
 
 var player: Player
 var spawn_position : Vector2 = Vector2.ZERO
+var current_room_name: String
+var current_entry_name: String
 
 var room_dict = {
-	"room_base": ROOM_BASE
+	"room_test": ROOM_TEST,
+	"room_entry": ROOM_ENTRY,
+	"room_living": ROOM_LIVING,
+	"room_library": ROOM_LIBRARY
 }
 
 func _process(delta: float) -> void:
@@ -19,22 +27,20 @@ func move_to_room(room_name, entry_name):
 	player.get_parent().remove_child(player)
 	var room = room_dict[room_name]
 	if room:
+		current_room_name = room_name
+		current_entry_name = entry_name
 		get_tree().change_scene_to_packed.call_deferred(room)
 	else:
 		print("Room not registered: "+room_name)
 		
-	var entry: EntryTrigger = get_entry(entry_name)
-	spawn_position = entry.entry_point.global_position
-	
 
-
-func get_entry(entry_name):
+func get_entry():
 	var entries = get_tree().get_nodes_in_group("Entry")
 	for entry in entries:
 		if entry is EntryTrigger:
-			if entry.entry_name == entry_name:
+			if entry.entry_name == current_entry_name:
 				return entry
-	print("Entry: "+entry_name+" not found")
+				
 	return null
 	
 	

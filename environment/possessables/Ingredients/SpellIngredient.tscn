@@ -23,15 +23,20 @@ script = ExtResource("1_52wqs")
 ingredient = ExtResource("1_mnr02")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.523599
+skew = 0.523599
 shape = SubResource("CircleShape2D_8erw0")
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("3_lwqjy")]
 sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+rotation = 0.523599
+skew = 0.523599
 shape = SubResource("CircleShape2D_dm3sx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8, -48)
 texture = SubResource("AtlasTexture_xhuqc")
 
 [node name="Posessable" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_tw4vh")]
