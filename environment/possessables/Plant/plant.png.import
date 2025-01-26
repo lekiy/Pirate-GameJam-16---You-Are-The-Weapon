@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://did6qjq3625ng"
-path="res://.godot/imported/tissue_box_full.png-84a26f6b57dc0281deb08016fb19cea3.ctex"
+uid="uid://yy84p5rtxeb4"
+path="res://.godot/imported/plant.png-d286034f8122daa2af5669285e61e62e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/possessables/TissueBox/tissue_box_full.png"
-dest_files=["res://.godot/imported/tissue_box_full.png-84a26f6b57dc0281deb08016fb19cea3.ctex"]
+source_file="res://environment/possessables/Plant/plant.png"
+dest_files=["res://.godot/imported/plant.png-d286034f8122daa2af5669285e61e62e.ctex"]
 
 [params]
 

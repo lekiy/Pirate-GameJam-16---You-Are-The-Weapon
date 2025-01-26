@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_clo8g"]
 [ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="2_j22ty"]
-[ext_resource type="Texture2D" uid="uid://bjajbbjd42ism" path="res://components/EntryTrigger/door.png" id="3_wctmo"]
-[ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Pot/pot.tscn" id="4_w0det"]
-[ext_resource type="PackedScene" uid="uid://7isccvo8ggq0" path="res://environment/Window.tscn" id="5_g7bfq"]
+[ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/EntryTrigger/door.png" id="3_wctmo"]
+[ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="4_w0det"]
+[ext_resource type="PackedScene" uid="uid://t3q70iawxre0" path="res://environment/Decoration/Window.tscn" id="5_g7bfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1sl0"]
 size = Vector2(136, 235.542)

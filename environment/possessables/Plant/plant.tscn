@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce714tamibj17"]
+[gd_scene load_steps=11 format=3 uid="uid://b8nyixvn0sn6b"]
 
 [ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="1_4cxfe"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_cnsna"]
-[ext_resource type="Texture2D" uid="uid://u53bshs1hmvu" path="res://environment/possessables/Pot/pot.png" id="2_g61bs"]
 [ext_resource type="PackedScene" uid="uid://bj1mcugunx4lx" path="res://components/Attack/throwable.tscn" id="2_vfupj"]
+[ext_resource type="Texture2D" uid="uid://yy84p5rtxeb4" path="res://environment/possessables/Plant/plant.png" id="3_wf71t"]
 [ext_resource type="PackedScene" uid="uid://dg57cxopla6dl" path="res://components/Breakable/breakable.tscn" id="5_rm5el"]
 [ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="6_ge2bu"]
 [ext_resource type="PackedScene" uid="uid://clgd20vol2or8" path="res://components/VelocityComponent/velocity_component.tscn" id="7_dyp7i"]
@@ -31,14 +31,14 @@ radius = 107.117
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot6dd"]
 radius = 80.2164
 
-[node name="Pot" type="CharacterBody2D"]
+[node name="Plant" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 12
 script = SubResource("GDScript_ldmnu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-70, -18, -70, -18, -56, 22, -6, 46, 72, 30, 88, -20, 18, -48, -28, -46)
+polygon = PackedVector2Array(16, 102, 104, 52, 6, -8, -86, 42)
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("1_4cxfe")]
 position = Vector2(2, 33)
@@ -57,9 +57,7 @@ attack_action = NodePath("../Throwable")
 collider = NodePath("../CollisionPolygon2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, 136)
-scale = Vector2(1.00442, 1)
-texture = ExtResource("2_g61bs")
+texture = ExtResource("3_wf71t")
 offset = Vector2(0, -175)
 
 [node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("2_vfupj")]

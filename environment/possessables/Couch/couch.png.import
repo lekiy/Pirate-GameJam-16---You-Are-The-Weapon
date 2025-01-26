@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byngpood1xise"
-path="res://.godot/imported/plant.png-89656310ab7648f5fda66aef88280589.ctex"
+uid="uid://cvwlobh55gm65"
+path="res://.godot/imported/couch.png-0da47bdc534ac26a477242ea7199340e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/possessables/Pot/plant.png"
-dest_files=["res://.godot/imported/plant.png-89656310ab7648f5fda66aef88280589.ctex"]
+source_file="res://environment/possessables/Couch/couch.png"
+dest_files=["res://.godot/imported/couch.png-0da47bdc534ac26a477242ea7199340e.ctex"]
 
 [params]
 

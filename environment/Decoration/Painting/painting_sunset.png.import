@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmegb2skim406"
-path="res://.godot/imported/Isometric Assets 1.png-6f0d43b610666c5bb5b832aa4341160f.ctex"
+uid="uid://dterldaxix7a0"
+path="res://.godot/imported/painting_sunset.png-a945cb064c5c79d3f3a3b13f469bd4df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/Isometric Assets 1.png"
-dest_files=["res://.godot/imported/Isometric Assets 1.png-6f0d43b610666c5bb5b832aa4341160f.ctex"]
+source_file="res://environment/Decoration/Painting/painting_sunset.png"
+dest_files=["res://.godot/imported/painting_sunset.png-a945cb064c5c79d3f3a3b13f469bd4df.ctex"]
 
 [params]
 

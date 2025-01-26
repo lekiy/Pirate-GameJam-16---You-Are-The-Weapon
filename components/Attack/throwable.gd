@@ -4,6 +4,7 @@ class_name Throwable extends AttackAction
 @export var hurtbox : HurtBox
 @export var sprite : Sprite2D
 @export var velocity_component : VelocityComponent
+@onready var collider: CollisionPolygon2D = $"../CollisionPolygon2D"
 
 const GRAVITY := 9.8
 var velocity : Vector3 = Vector3()
@@ -14,7 +15,6 @@ signal thrown
 
 func attack(callback: Callable):
 	throw_at_mouse()
-	
 	callback.call()
 
 func _physics_process(delta: float):

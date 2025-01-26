@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbf7nco5q13rl"]
 
-[ext_resource type="Texture2D" uid="uid://cwa86rebmalxy" path="res://environment/shelves.png" id="1_hlo36"]
+[ext_resource type="Texture2D" uid="uid://cwa86rebmalxy" path="res://environment/Decoration/shelves.png" id="1_hlo36"]
 
 [node name="Shelf" type="Sprite2D"]
 texture = ExtResource("1_hlo36")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwa86rebmalxy"
-path="res://.godot/imported/shelves.png-3afe5a52f29073a0ec641ff6372d90ae.ctex"
+uid="uid://bs3l4aporhweu"
+path="res://.godot/imported/sword_case.png-284bd4c9994c9e3451af78871cf7c6d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/shelves.png"
-dest_files=["res://.godot/imported/shelves.png-3afe5a52f29073a0ec641ff6372d90ae.ctex"]
+source_file="res://environment/possessables/SwordCase/sword_case.png"
+dest_files=["res://.godot/imported/sword_case.png-284bd4c9994c9e3451af78871cf7c6d1.ctex"]
 
 [params]
 
