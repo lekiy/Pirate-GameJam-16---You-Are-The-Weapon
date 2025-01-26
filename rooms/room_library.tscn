@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="3_6ny1e"]
 [ext_resource type="PackedScene" uid="uid://btvbpvtqygy61" path="res://environment/possessables/Table/Table.tscn" id="4_dsutk"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="4_ufn6a"]
-[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="5_tqa8w"]
-[ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/EntryTrigger/door.png" id="6_25yji"]
+[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/entry_trigger_component.tscn" id="5_tqa8w"]
+[ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/Door/door.png" id="6_25yji"]
 [ext_resource type="PackedScene" uid="uid://bbdhobj71o44e" path="res://environment/possessables/SwordCase/SwordCase.tscn" id="8_pbucq"]
 [ext_resource type="PackedScene" uid="uid://b24vygc60fyex" path="res://environment/possessables/LongTable/LongTable.tscn" id="9_2i2iw"]
 [ext_resource type="PackedScene" uid="uid://ce714tamibj17" path="res://environment/possessables/Pot/pot.tscn" id="10_3b6bi"]
@@ -125,35 +125,39 @@ position = Vector2(-345, 512)
 [node name="Pot2" parent="EntityLayer" index="20" instance=ExtResource("4_ufn6a")]
 position = Vector2(-837, 236)
 
-[node name="DoorLibrary" parent="EntityLayer/Doors" index="0" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
+[node name="SwordCase" parent="EntityLayer" index="21" instance=ExtResource("8_pbucq")]
+position = Vector2(2207, -1459)
+scale = Vector2(-0.5, 0.5)
+
+[node name="Pot3" parent="EntityLayer" index="22" instance=ExtResource("10_3b6bi")]
+position = Vector2(-590, -506)
+
+[node name="LongTable" parent="EntityLayer" index="23" instance=ExtResource("9_2i2iw")]
+position = Vector2(-507, -547)
+
+[node name="DoorLibrary" parent="." index="11" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
 position = Vector2(-610, 446)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 entry_name = "library_to_living"
 target_entry_name = "living_to_library"
 room_name = "room_library"
 target_room_name = "room_living"
 entry_point = NodePath("EntryPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityLayer/Doors/DoorLibrary" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLibrary" index="0"]
 position = Vector2(74, 28)
 rotation = 0.523599
 skew = 0.523599
 shape = SubResource("RectangleShape2D_triks")
 
-[node name="Sprite2D" type="Sprite2D" parent="EntityLayer/Doors/DoorLibrary" index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="DoorLibrary" index="1"]
 position = Vector2(24, 21)
 texture = ExtResource("6_25yji")
 offset = Vector2(-12, -309)
 
-[node name="EntryPoint" type="Marker2D" parent="EntityLayer/Doors/DoorLibrary" index="2"]
+[node name="EntryPoint" type="Marker2D" parent="DoorLibrary" index="2"]
 position = Vector2(-107, -79)
-
-[node name="SwordCase" parent="EntityLayer" index="22" instance=ExtResource("8_pbucq")]
-position = Vector2(2207, -1459)
-scale = Vector2(-0.5, 0.5)
-
-[node name="LongTable" parent="EntityLayer" index="23" instance=ExtResource("9_2i2iw")]
-position = Vector2(-507, -547)
 
 [node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
 position = Vector2(2538, -763)
@@ -169,6 +173,3 @@ position = Vector2(1674, -305)
 
 [node name="Marker2D5" type="Marker2D" parent="EnemySpawnPoints" index="4"]
 position = Vector2(-369, -343)
-
-[node name="Pot" parent="." index="12" instance=ExtResource("10_3b6bi")]
-position = Vector2(-590, -506)

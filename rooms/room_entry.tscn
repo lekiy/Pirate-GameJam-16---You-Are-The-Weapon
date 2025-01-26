@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=4 uid="uid://u4two8m75ehf"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_clo8g"]
-[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/EntryTrigger/entry_trigger_component.tscn" id="2_j22ty"]
-[ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/EntryTrigger/door.png" id="3_wctmo"]
+[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/entry_trigger_component.tscn" id="2_j22ty"]
+[ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/Door/door.png" id="3_wctmo"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="4_w0det"]
 [ext_resource type="PackedScene" uid="uid://t3q70iawxre0" path="res://environment/Decoration/Window.tscn" id="5_g7bfq"]
 
@@ -23,38 +23,33 @@ tile_map_data = PackedByteArray("AAD6/wAAAgABAAAAAAD6////AgABAAAAAAD6//7/AgABAAA
 [node name="Walllayer3" parent="." index="5"]
 tile_map_data = PackedByteArray("AAD5////AgABAAAAAAD5//7/AgABAAAAAAD5//3/AgABAAAAAAD5//z/AgABAAAAAAD5//v/AgABAAAAAAD5//r/AgABAAAAAAD6//r/AgABAAAAAAD7//r/AgABAAAAAAD8//r/AgABAAAAAAD9//r/AgABAAAAAAD+//r/AgABAAAAAAA=")
 
-[node name="Window" parent="." index="7" instance=ExtResource("5_g7bfq")]
-position = Vector2(448, -688)
-rotation = 3.14159
-scale = Vector2(0.5, -0.5)
-
-[node name="Doors" parent="EntityLayer" index="0"]
-y_sort_enabled = true
-
-[node name="DoorLiving" parent="EntityLayer/Doors" index="0" node_paths=PackedStringArray("entry_point") instance=ExtResource("2_j22ty")]
-position = Vector2(-301, -416)
+[node name="DoorLiving" parent="." index="7" node_paths=PackedStringArray("entry_point") instance=ExtResource("2_j22ty")]
+position = Vector2(-609, -831)
 entry_name = "entry_to_living"
 target_entry_name = "living_to_entry"
 room_name = "room_entry"
 target_room_name = "room_living"
 entry_point = NodePath("EntryPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityLayer/Doors/DoorLiving" index="0"]
-position = Vector2(-79, -75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLiving" index="0"]
+position = Vector2(222, 341)
 rotation = 0.523599
 skew = 0.523599
 shape = SubResource("RectangleShape2D_g1sl0")
 
-[node name="Sprite2D" type="Sprite2D" parent="EntityLayer/Doors/DoorLiving" index="1"]
-position = Vector2(24, 21)
+[node name="EntryPoint" type="Marker2D" parent="DoorLiving" index="1"]
+position = Vector2(394, 466)
+scale = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorLiving" index="2"]
+position = Vector2(325, 437)
 texture = ExtResource("3_wctmo")
 offset = Vector2(-12, -309)
 
-[node name="EntryPoint" type="Marker2D" parent="EntityLayer/Doors/DoorLiving" index="2"]
-position = Vector2(93, 50)
+[node name="Window" parent="." index="8" instance=ExtResource("5_g7bfq")]
+position = Vector2(448, -688)
+rotation = 3.14159
+scale = Vector2(0.5, -0.5)
 
-[node name="Node2D" type="Node2D" parent="EntityLayer/Doors" index="1"]
-position = Vector2(131, 506)
-
-[node name="Pot" parent="EntityLayer" index="1" instance=ExtResource("4_w0det")]
+[node name="Pot" parent="EntityLayer" index="0" instance=ExtResource("4_w0det")]
 position = Vector2(870, -7)

@@ -14,8 +14,6 @@ script/source = "extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$InteractionArea.interact = Callable(self, \"_on_interact\")
-	if $Breakable:
-		$Hurtbox.hit.connect($Breakable.on_break)
 	$Hurtbox.collision_shape.disabled = true
 
 func _on_interact():
