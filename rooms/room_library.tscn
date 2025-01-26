@@ -127,7 +127,7 @@ position = Vector2(-345, 512)
 position = Vector2(-837, 236)
 
 [node name="SwordCase" parent="EntityLayer" index="21" instance=ExtResource("8_pbucq")]
-position = Vector2(2207, -1459)
+position = Vector2(2212, -1409)
 scale = Vector2(-0.5, 0.5)
 
 [node name="Pot3" parent="EntityLayer" index="22" instance=ExtResource("10_3b6bi")]

@@ -13,6 +13,9 @@ curve = SubResource("Curve_042vv")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vh7ct"]
 particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 0.8
+color = Color(0.41598, 0.41598, 0.41598, 1)
 alpha_curve = SubResource("CurveTexture_1bp02")
 
 [node name="StateLungeAttack" type="Node2D"]
@@ -21,7 +24,6 @@ script = ExtResource("1_eko2w")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, -120)
 emitting = false
-amount = 4
 process_material = SubResource("ParticleProcessMaterial_vh7ct")
 texture = ExtResource("2_pm654")
 lifetime = 0.5

@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://cqaihnhq5y63"]
+[gd_scene load_steps=15 format=4 uid="uid://cqaihnhq5y63"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_kg0a6"]
-[ext_resource type="PackedScene" uid="uid://brcvvwxlabycb" path="res://environment/Cauldren.tscn" id="2_g222n"]
+[ext_resource type="PackedScene" uid="uid://brcvvwxlabycb" path="res://environment/Cauldron/Cauldren.tscn" id="2_g222n"]
 [ext_resource type="PackedScene" uid="uid://btvbpvtqygy61" path="res://environment/possessables/Table/Table.tscn" id="3_nnnq1"]
 [ext_resource type="PackedScene" uid="uid://b24vygc60fyex" path="res://environment/possessables/LongTable/LongTable.tscn" id="4_utvot"]
 [ext_resource type="PackedScene" uid="uid://cbf7nco5q13rl" path="res://environment/Decoration/Shelf.tscn" id="5_hwy45"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="9_8kolq"]
 [ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/entry_trigger_component.tscn" id="10_yy8q3"]
 [ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/Door/door.png" id="11_5jfb2"]
+[ext_resource type="PackedScene" uid="uid://742ncn8cl614" path="res://environment/possessables/Ingredients/SpellIngredient.tscn" id="12_4ij0h"]
+[ext_resource type="PackedScene" uid="uid://s5v7wlj8hcb8" path="res://environment/possessables/Broom/Broom.tscn" id="13_wa0pk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwk8s"]
 size = Vector2(229.18, 244.039)
@@ -72,6 +74,7 @@ scale = Vector2(0.5, -0.5)
 
 [node name="Couldren" parent="EntityLayer" index="0" instance=ExtResource("2_g222n")]
 position = Vector2(1413, 990)
+scale = Vector2(1, 1)
 
 [node name="Table" parent="EntityLayer" index="1" instance=ExtResource("3_nnnq1")]
 position = Vector2(1000, -977)
@@ -112,6 +115,21 @@ position = Vector2(-1558, -246)
 [node name="Plant" parent="EntityLayer" index="11" instance=ExtResource("9_8kolq")]
 position = Vector2(-1863, -174)
 
+[node name="SpellIngredient" parent="EntityLayer" index="12" instance=ExtResource("12_4ij0h")]
+position = Vector2(468, 952)
+
+[node name="SpellIngredient2" parent="EntityLayer" index="13" instance=ExtResource("12_4ij0h")]
+position = Vector2(441, 712)
+
+[node name="SpellIngredient3" parent="EntityLayer" index="14" instance=ExtResource("12_4ij0h")]
+position = Vector2(700, 669)
+
+[node name="SpellIngredient4" parent="EntityLayer" index="15" instance=ExtResource("12_4ij0h")]
+position = Vector2(769, 882)
+
+[node name="Broom" parent="EntityLayer" index="16" instance=ExtResource("13_wa0pk")]
+position = Vector2(2327, 828)
+
 [node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
 position = Vector2(2011, -732)
 
@@ -123,3 +141,12 @@ position = Vector2(-589, -400)
 
 [node name="Marker2D4" type="Marker2D" parent="EnemySpawnPoints" index="3"]
 position = Vector2(426, 152)
+
+[node name="Plant" parent="." index="14" instance=ExtResource("9_8kolq")]
+position = Vector2(2615, 1000)
+
+[node name="Pot" parent="." index="15" instance=ExtResource("6_fh4kk")]
+position = Vector2(1387, 1696)
+
+[node name="Pot2" parent="." index="16" instance=ExtResource("6_fh4kk")]
+position = Vector2(1387, 1696)

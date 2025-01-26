@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="4_gkmoh"]
 [ext_resource type="PackedScene" uid="uid://s5v7wlj8hcb8" path="res://environment/possessables/Broom/Broom.tscn" id="5_81lr5"]
 [ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="6_lsjn1"]
-[ext_resource type="PackedScene" uid="uid://brcvvwxlabycb" path="res://environment/Cauldren.tscn" id="7_ndp24"]
+[ext_resource type="PackedScene" uid="uid://brcvvwxlabycb" path="res://environment/Cauldron/Cauldren.tscn" id="7_ndp24"]
 [ext_resource type="PackedScene" uid="uid://742ncn8cl614" path="res://environment/possessables/Ingredients/SpellIngredient.tscn" id="8_frvkl"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="9_p1eti"]
 [ext_resource type="PackedScene" uid="uid://rbojf6mi5agk" path="res://environment/possessables/TissueBox/TissueBox.tscn" id="10_50s5a"]

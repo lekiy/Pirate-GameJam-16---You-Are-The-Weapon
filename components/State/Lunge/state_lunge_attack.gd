@@ -21,11 +21,10 @@ func state_enter():
 	lunge_start_pos = body.global_position
 	lunge_wait_time = lunge_charge_time
 	
-	var telegraph: Telegraph = ARROW_TELEGRAPH.instantiate()
-	telegraph.duration = lunge_wait_time
-	telegraph.direction = lunge_direction
-	body.add_child(telegraph)
-	$GPUParticles2D.emitting = true
+	#var telegraph: Telegraph = ARROW_TELEGRAPH.instantiate()
+	#telegraph.duration = lunge_wait_time
+	#telegraph.direction = lunge_direction
+	#body.add_child(telegraph)
 	
 func state_physics_process(delta: float):
 	lunge_wait_time -= delta
@@ -33,6 +32,7 @@ func state_physics_process(delta: float):
 		body.velocity = Vector2()
 	else:
 		body.velocity = lunge_direction * lunge_speed
+		$GPUParticles2D.emitting = true
 		
 	if body.global_position.distance_to(lunge_start_pos) > lunge_distance:
 		transitioned.emit(self, "StateCircle")

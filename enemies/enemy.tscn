@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://vx6xatp8vc82"]
+[gd_scene load_steps=22 format=3 uid="uid://vx6xatp8vc82"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_8lx8u"]
 [ext_resource type="Texture2D" uid="uid://b04xoxvm3fq7f" path="res://enemies/enemy_sprite.png" id="2_3mxg2"]
 [ext_resource type="PackedScene" uid="uid://ou314k04y2nk" path="res://components/State/state_manager.tscn" id="2_74xj5"]
 [ext_resource type="PackedScene" uid="uid://dv8lehch81km2" path="res://components/HealthComponent/health_component.tscn" id="2_qfyhs"]
+[ext_resource type="Texture2D" uid="uid://cfyb1sitvvd07" path="res://player/fog_particle.png" id="2_y4tcd"]
 [ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="3_axpu4"]
 [ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/Hitbox/hitbox.tscn" id="3_jvi0j"]
 [ext_resource type="PackedScene" uid="uid://cbrdkr56365gt" path="res://components/State/StatePassive.tscn" id="3_m27th"]
@@ -11,6 +12,36 @@
 [ext_resource type="PackedScene" uid="uid://cpph15y70d6vv" path="res://components/State/Follow/state_follow.tscn" id="4_ro05p"]
 [ext_resource type="PackedScene" uid="uid://ca06gf8tvwyfg" path="res://components/State/Circle/state_circle.tscn" id="5_5lcyi"]
 [ext_resource type="PackedScene" uid="uid://orsdd6ivwo5n" path="res://components/State/Lunge/state_lunge_attack.tscn" id="6_ewrm1"]
+[ext_resource type="Shader" path="res://player/ghost.gdshader" id="12_yjvv6"]
+
+[sub_resource type="Curve" id="Curve_mbns6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.122363, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_utyk3"]
+curve = SubResource("Curve_mbns6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jeheu"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 2, 1)
+emission_shape = 1
+emission_sphere_radius = 60.0
+direction = Vector3(1, 1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 10.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, -5, 0)
+linear_accel_min = -10.0
+linear_accel_max = 10.0
+radial_accel_min = -10.0
+radial_accel_max = 10.0
+scale_max = 5.0
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_utyk3")
+hue_variation_min = -0.01
+hue_variation_max = 0.00999998
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncice"]
 radius = 80.399
@@ -18,11 +49,35 @@ radius = 80.399
 [sub_resource type="CircleShape2D" id="CircleShape2D_5nj4d"]
 radius = 120.0
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ur6wl"]
+noise_type = 0
+frequency = 0.002
+fractal_octaves = 7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qxvvq"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_ur6wl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpbne"]
+shader = ExtResource("12_yjvv6")
+shader_parameter/color = Vector4(0, 0, 0, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_qxvvq")
+
 [node name="Enemy" type="CharacterBody2D"]
 y_sort_enabled = true
+scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 10
 script = ExtResource("1_8lx8u")
+
+[node name="GhostTrailParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -60)
+scale = Vector2(1, 1)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_jeheu")
+texture = ExtResource("2_y4tcd")
+lifetime = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -70,5 +125,6 @@ shape = SubResource("CircleShape2D_5nj4d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_bpbne")
 position = Vector2(0, -112)
 texture = ExtResource("2_3mxg2")

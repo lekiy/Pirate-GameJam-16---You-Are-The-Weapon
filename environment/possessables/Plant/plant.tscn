@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://clgd20vol2or8" path="res://components/VelocityComponent/velocity_component.tscn" id="7_dyp7i"]
 
 [sub_resource type="GDScript" id="GDScript_ldmnu"]
-script/source = "extends Node2D
+script/source = "@icon(\"res://environment/possessables/Plant/plant.png\")
+class_name Plant extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.

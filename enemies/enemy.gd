@@ -1,6 +1,15 @@
 class_name Enemy extends CharacterBody2D
 
 var knockback_velocity = Vector2()
+const GHOST_BURST_PARTICLES = preload("res://player/ghost_burst_particles_dark.tscn")
+
+func _ready() -> void:
+	$HealthComponent.died.connect(on_death)
+		
+func on_death():
+	var particle = GHOST_BURST_PARTICLES.instantiate()
+	particle.global_position = global_position
+	get_parent().add_child(particle)
 
 func _on_interact():
 	

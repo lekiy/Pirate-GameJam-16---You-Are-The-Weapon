@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+const GHOST_BURST_PARTICLES = preload("res://player/ghost_burst_particles.tscn")
 
 const SPEED = 600.0
 
@@ -10,6 +11,13 @@ func _ready() -> void:
 	SignalBuss.possessed.connect(on_possess)
 	$HealthComponent.health_changed.connect(on_player_health_changed)
 	on_enter_room()
+	
+	$HealthComponent.died.connect(on_death)
+		
+func on_death():
+	var particle = GHOST_BURST_PARTICLES.instantiate()
+	particle.global_position = global_position
+	get_parent().add_child(particle)
 
 func on_enter_room():
 	on_player_health_changed($HealthComponent.MAX_HEALTH, $HealthComponent.health)
