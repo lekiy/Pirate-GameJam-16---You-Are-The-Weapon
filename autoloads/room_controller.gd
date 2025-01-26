@@ -4,6 +4,7 @@ const ROOM_TEST = preload("res://rooms/RoomTest.tscn")
 const ROOM_ENTRY = preload("res://rooms/room_entry.tscn")
 const ROOM_LIVING = preload("res://rooms/room_living.tscn")
 const ROOM_LIBRARY = preload("res://rooms/room_library.tscn")
+const ROOM_KITCHEN = preload("res://rooms/room_kitchen.tscn")
 
 var player: Player
 var spawn_position : Vector2 = Vector2.ZERO
@@ -14,7 +15,8 @@ var room_dict = {
 	"room_test": ROOM_TEST,
 	"room_entry": ROOM_ENTRY,
 	"room_living": ROOM_LIVING,
-	"room_library": ROOM_LIBRARY
+	"room_library": ROOM_LIBRARY,
+	"room_kitchen": ROOM_KITCHEN
 }
 
 func _process(delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://i2c8yl3bnytr"]
+[gd_scene load_steps=13 format=4 uid="uid://i2c8yl3bnytr"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_pexa5"]
 [ext_resource type="PackedScene" uid="uid://t3q70iawxre0" path="res://environment/Decoration/Window.tscn" id="2_g0e53"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbdhobj71o44e" path="res://environment/possessables/SwordCase/SwordCase.tscn" id="8_pbucq"]
 [ext_resource type="PackedScene" uid="uid://b24vygc60fyex" path="res://environment/possessables/LongTable/LongTable.tscn" id="9_2i2iw"]
 [ext_resource type="PackedScene" uid="uid://ce714tamibj17" path="res://environment/possessables/Pot/pot.tscn" id="10_3b6bi"]
+[ext_resource type="PackedScene" uid="uid://bb2thm1d65iw2" path="res://environment/possessables/PaperStack.tscn" id="11_c3h8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_triks"]
 size = Vector2(136, 235.542)
@@ -117,7 +118,7 @@ position = Vector2(-978, -148)
 position = Vector2(-1205, -19)
 
 [node name="Table" parent="EntityLayer" index="18" instance=ExtResource("4_dsutk")]
-position = Vector2(1029, -491)
+position = Vector2(1258, -419)
 
 [node name="Pot" parent="EntityLayer" index="19" instance=ExtResource("4_ufn6a")]
 position = Vector2(-345, 512)
@@ -130,10 +131,10 @@ position = Vector2(2207, -1459)
 scale = Vector2(-0.5, 0.5)
 
 [node name="Pot3" parent="EntityLayer" index="22" instance=ExtResource("10_3b6bi")]
-position = Vector2(-590, -506)
+position = Vector2(-712, -351)
 
 [node name="LongTable" parent="EntityLayer" index="23" instance=ExtResource("9_2i2iw")]
-position = Vector2(-507, -547)
+position = Vector2(-491, -493)
 
 [node name="DoorLibrary" parent="." index="11" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
 position = Vector2(-610, 446)
@@ -173,3 +174,6 @@ position = Vector2(1674, -305)
 
 [node name="Marker2D5" type="Marker2D" parent="EnemySpawnPoints" index="4"]
 position = Vector2(-369, -343)
+
+[node name="PaperStack" parent="." index="13" instance=ExtResource("11_c3h8q")]
+position = Vector2(-237, 303)

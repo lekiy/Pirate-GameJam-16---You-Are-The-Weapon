@@ -30,18 +30,17 @@ radius = 343.177
 radius = 346.468
 
 [node name="Table" type="CharacterBody2D"]
-position = Vector2(-1, -87)
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 12
 script = SubResource("GDScript_ldmnu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(260, 6)
+position = Vector2(257.4, -117.5)
 polygon = PackedVector2Array(-292, 412, 130, 178, -210, -8, -628, 214)
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("1_ykee8")]
-position = Vector2(2, 33)
+position = Vector2(-0.599976, -90.5)
 sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
@@ -51,23 +50,25 @@ skew = 0.523599
 shape = SubResource("CircleShape2D_bpyck")
 
 [node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action", "collider") instance=ExtResource("2_41ma6")]
-position = Vector2(2, 33)
+position = Vector2(-0.599976, -90.5)
 sprite = NodePath("../Sprite2D")
 attack_action = NodePath("../Throwable")
 collider = NodePath("../CollisionPolygon2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 178)
+position = Vector2(-0.599976, 54.5)
 texture = ExtResource("3_gi6p3")
 offset = Vector2(-4, -71)
 
 [node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("4_tfopw")]
+position = Vector2(-2.59998, -123.5)
 throw_speed = 200
 hurtbox = NodePath("../Hurtbox")
 sprite = NodePath("../Sprite2D")
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("5_sy56k")]
+position = Vector2(-2.59998, -123.5)
 collision_layer = 4
 collision_mask = 14
 attack_damage = 40
@@ -79,3 +80,4 @@ position = Vector2(0, 114)
 shape = SubResource("CircleShape2D_ot6dd")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_rnkdj")]
+position = Vector2(-2.59998, -123.5)

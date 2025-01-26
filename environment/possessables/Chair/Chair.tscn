@@ -30,7 +30,6 @@ radius = 198.232
 radius = 190.515
 
 [node name="Chair" type="CharacterBody2D"]
-position = Vector2(-1, -87)
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 12

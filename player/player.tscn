@@ -99,7 +99,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
-collision_mask = 12
+collision_mask = 8
 script = ExtResource("1_xn11u")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]

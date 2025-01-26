@@ -30,18 +30,17 @@ radius = 137.589
 radius = 128.0
 
 [node name="EndTable" type="CharacterBody2D"]
-position = Vector2(-1, -87)
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 12
 script = SubResource("GDScript_ldmnu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(260, 6)
+position = Vector2(261.4, -107)
 polygon = PackedVector2Array(-254, 234, -142, 168, -264, 98, -380, 162)
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("1_dt8x4")]
-position = Vector2(2, 33)
+position = Vector2(3.39999, -80)
 sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
@@ -51,23 +50,24 @@ skew = 0.523599
 shape = SubResource("CircleShape2D_bpyck")
 
 [node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action", "collider") instance=ExtResource("2_4n0bw")]
-position = Vector2(2, 33)
+position = Vector2(3.39999, -80)
 sprite = NodePath("../Sprite2D")
 attack_action = NodePath("../Throwable")
 collider = NodePath("../CollisionPolygon2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 178)
+position = Vector2(3.39999, -15)
 texture = ExtResource("3_63pir")
-offset = Vector2(-4, -71)
 
 [node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("4_1b7at")]
+position = Vector2(1.39999, -113)
 throw_speed = 500
 hurtbox = NodePath("../Hurtbox")
 sprite = NodePath("../Sprite2D")
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("5_dh5dl")]
+position = Vector2(1.39999, -113)
 collision_layer = 4
 collision_mask = 14
 attack_damage = 30
@@ -79,3 +79,4 @@ position = Vector2(0, 114)
 shape = SubResource("CircleShape2D_ot6dd")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_2yc28")]
+position = Vector2(1.39999, -113)
