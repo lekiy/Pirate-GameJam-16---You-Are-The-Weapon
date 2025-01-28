@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c852uqevu8ydr"
-path="res://.godot/imported/dresser.png-33794cfea42ccb20f7659e7ce93961bc.ctex"
+uid="uid://begkbjgb7evnb"
+path="res://.godot/imported/spell_book.png-a4b40bf36302225cddf331bb308a26b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/possessables/dresser.png"
-dest_files=["res://.godot/imported/dresser.png-33794cfea42ccb20f7659e7ce93961bc.ctex"]
+source_file="res://environment/spell_book.png"
+dest_files=["res://.godot/imported/spell_book.png-a4b40bf36302225cddf331bb308a26b7.ctex"]
 
 [params]
 

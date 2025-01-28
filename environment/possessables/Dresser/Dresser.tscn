@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://o8ifewgh7t7a"]
+
+[ext_resource type="Texture2D" uid="uid://c852uqevu8ydr" path="res://environment/possessables/Dresser/dresser.png" id="1_cfkrf"]
+[ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_odcw7"]
+[ext_resource type="Script" path="res://components/Interaction/interactionArea/interaction_area.gd" id="2_uersj"]
+[ext_resource type="PackedScene" uid="uid://bj1mcugunx4lx" path="res://components/Attack/throwable.tscn" id="4_u7f8y"]
+[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="5_vlaqg"]
+[ext_resource type="Script" path="res://components/VelocityComponent/velocity_component.gd" id="6_av2fq"]
+
+[sub_resource type="GDScript" id="GDScript_ie0av"]
+script/source = "extends CharacterBody2D
+
+
+func _ready() -> void:
+	$InteractionArea.interact = Callable(self, \"_on_interact\")
+	$Hurtbox.collision_shape.disabled = true
+
+func _on_interact():
+	var player = get_tree().get_first_node_in_group(\"Player\")
+	if player:
+		$Posessable.possess(player)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw1qr"]
+radius = 241.236
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vlaaw"]
+radius = 251.149
+
+[node name="Dresser" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 12
+script = SubResource("GDScript_ie0av")
+
+[node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("sprite_ref")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_uersj")
+sprite_ref = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-12, -9.99998)
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("CircleShape2D_dw1qr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-16, -216)
+polygon = PackedVector2Array(-245, 276, -139, 340, 221, 137, 103, 83)
+
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action", "collider") instance=ExtResource("2_odcw7")]
+sprite = NodePath("../Sprite2D")
+attack_action = NodePath("../Throwable")
+collider = NodePath("../CollisionPolygon2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-20, -206)
+texture = ExtResource("1_cfkrf")
+
+[node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("4_u7f8y")]
+hurtbox = NodePath("../Hurtbox")
+sprite = NodePath("../Sprite2D")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("5_vlaqg")]
+collision_layer = 4
+collision_mask = 14
+knock_back = 3000
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-40, -114)
+shape = SubResource("CircleShape2D_vlaaw")
+
+[node name="VelocityComponent" type="Node2D" parent="."]
+script = ExtResource("6_av2fq")

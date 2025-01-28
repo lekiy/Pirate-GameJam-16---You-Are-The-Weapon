@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvlt5y0j1kbcb"]
+
+[ext_resource type="Script" path="res://components/Interaction/interactionArea/interaction_area.gd" id="1_kec00"]
+[ext_resource type="Shader" path="res://enemies/metal.gdshader" id="1_sy08h"]
+[ext_resource type="Texture2D" uid="uid://bmtu1g7qt8ylq" path="res://environment/possessables/Bookshelf/book.png" id="2_h8wmh"]
+[ext_resource type="Texture2D" uid="uid://begkbjgb7evnb" path="res://environment/spell_book.png" id="4_b7i5i"]
+
+[sub_resource type="GDScript" id="GDScript_qqosh"]
+script/source = "extends Node2D
+
+
+func _ready() -> void:
+	$AnimationPlayer.play(\"hover\", -1, 0.8)
+	$InteractionArea.interact = Callable(self, \"_on_interact\")
+
+func _on_interact():
+	$CanvasLayer.visible = not $CanvasLayer.visible
+"
+
+[sub_resource type="Gradient" id="Gradient_u6wkw"]
+offsets = PackedFloat32Array(0, 0.0289256)
+colors = PackedColorArray(1, 1, 1, 1, 0.0371901, 0.0371901, 0.0371901, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t3vec"]
+gradient = SubResource("Gradient_u6wkw")
+width = 512
+height = 512
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+repeat = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_86wlm"]
+shader = ExtResource("1_sy08h")
+shader_parameter/color = Color(0.31, 0.1798, 0.18197, 1)
+shader_parameter/shine = SubResource("GradientTexture2D_t3vec")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jtjpl"]
+radius = 248.774
+
+[sub_resource type="Animation" id="Animation_6dabl"]
+resource_name = "hover"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.31, 0.1798, 0.1798, 1), Color(0.17381, 0.26, 0.1274, 1), Color(0.1798, 0.30132, 0.31, 1), Color(0.208833, 0.12, 0.25, 1), Color(0.31, 0.1798, 0.18197, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(72.524, -67.2029), Vector2(72, -108), Vector2(72.524, -67.2029)]
+}
+
+[sub_resource type="Animation" id="Animation_t0hno"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kd6sm"]
+_data = {
+"RESET": SubResource("Animation_t0hno"),
+"hover": SubResource("Animation_6dabl")
+}
+
+[node name="SpellBook" type="Node2D"]
+script = SubResource("GDScript_qqosh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_86wlm")
+position = Vector2(72.524, -67.2029)
+rotation = 0.947714
+scale = Vector2(1, -1)
+texture = ExtResource("2_h8wmh")
+offset = Vector2(-133.273, 4.61612)
+
+[node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("sprite_ref")]
+material = SubResource("ShaderMaterial_86wlm")
+position = Vector2(-1.49741, -178.125)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_kec00")
+sprite_ref = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+material = SubResource("ShaderMaterial_86wlm")
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("CircleShape2D_jtjpl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kd6sm")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(725, 447)
+scale = Vector2(0.368023, 0.373333)
+texture = ExtResource("4_b7i5i")

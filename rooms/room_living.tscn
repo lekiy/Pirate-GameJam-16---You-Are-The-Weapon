@@ -155,14 +155,24 @@ shape = SubResource("RectangleShape2D_3saag")
 [node name="Marker2D" type="Marker2D" parent="DoorKitchen" index="3"]
 position = Vector2(-146, -90)
 
-[node name="DoorStudy" parent="." index="17" instance=ExtResource("4_jd2vw")]
+[node name="DoorStudy" parent="." index="17" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(-1341, 515)
 rotation = -3.14159
 scale = Vector2(1, -1)
-entry_name = "study"
-target_entry_name = "study"
+entry_name = "living_to_study"
+target_entry_name = "study_to_living"
 room_name = "room_living"
 target_room_name = "room_study"
+entry_point = NodePath("Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorStudy" index="2"]
+position = Vector2(58.9999, 60.0001)
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("RectangleShape2D_ij5al")
+
+[node name="Marker2D" type="Marker2D" parent="DoorStudy" index="3"]
+position = Vector2(-98.9998, -65.0003)
 
 [node name="DoorSecret" parent="." index="18" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 visible = false
