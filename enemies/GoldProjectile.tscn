@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfkr0qkkeh73p"]
+
+[ext_resource type="Script" path="res://enemies/gold_projectile.gd" id="1_puidx"]
+[ext_resource type="Texture2D" uid="uid://b5m2oqtop3m57" path="res://enemies/target.png" id="2_3ecif"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_duy3y"]
+radius = 98.8467
+
+[sub_resource type="Curve" id="Curve_kocvg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="GoldExplosion" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_puidx")
+attack_damage = 3
+knock_back = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("CircleShape2D_duy3y")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.64, 0.52)
+texture = ExtResource("2_3ecif")
+
+[node name="BurstTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 70.0
+width_curve = SubResource("Curve_kocvg")
+default_color = Color(0.956863, 0.788235, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2

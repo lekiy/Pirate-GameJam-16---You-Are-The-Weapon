@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=4 uid="uid://u4two8m75ehf"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_clo8g"]
-[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/entry_trigger_component.tscn" id="2_j22ty"]
-[ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/Door/door.png" id="3_wctmo"]
+[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/Door.tscn" id="2_j22ty"]
+[ext_resource type="PackedScene" uid="uid://s5v7wlj8hcb8" path="res://environment/possessables/Broom/Broom.tscn" id="3_drvne"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="4_w0det"]
 [ext_resource type="PackedScene" uid="uid://t3q70iawxre0" path="res://environment/Decoration/Window.tscn" id="5_g7bfq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1sl0"]
-size = Vector2(136, 235.542)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gylo"]
+size = Vector2(85.1628, 233.326)
 
 [node name="RoomEntry" instance=ExtResource("1_clo8g")]
 
@@ -24,26 +24,21 @@ tile_map_data = PackedByteArray("AAD6/wAAAgABAAAAAAD6////AgABAAAAAAD6//7/AgABAAA
 tile_map_data = PackedByteArray("AAD5////AgABAAAAAAD5//7/AgABAAAAAAD5//3/AgABAAAAAAD5//z/AgABAAAAAAD5//v/AgABAAAAAAD5//r/AgABAAAAAAD6//r/AgABAAAAAAD7//r/AgABAAAAAAD8//r/AgABAAAAAAD9//r/AgABAAAAAAD+//r/AgABAAAAAAA=")
 
 [node name="DoorLiving" parent="." index="7" node_paths=PackedStringArray("entry_point") instance=ExtResource("2_j22ty")]
-position = Vector2(-609, -831)
+position = Vector2(-269, -425)
 entry_name = "entry_to_living"
 target_entry_name = "living_to_entry"
 room_name = "room_entry"
 target_room_name = "room_living"
-entry_point = NodePath("EntryPoint")
+entry_point = NodePath("Marker2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLiving" index="0"]
-position = Vector2(222, 341)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLiving" index="2"]
+position = Vector2(-88, -72)
 rotation = 0.523599
 skew = 0.523599
-shape = SubResource("RectangleShape2D_g1sl0")
+shape = SubResource("RectangleShape2D_0gylo")
 
-[node name="EntryPoint" type="Marker2D" parent="DoorLiving" index="1"]
-position = Vector2(394, 466)
-
-[node name="Sprite2D" type="Sprite2D" parent="DoorLiving" index="2"]
-position = Vector2(325, 437)
-texture = ExtResource("3_wctmo")
-offset = Vector2(-12, -309)
+[node name="Marker2D" type="Marker2D" parent="DoorLiving" index="3"]
+position = Vector2(60, 60)
 
 [node name="Window" parent="." index="8" instance=ExtResource("5_g7bfq")]
 position = Vector2(448, -688)
@@ -52,3 +47,6 @@ scale = Vector2(0.5, -0.5)
 
 [node name="Pot" parent="EntityLayer" index="0" instance=ExtResource("4_w0det")]
 position = Vector2(870, -7)
+
+[node name="Broom" parent="." index="11" instance=ExtResource("3_drvne")]
+position = Vector2(-831, -16)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://s5v7wlj8hcb8"]
+[gd_scene load_steps=11 format=3 uid="uid://s5v7wlj8hcb8"]
 
 [ext_resource type="Texture2D" uid="uid://bkaavo7kmvwhc" path="res://environment/possessables/Broom/broom.png" id="1_2qwm1"]
 [ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="2_oj3vm"]
 [ext_resource type="Script" path="res://components/Interaction/interactionArea/interaction_area.gd" id="3_jl5iv"]
-[ext_resource type="Resource" uid="uid://batra12n6l675" path="res://environment/possessables/Broom/broom_stats.tres" id="4_mq3oa"]
+[ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="4_eyeqb"]
+[ext_resource type="PackedScene" uid="uid://csbu7edhs8r6y" path="res://components/Attack/swingable.tscn" id="4_qur0u"]
 
 [sub_resource type="GDScript" id="GDScript_dfrlr"]
 script/source = "@icon(\"res://environment/possessables/Broom/broom.png\")
@@ -12,52 +13,103 @@ class_name Broom extends Node2D
 func _process(delta: float) -> void:
 	if $Posessable.is_possessed:
 		look_at(get_global_mouse_position())
-		rotation_degrees += 90.0
-	else:
-		rotation_degrees += 0.0
 "
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccgxn"]
+size = Vector2(114, 427.014)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1mqjx"]
 radius = 135.732
 
-[sub_resource type="GDScript" id="GDScript_p8htd"]
-script/source = "class_name Swingable extends AttackAction
+[sub_resource type="Animation" id="Animation_bew1n"]
+resource_name = "swing"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [2.11359, 3.14159, 6.28319, 3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 2), Vector2(1.2, 1.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D/HurtBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
-@export var weapon_stats: WeaponStats
-@export var hurtbox: HurtBox
-
-
-func attack(callback: Callable):
-	pass
-	
-"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82vfa"]
+_data = {
+"swing": SubResource("Animation_bew1n")
+}
 
 [node name="Broom" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_dfrlr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5, 0)
+position = Vector2(2, -2)
+rotation = 2.11359
 texture = ExtResource("1_2qwm1")
-offset = Vector2(10, -170)
+offset = Vector2(16.0236, 179.972)
+
+[node name="HurtBox" type="Area2D" parent="Sprite2D"]
+position = Vector2(2.02356, -2.02802)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_eyeqb")
+attack_damage = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
+position = Vector2(-0.0240974, 215.535)
+shape = SubResource("RectangleShape2D_ccgxn")
+disabled = true
 
 [node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("2_oj3vm")]
 sprite = NodePath("../Sprite2D")
 attack_action = NodePath("../Swingable")
 
 [node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("sprite_ref")]
+position = Vector2(-6, -324)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_jl5iv")
 sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(12, 14)
+position = Vector2(9.99998, 324)
 rotation = 0.523599
 scale = Vector2(1, 0.994698)
 skew = 0.523599
 shape = SubResource("CircleShape2D_1mqjx")
 
-[node name="Swingable" type="Node2D" parent="."]
-script = SubResource("GDScript_p8htd")
-weapon_stats = ExtResource("4_mq3oa")
+[node name="Swingable" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("4_qur0u")]
+hurtbox = NodePath("../Sprite2D/HurtBox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Swingable"]
+libraries = {
+"": SubResource("AnimationLibrary_82vfa")
+}

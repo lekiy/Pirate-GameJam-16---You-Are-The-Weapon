@@ -15,6 +15,14 @@ func get_spawn_position():
 		print(entry.entry_point.global_position)
 		return entry.entry_point.global_position
 
+func _process(delta: float) -> void:
+	if RoomController.current_room_name == "room_secrit":
+		$"Main Camera".zoom = Vector2(0.25, 0.25)
+	else:
+		$"Main Camera".zoom = Vector2(0.5, 0.5)
+		
+
+
 func spawn_player(spawn_position: Vector2):
 	print(RoomController.player)
 	if RoomController.player and is_instance_valid(RoomController.player):
@@ -39,8 +47,14 @@ func spawn_enemies():
 		return
 	var spawn_points = $EnemySpawnPoints.get_children()
 	var layer = get_tree().get_first_node_in_group("MainLayer")
-	for point: Marker2D in spawn_points:
-		var enemy: Enemy = ENEMY.instantiate()
-		enemy.global_position = point.global_position
-		layer.add_child(enemy)
+	for point: Node2D in spawn_points:
+		if point is EnemySpawner:
+			var enemy: Enemy = point.enemy_scene.instantiate()
+			enemy.global_position = point.global_position
+			layer.add_child(enemy)
+		else:
+			var enemy: Enemy = ENEMY.instantiate()
+			enemy.global_position = point.global_position
+			layer.add_child(enemy)
+		
 		

@@ -19,6 +19,9 @@ func attack(callback: Callable):
 
 func _physics_process(delta: float):
 	get_parent().rotation_degrees += velocity_component.velocity3.length()*delta
+	if hurtbox:
+		if velocity_component.velocity3.length() < 1:
+			hurtbox.collision_shape.disabled = true
 		
 
 func throw_at_mouse():

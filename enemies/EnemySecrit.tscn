@@ -1,0 +1,207 @@
+[gd_scene load_steps=27 format=3 uid="uid://de6pit10l3jws"]
+
+[ext_resource type="Script" path="res://enemies/enemy_secrit.gd" id="1_vosle"]
+[ext_resource type="Texture2D" uid="uid://cfyb1sitvvd07" path="res://player/fog_particle.png" id="2_cceyb"]
+[ext_resource type="PackedScene" uid="uid://ou314k04y2nk" path="res://components/State/state_manager.tscn" id="3_4su78"]
+[ext_resource type="PackedScene" uid="uid://ddg7mq65v2hwo" path="res://components/State/Idle/state_idle.tscn" id="5_5vhbo"]
+[ext_resource type="Script" path="res://enemies/state_avoid.gd" id="5_udmhw"]
+[ext_resource type="PackedScene" uid="uid://cpph15y70d6vv" path="res://components/State/Follow/state_follow.tscn" id="6_1phuh"]
+[ext_resource type="Script" path="res://enemies/state_gold_storm.gd" id="7_i4web"]
+[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="9_8aehd"]
+[ext_resource type="PackedScene" uid="uid://ft7bnt51iwb4" path="res://components/Hitbox/hitbox.tscn" id="10_4orvo"]
+[ext_resource type="PackedScene" uid="uid://dv8lehch81km2" path="res://components/HealthComponent/health_component.tscn" id="11_ehqyp"]
+[ext_resource type="Shader" path="res://enemies/metal.gdshader" id="12_sfwsp"]
+[ext_resource type="Texture2D" uid="uid://b04xoxvm3fq7f" path="res://enemies/enemy_sprite.png" id="13_afu8s"]
+[ext_resource type="Shader" path="res://player/hitflash.gdshader" id="14_gjlsy"]
+
+[sub_resource type="Curve" id="Curve_mbns6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.122363, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_utyk3"]
+curve = SubResource("Curve_mbns6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nfo4s"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 2, 1)
+emission_shape = 1
+emission_sphere_radius = 60.0
+direction = Vector3(1, 1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 10.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, -5, 0)
+linear_accel_min = -10.0
+linear_accel_max = 10.0
+radial_accel_min = -10.0
+radial_accel_max = 10.0
+scale_max = 5.0
+color = Color(0.746715, 0.663387, 7.70092e-07, 1)
+alpha_curve = SubResource("CurveTexture_utyk3")
+hue_variation_min = -0.01
+hue_variation_max = 0.00999998
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ncice"]
+radius = 80.399
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nj4d"]
+radius = 120.0
+
+[sub_resource type="Gradient" id="Gradient_u6wkw"]
+offsets = PackedFloat32Array(0, 0.0289256)
+colors = PackedColorArray(1, 1, 1, 1, 0.0371901, 0.0371901, 0.0371901, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmedg"]
+gradient = SubResource("Gradient_u6wkw")
+width = 512
+height = 512
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+repeat = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1ehm"]
+shader = ExtResource("12_sfwsp")
+shader_parameter/color = Color(0.9, 0.8076, 0.207, 1)
+shader_parameter/shine = SubResource("GradientTexture2D_nmedg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ax341"]
+shader = ExtResource("14_gjlsy")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_qnobf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/HitFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kdp24"]
+resource_name = "hitflash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/HitFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tx3ua"]
+_data = {
+"RESET": SubResource("Animation_qnobf"),
+"hitflash": SubResource("Animation_kdp24")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8pbr2"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 223.22
+initial_velocity_max = 223.22
+gravity = Vector3(0, 98, 0)
+scale_min = 20.0
+scale_max = 25.0
+color = Color(0.792157, 0.72549, 0, 1)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[node name="EnemySecrit" type="CharacterBody2D" groups=["Enemy"]]
+y_sort_enabled = true
+scale = Vector2(2.4, 2.4)
+collision_layer = 2
+collision_mask = 10
+script = ExtResource("1_vosle")
+
+[node name="GhostTrailParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -60)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_nfo4s")
+texture = ExtResource("2_cceyb")
+lifetime = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+y_sort_enabled = true
+shape = SubResource("CircleShape2D_ncice")
+
+[node name="StateManager" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_4su78")]
+initial_state = NodePath("StateIdle")
+
+[node name="StateIdle" parent="StateManager" node_paths=PackedStringArray("body", "next_state") instance=ExtResource("5_5vhbo")]
+body = NodePath("../..")
+idle_range = 2000
+next_state = NodePath("../StateAvoid")
+
+[node name="StateFollow" parent="StateManager" node_paths=PackedStringArray("body", "next_state") instance=ExtResource("6_1phuh")]
+body = NodePath("../..")
+move_speed = 400.0
+circle_range = 900.0
+idle_range = 2000.0
+next_state = NodePath("../StateAvoid")
+
+[node name="StateAvoid" type="Node2D" parent="StateManager" node_paths=PackedStringArray("body")]
+script = ExtResource("5_udmhw")
+body = NodePath("../..")
+idle_range = 2000.0
+
+[node name="StateGoldStorm" type="Node2D" parent="StateManager" node_paths=PackedStringArray("body")]
+script = ExtResource("7_i4web")
+body = NodePath("../..")
+
+[node name="Hurtbox" parent="." instance=ExtResource("9_8aehd")]
+collision_layer = 0
+attack_damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+y_sort_enabled = true
+shape = SubResource("CircleShape2D_ncice")
+
+[node name="Hitbox" parent="." instance=ExtResource("10_4orvo")]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_5nj4d")
+
+[node name="HealthComponent" parent="." instance=ExtResource("11_ehqyp")]
+MAX_HEALTH = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_m1ehm")
+position = Vector2(0, -112)
+texture = ExtResource("13_afu8s")
+
+[node name="HitFlash" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(1, 1, 1, 0)
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_ax341")
+texture = ExtResource("13_afu8s")
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tx3ua")
+}
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -363.333)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Marker2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_8pbr2")
+texture = ExtResource("2_cceyb")
+lifetime = 0.1

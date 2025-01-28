@@ -4,6 +4,7 @@ class_name StateLungeAttack extends State
 @export var lunge_speed := 1000.0
 @export var lunge_distance := 800.0
 @export var lunge_charge_time := 0.7
+@export var max_lunge_time := 1.0
 
 @export var hurtbox = HurtBox
 
@@ -33,6 +34,10 @@ func state_physics_process(delta: float):
 	else:
 		body.velocity = lunge_direction * lunge_speed
 		$GPUParticles2D.emitting = true
+		max_lunge_time -= delta
+		if max_lunge_time <= 0:
+			max_lunge_time = 1.0
+			transitioned.emit(self, "StateCircle")
 		
 	if body.global_position.distance_to(lunge_start_pos) > lunge_distance:
 		transitioned.emit(self, "StateCircle")

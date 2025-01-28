@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3q6srvdo2owk"]
-
-[ext_resource type="Script" path="res://components/Door/entry_trigger_component.gd" id="1_vw6yh"]
-
-[node name="EntryTriggerComponent" type="Area2D" groups=["Entry"]]
-collision_layer = 0
-script = ExtResource("1_vw6yh")

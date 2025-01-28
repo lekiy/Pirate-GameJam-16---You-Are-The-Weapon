@@ -5,13 +5,13 @@
 
 [resource]
 script = ExtResource("1_nuesf")
-speed = 900.0
+speed = 1400.0
 texture = ExtResource("2_fg7de")
-damage = 4.0
-knockback = 1000.0
-amount = 20
+damage = 10.0
+knockback = 1600.0
+amount = 30
 fire_rate = 0.7
-spread = 0.0
-max_range = 1200.0
-speed_falloff = 0.9
+spread = 5.0
+max_range = 1400.0
+speed_falloff = 0.95
 speed_falloff_range = 1000.0

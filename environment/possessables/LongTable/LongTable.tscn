@@ -63,7 +63,6 @@ offset = Vector2(-4, -71)
 
 [node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("4_anm1k")]
 position = Vector2(1.59998, -113)
-throw_speed = 500
 hurtbox = NodePath("../Hurtbox")
 sprite = NodePath("../Sprite2D")
 velocity_component = NodePath("../VelocityComponent")
@@ -73,6 +72,7 @@ position = Vector2(1.59998, -113)
 collision_layer = 4
 collision_mask = 14
 attack_damage = 12
+knock_back = 4000
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

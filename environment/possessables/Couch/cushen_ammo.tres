@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Ammo" load_steps=3 format=3 uid="uid://b1qgu2tvx36g7"]
+
+[ext_resource type="Script" path="res://components/Projectile/ammo.gd" id="1_41yg3"]
+[ext_resource type="Texture2D" uid="uid://bshgpppb30ij8" path="res://temp/icon.svg" id="2_qiyv4"]
+
+[resource]
+script = ExtResource("1_41yg3")
+speed = 1200.0
+texture = ExtResource("2_qiyv4")
+damage = 15.0
+knockback = 4000.0
+amount = 5
+fire_rate = 1.0
+spread = 5.0
+max_range = 1500.0
+speed_falloff = 0.9
+speed_falloff_range = 900.0

@@ -61,7 +61,6 @@ texture = ExtResource("3_63pir")
 
 [node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("4_1b7at")]
 position = Vector2(1.39999, -113)
-throw_speed = 500
 hurtbox = NodePath("../Hurtbox")
 sprite = NodePath("../Sprite2D")
 velocity_component = NodePath("../VelocityComponent")
@@ -70,8 +69,9 @@ velocity_component = NodePath("../VelocityComponent")
 position = Vector2(1.39999, -113)
 collision_layer = 4
 collision_mask = 14
-attack_damage = 30
+attack_damage = 5
 knock_back = 3000
+destroy_on_collide = true
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

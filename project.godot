@@ -37,6 +37,7 @@ Player=""
 Possessable=""
 MainLayer=""
 Entry=""
+Enemy=""
 
 [input]
 

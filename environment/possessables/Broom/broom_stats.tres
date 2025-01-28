@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_s6dt0")
-attack_rate = 0.5
+attack_rate = 0.4
 damage = 1.0
-knockback = 1.0
+knockback = 4000.0

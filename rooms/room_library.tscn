@@ -1,19 +1,18 @@
-[gd_scene load_steps=13 format=4 uid="uid://i2c8yl3bnytr"]
+[gd_scene load_steps=12 format=4 uid="uid://i2c8yl3bnytr"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_pexa5"]
 [ext_resource type="PackedScene" uid="uid://t3q70iawxre0" path="res://environment/Decoration/Window.tscn" id="2_g0e53"]
 [ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="3_6ny1e"]
 [ext_resource type="PackedScene" uid="uid://btvbpvtqygy61" path="res://environment/possessables/Table/Table.tscn" id="4_dsutk"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="4_ufn6a"]
-[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/entry_trigger_component.tscn" id="5_tqa8w"]
-[ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/Door/door.png" id="6_25yji"]
+[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/Door.tscn" id="5_tqa8w"]
 [ext_resource type="PackedScene" uid="uid://bbdhobj71o44e" path="res://environment/possessables/SwordCase/SwordCase.tscn" id="8_pbucq"]
 [ext_resource type="PackedScene" uid="uid://b24vygc60fyex" path="res://environment/possessables/LongTable/LongTable.tscn" id="9_2i2iw"]
 [ext_resource type="PackedScene" uid="uid://ce714tamibj17" path="res://environment/possessables/Pot/pot.tscn" id="10_3b6bi"]
 [ext_resource type="PackedScene" uid="uid://bb2thm1d65iw2" path="res://environment/possessables/PaperStack.tscn" id="11_c3h8q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_triks"]
-size = Vector2(136, 235.542)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wlgj"]
+size = Vector2(85.1628, 233.326)
 
 [node name="RoomLibrary" instance=ExtResource("1_pexa5")]
 metadata/_edit_horizontal_guides_ = [-1251.0, -1102.0, -1588.0]
@@ -137,28 +136,22 @@ position = Vector2(-712, -351)
 position = Vector2(-491, -493)
 
 [node name="DoorLibrary" parent="." index="11" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
-position = Vector2(-610, 446)
-rotation = 3.14159
-scale = Vector2(1, -1)
+position = Vector2(-650, 454)
+scale = Vector2(-1, 1)
 entry_name = "library_to_living"
 target_entry_name = "living_to_library"
 room_name = "room_library"
 target_room_name = "room_living"
-entry_point = NodePath("EntryPoint")
+entry_point = NodePath("Marker2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLibrary" index="0"]
-position = Vector2(74, 28)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLibrary" index="2"]
+position = Vector2(42, 63)
 rotation = 0.523599
 skew = 0.523599
-shape = SubResource("RectangleShape2D_triks")
+shape = SubResource("RectangleShape2D_5wlgj")
 
-[node name="Sprite2D" type="Sprite2D" parent="DoorLibrary" index="1"]
-position = Vector2(24, 21)
-texture = ExtResource("6_25yji")
-offset = Vector2(-12, -309)
-
-[node name="EntryPoint" type="Marker2D" parent="DoorLibrary" index="2"]
-position = Vector2(-107, -79)
+[node name="Marker2D" type="Marker2D" parent="DoorLibrary" index="3"]
+position = Vector2(-142, -79)
 
 [node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
 position = Vector2(2538, -763)

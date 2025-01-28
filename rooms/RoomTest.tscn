@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://742ncn8cl614" path="res://environment/possessables/Ingredients/SpellIngredient.tscn" id="8_frvkl"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="9_p1eti"]
 [ext_resource type="PackedScene" uid="uid://rbojf6mi5agk" path="res://environment/possessables/TissueBox/TissueBox.tscn" id="10_50s5a"]
-[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/entry_trigger_component.tscn" id="11_jytlm"]
+[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/Door.tscn" id="11_jytlm"]
 [ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="12_rx6sv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cqb8"]
@@ -86,11 +86,11 @@ position = Vector2(-384, -208)
 target_entry_name = "north_west"
 entry_point = NodePath("EntryPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntryTriggerComponent"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Doors/EntryTriggerComponent"]
 position = Vector2(1643, 1119)
 shape = SubResource("CircleShape2D_6cqb8")
 
-[node name="EntryPoint" type="Marker2D" parent="Doors/EntryTriggerComponent"]
+[node name="EntryPoint2" type="Marker2D" parent="Doors/EntryTriggerComponent"]
 position = Vector2(1265, 820)
 
 [node name="EntryTriggerComponent2" parent="Doors" node_paths=PackedStringArray("entry_point") instance=ExtResource("11_jytlm")]
@@ -99,11 +99,11 @@ entry_name = "north_west"
 target_entry_name = "south_east"
 entry_point = NodePath("EntryPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntryTriggerComponent2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Doors/EntryTriggerComponent2"]
 position = Vector2(-2058, -1136)
 shape = SubResource("CircleShape2D_6cqb8")
 
-[node name="EntryPoint" type="Marker2D" parent="Doors/EntryTriggerComponent2"]
+[node name="EntryPoint2" type="Marker2D" parent="Doors/EntryTriggerComponent2"]
 position = Vector2(-1688, -831)
 
 [node name="EntryTriggerComponent3" parent="Doors" node_paths=PackedStringArray("entry_point") instance=ExtResource("11_jytlm")]
@@ -111,11 +111,11 @@ position = Vector2(496, -288)
 entry_name = "south_west"
 entry_point = NodePath("EntryPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntryTriggerComponent3"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Doors/EntryTriggerComponent3"]
 position = Vector2(-2099, 1155)
 shape = SubResource("CircleShape2D_6cqb8")
 
-[node name="EntryPoint" type="Marker2D" parent="Doors/EntryTriggerComponent3"]
+[node name="EntryPoint2" type="Marker2D" parent="Doors/EntryTriggerComponent3"]
 position = Vector2(-1680, 843)
 
 [node name="EntryTriggerComponent4" parent="Doors" node_paths=PackedStringArray("entry_point") instance=ExtResource("11_jytlm")]
@@ -124,13 +124,12 @@ entry_name = "north_east"
 target_entry_name = "south_west"
 entry_point = NodePath("EntryPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntryTriggerComponent4"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Doors/EntryTriggerComponent4"]
 position = Vector2(1629, -1155)
 shape = SubResource("CircleShape2D_6cqb8")
 
-[node name="EntryPoint" type="Marker2D" parent="Doors/EntryTriggerComponent4"]
+[node name="EntryPoint2" type="Marker2D" parent="Doors/EntryTriggerComponent4"]
 position = Vector2(1250, -860)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("12_rx6sv")]
 position = Vector2(-184, -565)
-enabled = false

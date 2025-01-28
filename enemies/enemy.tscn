@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://vx6xatp8vc82"]
+[gd_scene load_steps=27 format=3 uid="uid://vx6xatp8vc82"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_8lx8u"]
 [ext_resource type="Texture2D" uid="uid://b04xoxvm3fq7f" path="res://enemies/enemy_sprite.png" id="2_3mxg2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ca06gf8tvwyfg" path="res://components/State/Circle/state_circle.tscn" id="5_5lcyi"]
 [ext_resource type="PackedScene" uid="uid://orsdd6ivwo5n" path="res://components/State/Lunge/state_lunge_attack.tscn" id="6_ewrm1"]
 [ext_resource type="Shader" path="res://player/ghost.gdshader" id="12_yjvv6"]
+[ext_resource type="Shader" path="res://player/hitflash.gdshader" id="14_5v858"]
 
 [sub_resource type="Curve" id="Curve_mbns6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.122363, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -64,7 +65,48 @@ shader = ExtResource("12_yjvv6")
 shader_parameter/color = Vector4(0, 0, 0, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_qxvvq")
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ax341"]
+shader = ExtResource("14_5v858")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_qnobf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/HitFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kdp24"]
+resource_name = "hitflash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/HitFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tx3ua"]
+_data = {
+"RESET": SubResource("Animation_qnobf"),
+"hitflash": SubResource("Animation_kdp24")
+}
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 y_sort_enabled = true
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
@@ -73,7 +115,6 @@ script = ExtResource("1_8lx8u")
 
 [node name="GhostTrailParticles" type="GPUParticles2D" parent="."]
 position = Vector2(0, -60)
-scale = Vector2(1, 1)
 amount = 40
 process_material = SubResource("ParticleProcessMaterial_jeheu")
 texture = ExtResource("2_y4tcd")
@@ -122,9 +163,21 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_5nj4d")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qfyhs")]
+MAX_HEALTH = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_bpbne")
 position = Vector2(0, -112)
 texture = ExtResource("2_3mxg2")
+
+[node name="HitFlash" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(1, 1, 1, 0)
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_ax341")
+texture = ExtResource("2_3mxg2")
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tx3ua")
+}

@@ -5,6 +5,10 @@ const GHOST_BURST_PARTICLES = preload("res://player/ghost_burst_particles_dark.t
 
 func _ready() -> void:
 	$HealthComponent.died.connect(on_death)
+	$Hitbox.hit.connect(on_hit)
+	
+func on_hit():
+	$HitFlash.play("hitflash")
 		
 func on_death():
 	var particle = GHOST_BURST_PARTICLES.instantiate()
@@ -19,15 +23,16 @@ func _on_interact():
 
 func _physics_process(delta: float) -> void:
 	velocity += knockback_velocity
-	knockback_velocity *= 0.8
+	knockback_velocity *= 0.95
 	move_and_slide()
 	
 	if velocity.x > 1:
-		$Sprite2D.flip_h = true
+		$Sprite2D.scale.x = -1
 	elif velocity.x < 1:
-		$Sprite2D.flip_h = false
+		$Sprite2D.scale.x = 1
 		
 
 func knock_back(knockback_direction: Vector2, knockback_force: float):
-	knockback_velocity += knockback_direction.normalized()*knockback_force
+	knockback_velocity += knockback_direction*knockback_force
+	
 	

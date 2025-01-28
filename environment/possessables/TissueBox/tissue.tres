@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Ammo" load_steps=3 format=3 uid="uid://ddas8vtu2lbuc"]
 
 [ext_resource type="Script" path="res://components/Projectile/ammo.gd" id="1_wcgtc"]
-[ext_resource type="Texture2D" uid="uid://dg5eg3kfpconn" path="res://environment/possessables/TissueBox/tissue.png" id="2_nhxba"]
+[ext_resource type="Texture2D" uid="uid://drl0kf5ybxdya" path="res://environment/possessables/TissueBox/tissue.png" id="2_nhxba"]
 
 [resource]
 script = ExtResource("1_wcgtc")
 speed = 1400.0
 texture = ExtResource("2_nhxba")
-damage = 1.0
+damage = 2.0
 knockback = 100.0
 amount = 100
 fire_rate = 0.2

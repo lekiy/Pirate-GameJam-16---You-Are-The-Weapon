@@ -1,6 +1,5 @@
 class_name State extends Node2D
 
-
 signal transitioned
 
 func state_enter():

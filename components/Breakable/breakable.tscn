@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dg57cxopla6dl"]
+[gd_scene load_steps=8 format=3 uid="uid://dg57cxopla6dl"]
 
 [ext_resource type="Script" path="res://components/Breakable/breakable.gd" id="1_ovnu2"]
-[ext_resource type="Texture2D" uid="uid://bdhvy6e1fm7nv" path="res://temp/pot_broken.png" id="2_vvqax"]
 
 [sub_resource type="Animation" id="Animation_ossy2"]
 resource_name = "default"
@@ -47,6 +46,8 @@ spread = 90.0
 initial_velocity_min = 100.0
 initial_velocity_max = 300.0
 gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 0.5
 alpha_curve = SubResource("CurveTexture_55pu6")
 anim_offset_max = 1.0
 
@@ -62,7 +63,6 @@ libraries = {
 material = SubResource("CanvasItemMaterial_74iem")
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_sdwt8")
-texture = ExtResource("2_vvqax")
 one_shot = true
 speed_scale = 1.6
 explosiveness = 1.0

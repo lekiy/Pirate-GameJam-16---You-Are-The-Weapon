@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://csbu7edhs8r6y"]
+
+[ext_resource type="Resource" uid="uid://batra12n6l675" path="res://environment/possessables/Broom/broom_stats.tres" id="1_fal0n"]
+
+[sub_resource type="GDScript" id="GDScript_p8htd"]
+script/source = "class_name Swingable extends AttackAction
+
+@export var weapon_stats: WeaponStats
+@export var hurtbox: HurtBox
+@onready var collision_shape: CollisionShape2D = $\"../Sprite2D/HurtBox/CollisionShape2D\"
+
+func _ready() -> void:
+	hurtbox.get_child(0).disabled = true
+	collision_shape.disabled = true
+
+func attack(callback: Callable):
+	$AnimationPlayer.play(\"swing\")
+	
+"
+
+[node name="Swingable" type="Node2D"]
+script = SubResource("GDScript_p8htd")
+weapon_stats = ExtResource("1_fal0n")

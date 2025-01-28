@@ -6,6 +6,8 @@ const GHOST_BURST_PARTICLES = preload("res://player/ghost_burst_particles.tscn")
 
 const SPEED = 600.0
 
+var possessing = false
+
 func _ready() -> void:
 	animation_player.play("hover")
 	SignalBuss.possessed.connect(on_possess)
@@ -13,17 +15,23 @@ func _ready() -> void:
 	on_enter_room()
 	
 	$HealthComponent.died.connect(on_death)
+	$Hitbox.hit.connect(on_hit)
 		
 func on_death():
 	var particle = GHOST_BURST_PARTICLES.instantiate()
 	particle.global_position = global_position
 	get_parent().add_child(particle)
+	
+func on_hit():
+	$HitFlash.play("hitflash")
 
 func on_enter_room():
 	on_player_health_changed($HealthComponent.MAX_HEALTH, $HealthComponent.health)
 
 func _physics_process(delta: float) -> void:
 	handle_movement()
+	
+	$Node2D/PossessingSprite.rotation_degrees -= 360*delta
 	
 					
 func handle_movement():
@@ -33,20 +41,22 @@ func handle_movement():
 	move_and_slide()
 
 	if velocity.x > 0:
-		$Sprite2D.flip_h = true
+		$Sprite2D.scale.x = -1
 	else:
-		$Sprite2D.flip_h = false
+		$Sprite2D.scale.x = 1
 		
 
 func on_possess(value):
 	if value:
 		sprite.visible = false
+		$Node2D/PossessingSprite.visible = true
 	else:
 		on_unpossess()
 	
 	
 func on_unpossess():
 	sprite.visible = true
+	$Node2D/PossessingSprite.visible = false
 	$InteractionManager.can_interact = true 
 
 func on_player_health_changed(new_max_value, new_value):

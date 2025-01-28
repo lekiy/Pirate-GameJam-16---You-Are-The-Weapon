@@ -18,13 +18,14 @@ func on_hitbox_area_entered(area: Area2D):
 	if area is Hitbox:
 		var attack = Attack.new()
 		attack.attack_damage = attack_damage
-		area.damage(attack)
 		if velocity_component:
 			area.knock_back_direction = Vector2(velocity_component.velocity3.x, velocity_component.velocity3.y).normalized()
 			area.knock_back_force = knock_back
-		elif get_parent().velocity:
-			area.knock_back_direction = get_parent().velocity.normalized()
+		else:
+			area.knock_back_direction = global_position.direction_to(area.get_parent().global_position)
 			area.knock_back_force = knock_back
+
+		area.damage(attack)
 		hit.emit()
 
 		

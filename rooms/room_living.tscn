@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://t3q70iawxre0" path="res://environment/Decoration/Window.tscn" id="2_b7p7j"]
 [ext_resource type="PackedScene" uid="uid://cbf7nco5q13rl" path="res://environment/Decoration/Shelf.tscn" id="3_dmjfq"]
 [ext_resource type="Texture2D" uid="uid://cmkwfq4nffja8" path="res://environment/Decoration/Painting/painting_mountians.png" id="4_fkboj"]
-[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/entry_trigger_component.tscn" id="4_jd2vw"]
-[ext_resource type="Texture2D" uid="uid://cd5m64r2mwx7d" path="res://components/Door/door.png" id="5_5k88d"]
+[ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/Door.tscn" id="4_jd2vw"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="6_ho2v0"]
 [ext_resource type="PackedScene" uid="uid://s5v7wlj8hcb8" path="res://environment/possessables/Broom/Broom.tscn" id="7_u1ijc"]
 [ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="8_nlvx4"]
@@ -17,8 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://bbqe7u87xlxjv" path="res://environment/possessables/EndTable/EndTable.tscn" id="14_l2db1"]
 [ext_resource type="PackedScene" uid="uid://ce714tamibj17" path="res://environment/possessables/Pot/pot.tscn" id="16_yq57n"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oghgh"]
-size = Vector2(136, 235.542)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3saag"]
+size = Vector2(85.1628, 233.326)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij5al"]
+size = Vector2(85.1628, 233.326)
 
 [node name="RoomLiving" instance=ExtResource("1_0ovrs")]
 
@@ -38,29 +40,14 @@ tile_map_data = PackedByteArray("AAD3/wMAAgABAAAAAAD3/wIAAgABAAAAAAD3/wEAAgABAAA
 [node name="Walllayer3" parent="." index="6"]
 tile_map_data = PackedByteArray("AAD2/wIAAgABAAAAAAD2/wEAAgABAAAAAAD2/wAAAgABAAAAAAD2////AgABAAAAAAD2//7/AgABAAAAAAD2//3/AgABAAAAAAD2//z/AgABAAAAAAD2//v/AgABAAAAAAD2//r/AgABAAAAAAD2//n/AgABAAAAAAD2//j/AgABAAAAAAD2//f/AgABAAAAAAD2//b/AgABAAAAAAD2//X/AgABAAAAAAD2//T/AgABAAAAAAD2//P/AgABAAAAAAD2//L/AgABAAAAAAD3//L/AgABAAAAAAD4//L/AgABAAAAAAD5//L/AgABAAAAAAD6//L/AgABAAAAAAD7//L/AgABAAAAAAD8//L/AgABAAAAAAD9//L/AgABAAAAAAD+//L/AgABAAAAAAD///L/AgABAAAAAAAAAPL/AgABAAAAAAABAPL/AgABAAAAAAACAPL/AgABAAAAAAADAPL/AgABAAAAAAAEAPL/AgABAAAAAAAFAPL/AgABAAAAAAAGAPL/AgABAAAAAAA=")
 
-[node name="DoorYard" parent="." index="8" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
+[node name="DoorYard" parent="." index="8" instance=ExtResource("4_jd2vw")]
 position = Vector2(-519, -972)
 entry_name = "yard"
 target_entry_name = "yard"
 room_name = "room_living"
 target_room_name = "room_yard"
-entry_point = NodePath("EntryPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorYard" index="0"]
-position = Vector2(-79, -75)
-rotation = 0.523599
-skew = 0.523599
-shape = SubResource("RectangleShape2D_oghgh")
-
-[node name="Sprite2D" type="Sprite2D" parent="DoorYard" index="1"]
-position = Vector2(24, 21)
-texture = ExtResource("5_5k88d")
-offset = Vector2(-12, -309)
-
-[node name="EntryPoint" type="Marker2D" parent="DoorYard" index="2"]
-position = Vector2(93, 50)
-
-[node name="DoorBedroom" parent="." index="9" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
+[node name="DoorBedroom" parent="." index="9" instance=ExtResource("4_jd2vw")]
 position = Vector2(3315, -506)
 rotation = 3.14159
 scale = Vector2(1, -1)
@@ -68,21 +55,6 @@ entry_name = "library"
 target_entry_name = "library"
 room_name = "room_living"
 target_room_name = "room_library"
-entry_point = NodePath("EntryPoint")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorBedroom" index="0"]
-position = Vector2(-79, -75)
-rotation = 0.523599
-skew = 0.523599
-shape = SubResource("RectangleShape2D_oghgh")
-
-[node name="Sprite2D" type="Sprite2D" parent="DoorBedroom" index="1"]
-position = Vector2(24, 21)
-texture = ExtResource("5_5k88d")
-offset = Vector2(-12, -309)
-
-[node name="EntryPoint" type="Marker2D" parent="DoorBedroom" index="2"]
-position = Vector2(93, 50)
 
 [node name="DoorLibrary" parent="." index="10" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(1705, -1419)
@@ -92,21 +64,16 @@ entry_name = "living_to_library"
 target_entry_name = "library_to_living"
 room_name = "room_living"
 target_room_name = "room_library"
-entry_point = NodePath("EntryPoint")
+entry_point = NodePath("Marker2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLibrary" index="0"]
-position = Vector2(-79, -75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLibrary" index="2"]
+position = Vector2(-102, -80.9993)
 rotation = 0.523599
 skew = 0.523599
-shape = SubResource("RectangleShape2D_oghgh")
+shape = SubResource("RectangleShape2D_3saag")
 
-[node name="Sprite2D" type="Sprite2D" parent="DoorLibrary" index="1"]
-position = Vector2(24, 21)
-texture = ExtResource("5_5k88d")
-offset = Vector2(-12, -309)
-
-[node name="EntryPoint" type="Marker2D" parent="DoorLibrary" index="2"]
-position = Vector2(93, 50)
+[node name="Marker2D" type="Marker2D" parent="DoorLibrary" index="3"]
+position = Vector2(87.0001, 45.9998)
 
 [node name="Window" parent="." index="11" instance=ExtResource("2_b7p7j")]
 position = Vector2(-1219, -946)
@@ -172,28 +139,23 @@ position = Vector2(-139, -1696)
 position = Vector2(1844, -409)
 
 [node name="DoorKitchen" parent="." index="16" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
-position = Vector2(3255, 543)
+position = Vector2(3274, 540)
 entry_name = "living_to_kitchen"
 target_entry_name = "kitchen_to_living"
 room_name = "room_living"
 target_room_name = "room_kitchen"
-entry_point = NodePath("EntryPoint")
+entry_point = NodePath("Marker2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorKitchen" index="0"]
-position = Vector2(65, 55)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorKitchen" index="2"]
+position = Vector2(37.9998, 52)
 rotation = 0.523599
 skew = 0.523599
-shape = SubResource("RectangleShape2D_oghgh")
+shape = SubResource("RectangleShape2D_3saag")
 
-[node name="Sprite2D" type="Sprite2D" parent="DoorKitchen" index="1"]
-position = Vector2(24, 21)
-texture = ExtResource("5_5k88d")
-offset = Vector2(-12, -309)
+[node name="Marker2D" type="Marker2D" parent="DoorKitchen" index="3"]
+position = Vector2(-146, -90)
 
-[node name="EntryPoint" type="Marker2D" parent="DoorKitchen" index="2"]
-position = Vector2(-176, -121)
-
-[node name="DoorStudy" parent="." index="17" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
+[node name="DoorStudy" parent="." index="17" instance=ExtResource("4_jd2vw")]
 position = Vector2(-1341, 515)
 rotation = -3.14159
 scale = Vector2(1, -1)
@@ -201,43 +163,41 @@ entry_name = "study"
 target_entry_name = "study"
 room_name = "room_living"
 target_room_name = "room_study"
-entry_point = NodePath("EntryPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorStudy" index="0"]
-position = Vector2(74, 28)
+[node name="DoorSecret" parent="." index="18" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
+visible = false
+position = Vector2(331, -1475)
+entry_name = "living_to_secrit"
+target_entry_name = "secrit_to_living"
+room_name = "room_living"
+target_room_name = "room_secrit"
+entry_point = NodePath("Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorSecret" index="2"]
+position = Vector2(-88, -72)
 rotation = 0.523599
 skew = 0.523599
-shape = SubResource("RectangleShape2D_oghgh")
+shape = SubResource("RectangleShape2D_ij5al")
 
-[node name="Sprite2D" type="Sprite2D" parent="DoorStudy" index="1"]
-position = Vector2(24, 21)
-texture = ExtResource("5_5k88d")
-offset = Vector2(-12, -309)
+[node name="Marker2D" type="Marker2D" parent="DoorSecret" index="3"]
+position = Vector2(60, 60)
 
-[node name="EntryPoint" type="Marker2D" parent="DoorStudy" index="2"]
-position = Vector2(-107, -79)
-
-[node name="DoorEntry" parent="." index="18" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
+[node name="DoorEntry" parent="." index="19" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(304, 642)
 entry_name = "living_to_entry"
 target_entry_name = "entry_to_living"
 room_name = "room_living"
 target_room_name = "room_entry"
-entry_point = NodePath("EntryPoint")
+entry_point = NodePath("Marker2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorEntry" index="0"]
-position = Vector2(61, 44)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorEntry" index="2"]
+position = Vector2(42, 63)
 rotation = 0.523599
 skew = 0.523599
-shape = SubResource("RectangleShape2D_oghgh")
+shape = SubResource("RectangleShape2D_3saag")
 
-[node name="Sprite2D" type="Sprite2D" parent="DoorEntry" index="1"]
-position = Vector2(24, 21)
-texture = ExtResource("5_5k88d")
-offset = Vector2(-12, -309)
-
-[node name="EntryPoint" type="Marker2D" parent="DoorEntry" index="2"]
-position = Vector2(-173, -136)
+[node name="Marker2D" type="Marker2D" parent="DoorEntry" index="3"]
+position = Vector2(-142, -79)
 
 [node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
 position = Vector2(973, -1131)
