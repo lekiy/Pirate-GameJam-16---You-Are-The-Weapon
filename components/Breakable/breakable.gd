@@ -11,4 +11,5 @@ func on_break():
 	get_parent().remove_child(self)
 	layer.add_child(self)
 	global_position = break_position
+	$AudioStreamPlayer.play()
 	$AnimationPlayer.play("default")

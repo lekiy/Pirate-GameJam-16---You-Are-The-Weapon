@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://w2jorrqqkxlk"]
+
+[ext_resource type="Script" path="res://environment/possessables/Ingredients/ingredient.gd" id="1_hi1ca"]
+[ext_resource type="Texture2D" uid="uid://da8gcjaw4orvx" path="res://environment/possessables/Ingredients/candles.png" id="2_wawjb"]
+
+[resource]
+script = ExtResource("1_hi1ca")
+sprite = ExtResource("2_wawjb")
+name = ""

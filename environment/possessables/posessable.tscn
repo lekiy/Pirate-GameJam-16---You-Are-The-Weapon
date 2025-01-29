@@ -95,6 +95,7 @@ _data = {
 }
 
 [node name="Posessable" type="Node2D" groups=["Possessable"]]
+position = Vector2(0, -128)
 script = ExtResource("1_vuhw4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

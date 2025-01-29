@@ -67,3 +67,5 @@ one_shot = true
 speed_scale = 1.6
 explosiveness = 1.0
 randomness = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4xvlkqfu4p7h"]
+
+[ext_resource type="PackedScene" uid="uid://742ncn8cl614" path="res://environment/possessables/Ingredients/SpellIngredient.tscn" id="1_jjw0l"]
+[ext_resource type="Resource" uid="uid://bl8jhlxqyfeup" path="res://environment/possessables/Ingredients/spider_ingredient.tres" id="2_dcguy"]
+[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="2_sioka"]
+[ext_resource type="PackedScene" uid="uid://bj1mcugunx4lx" path="res://components/Attack/throwable.tscn" id="4_dttnq"]
+[ext_resource type="Texture2D" uid="uid://f18cnj7aoosp" path="res://environment/possessables/Ingredients/spider.png" id="4_qaeqf"]
+[ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="5_sel3o"]
+[ext_resource type="PackedScene" uid="uid://clgd20vol2or8" path="res://components/VelocityComponent/velocity_component.tscn" id="6_w0sgo"]
+[ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="7_0e83k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_412hb"]
+radius = 58.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ipqp3"]
+radius = 54.1479
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6iup"]
+radius = 109.435
+
+[node name="IngredientSpider" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 8
+
+[node name="SpellIngredientComponent" parent="." instance=ExtResource("1_jjw0l")]
+ingredient = ExtResource("2_dcguy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpellIngredientComponent"]
+shape = SubResource("CircleShape2D_412hb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-60, 8, -34, 44, 2, 34, 32, 10, 14, -36, -24, -32)
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("2_sioka")]
+collision_layer = 4
+collision_mask = 14
+attack_damage = 1
+knock_back = 8000
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_ipqp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("4_qaeqf")
+
+[node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("4_dttnq")]
+hurtbox = NodePath("../Hurtbox")
+sprite = NodePath("../Sprite2D")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("5_sel3o")]
+sprite = NodePath("../Sprite2D")
+attack_action = NodePath("../Throwable")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("6_w0sgo")]
+
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("7_0e83k")]
+sprite_ref = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(1.90735e-06, 1.90735e-06)
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("CircleShape2D_i6iup")

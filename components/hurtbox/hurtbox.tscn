@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://gyr2vpj00ouh"]
+[gd_scene load_steps=3 format=3 uid="uid://gyr2vpj00ouh"]
 
 [ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="1_mn3ue"]
+[ext_resource type="AudioStream" uid="uid://b0hj0wtqbwnoa" path="res://components/hurtbox/Impact.wav" id="2_dlvnd"]
 
 [node name="Hurtbox" type="Area2D"]
 script = ExtResource("1_mn3ue")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dlvnd")

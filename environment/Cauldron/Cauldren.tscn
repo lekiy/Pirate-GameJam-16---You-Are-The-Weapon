@@ -20,11 +20,9 @@ func _process(delta: float) -> void:
 	goo.position.y = goo_start.y - ingredients_in_cauldren.size() * 25
 
 func on_area_entered(area: Area2D):
-	print(\"colides\")
 	if area is SpellIngredient:
 		ingredients_in_cauldren.push_back(area.ingredient)
-		area.queue_free()
-		$Label.text = str(ingredients_in_cauldren)
+		area.get_parent().queue_free()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_imnex"]

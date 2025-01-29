@@ -1,43 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://742ncn8cl614"]
+[gd_scene load_steps=3 format=3 uid="uid://742ncn8cl614"]
 
 [ext_resource type="Script" path="res://environment/possessables/Ingredients/spell_ingredient.gd" id="1_52wqs"]
-[ext_resource type="Resource" uid="uid://d0ymm740dkim2" path="res://environment/possessables/Ingredients/mushroom_ingredient.tres" id="1_mnr02"]
-[ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="1_tw4vh"]
-[ext_resource type="Texture2D" uid="uid://crtlcmhk23uy7" path="res://temp/Isometric Assets 2.png" id="1_wsnwk"]
-[ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="3_lwqjy"]
+[ext_resource type="Resource" uid="uid://w2jorrqqkxlk" path="res://environment/possessables/Ingredients/candle_ingredient.tres" id="2_2ss83"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8erw0"]
-radius = 72.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dm3sx"]
-radius = 72.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhuqc"]
-atlas = ExtResource("1_wsnwk")
-region = Rect2(2337.28, 1058.53, 193.839, 211.871)
-
-[node name="SpellIngredient" type="Area2D"]
+[node name="SpellIngredientComponent" type="Area2D"]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_52wqs")
-ingredient = ExtResource("1_mnr02")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 0.523599
-skew = 0.523599
-shape = SubResource("CircleShape2D_8erw0")
-
-[node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("3_lwqjy")]
-sprite_ref = NodePath("../Sprite2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-rotation = 0.523599
-skew = 0.523599
-shape = SubResource("CircleShape2D_dm3sx")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-8, -48)
-texture = SubResource("AtlasTexture_xhuqc")
-
-[node name="Posessable" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_tw4vh")]
-sprite = NodePath("../Sprite2D")
+ingredient = ExtResource("2_2ss83")

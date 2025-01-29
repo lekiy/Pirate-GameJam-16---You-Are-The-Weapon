@@ -50,6 +50,7 @@ func on_possess(value):
 	if value:
 		sprite.visible = false
 		$Node2D/PossessingSprite.visible = true
+		$AudioStreamPlayer.play()
 	else:
 		on_unpossess()
 	

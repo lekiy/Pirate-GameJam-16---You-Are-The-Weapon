@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bl8jhlxqyfeup"]
+
+[ext_resource type="Script" path="res://environment/possessables/Ingredients/ingredient.gd" id="1_ifixn"]
+[ext_resource type="Texture2D" uid="uid://f18cnj7aoosp" path="res://environment/possessables/Ingredients/spider.png" id="2_mx5ca"]
+
+[resource]
+script = ExtResource("1_ifixn")
+sprite = ExtResource("2_mx5ca")
+name = "Spider Web"

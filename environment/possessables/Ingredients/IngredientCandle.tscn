@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://o3kxoddfbj7"]
+
+[ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="1_8fwk2"]
+[ext_resource type="PackedScene" uid="uid://742ncn8cl614" path="res://environment/possessables/Ingredients/SpellIngredient.tscn" id="1_p1gue"]
+[ext_resource type="Texture2D" uid="uid://da8gcjaw4orvx" path="res://environment/possessables/Ingredients/candles.png" id="2_kporn"]
+[ext_resource type="PackedScene" uid="uid://bj1mcugunx4lx" path="res://components/Attack/throwable.tscn" id="3_vi4x4"]
+[ext_resource type="PackedScene" uid="uid://dlwfdq6mg1ffy" path="res://environment/possessables/posessable.tscn" id="4_jwqhy"]
+[ext_resource type="PackedScene" uid="uid://clgd20vol2or8" path="res://components/VelocityComponent/velocity_component.tscn" id="5_gejhc"]
+[ext_resource type="PackedScene" uid="uid://c67vk5r7r7eg8" path="res://components/Interaction/interactionArea/interaction_area.tscn" id="6_fg3cl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_412hb"]
+radius = 96.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ipqp3"]
+radius = 96.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6iup"]
+radius = 144.886
+
+[node name="IngredientCandle" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 8
+
+[node name="SpellIngredientComponent" parent="." instance=ExtResource("1_p1gue")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpellIngredientComponent"]
+position = Vector2(0, -80)
+shape = SubResource("CircleShape2D_412hb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -96)
+polygon = PackedVector2Array(-112, 32, -48, 96, 16, 96, 96, 48, 32, 16, -48, 0)
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("1_8fwk2")]
+position = Vector2(0, -80)
+collision_layer = 4
+collision_mask = 14
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_ipqp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -96)
+texture = ExtResource("2_kporn")
+
+[node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("3_vi4x4")]
+hurtbox = NodePath("../Hurtbox")
+sprite = NodePath("../Sprite2D")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("4_jwqhy")]
+sprite = NodePath("../Sprite2D")
+attack_action = NodePath("../Throwable")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("5_gejhc")]
+
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("6_fg3cl")]
+position = Vector2(0, -80)
+sprite_ref = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 32)
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("CircleShape2D_i6iup")

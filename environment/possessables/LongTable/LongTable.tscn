@@ -30,45 +30,43 @@ radius = 343.177
 radius = 265.345
 
 [node name="LongTable" type="CharacterBody2D"]
-position = Vector2(-1, -87)
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 12
 script = SubResource("GDScript_ldmnu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(261.6, -107)
-polygon = PackedVector2Array(-434, 376, 40, 132, -104, 68, -592, 298)
+position = Vector2(285.8, -20)
+polygon = PackedVector2Array(-440, 384, 34, 104, -112, 14, -592, 298)
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("1_vuo4c")]
-position = Vector2(3.59998, -80)
+position = Vector2(-2.20001, -70)
 sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(4, 181)
+position = Vector2(22, 228)
 rotation = 0.523599
 skew = 0.523599
 shape = SubResource("CircleShape2D_bpyck")
 
 [node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action", "collider") instance=ExtResource("2_13p8i")]
-position = Vector2(3.59998, -80)
+position = Vector2(2, -4)
 sprite = NodePath("../Sprite2D")
 attack_action = NodePath("../Throwable")
 collider = NodePath("../CollisionPolygon2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3.59998, 65)
+position = Vector2(27.8, 82)
 texture = ExtResource("3_yud8x")
-offset = Vector2(-4, -71)
 
 [node name="Throwable" parent="." node_paths=PackedStringArray("hurtbox", "sprite", "velocity_component") instance=ExtResource("4_anm1k")]
-position = Vector2(1.59998, -113)
+position = Vector2(-2.20001, -70)
 hurtbox = NodePath("../Hurtbox")
 sprite = NodePath("../Sprite2D")
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("5_70bng")]
-position = Vector2(1.59998, -113)
+position = Vector2(-2.20001, -70)
 collision_layer = 4
 collision_mask = 14
 attack_damage = 12
@@ -76,8 +74,8 @@ knock_back = 4000
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 114)
+position = Vector2(14, 118)
 shape = SubResource("CircleShape2D_ot6dd")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_k7n55")]
-position = Vector2(1.59998, -113)
+position = Vector2(-2.20001, -70)

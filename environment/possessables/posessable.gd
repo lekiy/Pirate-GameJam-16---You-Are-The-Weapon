@@ -43,7 +43,7 @@ func possess(node: Node2D):
 			
 		if collider:
 			collider.disabled = true
-		node.global_position = global_position
+		node.global_position = get_parent().global_position
 		SignalBuss.possessed.emit(true)
 		get_parent().reparent(node)
 		

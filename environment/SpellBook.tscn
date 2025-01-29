@@ -15,6 +15,12 @@ func _ready() -> void:
 
 func _on_interact():
 	$CanvasLayer.visible = not $CanvasLayer.visible
+	
+func _process(delta: float) -> void:
+	var player = get_tree().get_first_node_in_group(\"Player\")
+	if is_instance_valid(player):
+		if global_position.distance_to(player.global_position) > 250:
+			$CanvasLayer.visible = false
 "
 
 [sub_resource type="Gradient" id="Gradient_u6wkw"]
@@ -35,7 +41,7 @@ shader_parameter/color = Color(0.31, 0.1798, 0.18197, 1)
 shader_parameter/shine = SubResource("GradientTexture2D_t3vec")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jtjpl"]
-radius = 248.774
+radius = 250.0
 
 [sub_resource type="Animation" id="Animation_6dabl"]
 resource_name = "hover"

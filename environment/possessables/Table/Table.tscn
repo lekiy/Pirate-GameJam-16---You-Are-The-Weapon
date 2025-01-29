@@ -36,15 +36,15 @@ collision_mask = 12
 script = SubResource("GDScript_ldmnu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(257.4, -117.5)
+position = Vector2(238, 70)
 polygon = PackedVector2Array(-292, 412, 130, 178, -210, -8, -628, 214)
 
 [node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_ref") instance=ExtResource("1_ykee8")]
-position = Vector2(-0.599976, -90.5)
+position = Vector2(-8.59998, 206.5)
 sprite_ref = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(4, 181)
+position = Vector2(-3.40002, 13.5)
 rotation = 0.523599
 skew = 0.523599
 shape = SubResource("CircleShape2D_bpyck")
@@ -56,7 +56,7 @@ attack_action = NodePath("../Throwable")
 collider = NodePath("../CollisionPolygon2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.599976, 54.5)
+position = Vector2(-20, 242)
 texture = ExtResource("3_gi6p3")
 offset = Vector2(-4, -71)
 
@@ -67,7 +67,7 @@ sprite = NodePath("../Sprite2D")
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("5_sy56k")]
-position = Vector2(-2.59998, -123.5)
+position = Vector2(-7.19996, 275)
 collision_layer = 4
 collision_mask = 14
 attack_damage = 15
@@ -75,7 +75,7 @@ knock_back = 6000
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 114)
+position = Vector2(-4.80005, -111)
 shape = SubResource("CircleShape2D_ot6dd")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_rnkdj")]
