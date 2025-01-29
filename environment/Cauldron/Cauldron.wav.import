@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://box4pfcnqe67o"
-path="res://.godot/imported/Cauldron.wav-e2453e564dc8bba30bee5ec6e4af6169.sample"
+path="res://.godot/imported/Cauldron.wav-32f1649619b327155ad958eb5ee681ea.sample"
 
 [deps]
 
-source_file="res://rooms/Menu/Cauldron.wav"
-dest_files=["res://.godot/imported/Cauldron.wav-e2453e564dc8bba30bee5ec6e4af6169.sample"]
+source_file="res://environment/Cauldron/Cauldron.wav"
+dest_files=["res://.godot/imported/Cauldron.wav-32f1649619b327155ad958eb5ee681ea.sample"]
 
 [params]
 

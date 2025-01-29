@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func _on_interact():
 	$CanvasLayer.visible = not $CanvasLayer.visible
+	RoomController.book_discovered = true
 	
 func _process(delta: float) -> void:
 	var player = get_tree().get_first_node_in_group(\"Player\")
@@ -43,6 +44,9 @@ shader_parameter/shine = SubResource("GradientTexture2D_t3vec")
 [sub_resource type="CircleShape2D" id="CircleShape2D_jtjpl"]
 radius = 250.0
 
+[sub_resource type="Animation" id="Animation_t0hno"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_6dabl"]
 resource_name = "hover"
 loop_mode = 1
@@ -70,9 +74,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(72.524, -67.2029), Vector2(72, -108), Vector2(72.524, -67.2029)]
 }
-
-[sub_resource type="Animation" id="Animation_t0hno"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kd6sm"]
 _data = {

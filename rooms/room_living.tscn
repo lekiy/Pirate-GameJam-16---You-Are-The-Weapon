@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://yk2vwp6t4bec"]
+[gd_scene load_steps=22 format=4 uid="uid://yk2vwp6t4bec"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_0ovrs"]
 [ext_resource type="PackedScene" uid="uid://t3q70iawxre0" path="res://environment/Decoration/Window.tscn" id="2_b7p7j"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c3kenhf8it0f7" path="res://environment/Decoration/web_2.png" id="16_n6lbi"]
 [ext_resource type="PackedScene" uid="uid://ce714tamibj17" path="res://environment/possessables/Pot/pot.tscn" id="16_yq57n"]
 [ext_resource type="PackedScene" uid="uid://b4xvlkqfu4p7h" path="res://environment/possessables/Ingredients/IngredientSpider.tscn" id="18_aiexn"]
+[ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="19_rpsqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3saag"]
 size = Vector2(85.1628, 233.326)
@@ -90,24 +91,6 @@ position = Vector2(-171, -1622)
 position = Vector2(2478, -1368)
 texture = ExtResource("4_fkboj")
 
-[node name="DoorSecret" parent="." index="16" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
-visible = false
-position = Vector2(331, -1475)
-entry_name = "living_to_secrit"
-target_entry_name = "secrit_to_living"
-room_name = "room_living"
-target_room_name = "room_secrit"
-entry_point = NodePath("Marker2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorSecret" index="2"]
-position = Vector2(-88, -72)
-rotation = 0.523599
-skew = 0.523599
-shape = SubResource("RectangleShape2D_ij5al")
-
-[node name="Marker2D" type="Marker2D" parent="DoorSecret" index="3"]
-position = Vector2(60, 60)
-
 [node name="Pot" parent="EntityLayer" index="0" instance=ExtResource("6_ho2v0")]
 position = Vector2(986, -1770)
 
@@ -171,22 +154,26 @@ texture = ExtResource("16_n6lbi")
 [node name="IngredientSpider" parent="EntityLayer" index="18" instance=ExtResource("18_aiexn")]
 position = Vector2(-1190, -607)
 
-[node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
-position = Vector2(973, -1131)
+[node name="EnemySpawner" parent="EnemySpawnPoints" index="0" instance=ExtResource("19_rpsqf")]
+position = Vector2(243, -575)
 
-[node name="Marker2D2" type="Marker2D" parent="EnemySpawnPoints" index="1"]
-position = Vector2(2602, -164)
+[node name="EnemySpawner2" parent="EnemySpawnPoints" index="1" instance=ExtResource("19_rpsqf")]
+position = Vector2(2617, -66)
+stage = 1
 
-[node name="Marker2D3" type="Marker2D" parent="EnemySpawnPoints" index="2"]
-position = Vector2(-685, -96)
+[node name="EnemySpawner3" parent="EnemySpawnPoints" index="2" instance=ExtResource("19_rpsqf")]
+position = Vector2(1095, -1017)
+stage = 2
 
-[node name="Marker2D4" type="Marker2D" parent="EnemySpawnPoints" index="3"]
-position = Vector2(2221, 56)
+[node name="EnemySpawner4" parent="EnemySpawnPoints" index="3" instance=ExtResource("19_rpsqf")]
+position = Vector2(-698, -37)
+stage = 3
 
-[node name="Marker2D5" type="Marker2D" parent="EnemySpawnPoints" index="4"]
-position = Vector2(442, -824)
+[node name="EnemySpawner5" parent="EnemySpawnPoints" index="4" instance=ExtResource("19_rpsqf")]
+position = Vector2(1718, -598)
+stage = 4
 
-[node name="DoorKitchen" parent="." index="19" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
+[node name="DoorKitchen" parent="." index="18" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(3274, 540)
 entry_name = "living_to_kitchen"
 target_entry_name = "kitchen_to_living"
@@ -203,7 +190,7 @@ shape = SubResource("RectangleShape2D_3saag")
 [node name="Marker2D" type="Marker2D" parent="DoorKitchen" index="3"]
 position = Vector2(-146, -90)
 
-[node name="DoorStudy" parent="." index="20" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
+[node name="DoorStudy" parent="." index="19" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(-1341, 515)
 rotation = -3.14159
 scale = Vector2(1, -1)
@@ -211,6 +198,7 @@ entry_name = "living_to_study"
 target_entry_name = "study_to_living"
 room_name = "room_living"
 target_room_name = "room_study"
+can_be_locked = false
 entry_point = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorStudy" index="2"]
@@ -222,7 +210,7 @@ shape = SubResource("RectangleShape2D_ij5al")
 [node name="Marker2D" type="Marker2D" parent="DoorStudy" index="3"]
 position = Vector2(-98.9998, -65.0003)
 
-[node name="DoorEntry" parent="." index="21" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
+[node name="DoorEntry" parent="." index="20" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(304, 642)
 entry_name = "living_to_entry"
 target_entry_name = "entry_to_living"

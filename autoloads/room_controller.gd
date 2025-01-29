@@ -15,7 +15,7 @@ var current_entry_name: String
 
 var locked = false
 var ingredients_collected : Array[Ingredient] = []
-
+var book_discovered := false
 
 var room_dict = {
 	"room_test": ROOM_TEST,
@@ -34,16 +34,16 @@ func add_ingredient(ingredient: Ingredient):
 	return false
 
 func _process(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
 		
-	if get_tree().get_nodes_in_group("Enemy").size() > 0:
+	if get_tree().get_nodes_in_group("Enemy").size() > 0 or not book_discovered:
 		locked = true
 	else:
 		locked = false
 
 func move_to_room(room_name, entry_name):
-	if locked: return
 	print("moving to room "+str(room_name)+" at entry "+str(entry_name))
 	
 	player.get_parent().remove_child(player)

@@ -33,6 +33,7 @@ entry_name = "entry_to_living"
 target_entry_name = "living_to_entry"
 room_name = "room_entry"
 target_room_name = "room_living"
+can_be_locked = false
 entry_point = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLiving" index="2"]

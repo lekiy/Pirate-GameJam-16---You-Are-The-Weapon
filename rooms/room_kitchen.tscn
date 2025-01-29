@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cqaihnhq5y63"]
+[gd_scene load_steps=17 format=4 uid="uid://cqaihnhq5y63"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_kg0a6"]
 [ext_resource type="PackedScene" uid="uid://brcvvwxlabycb" path="res://environment/Cauldron/Cauldren.tscn" id="2_g222n"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://s5v7wlj8hcb8" path="res://environment/possessables/Broom/Broom.tscn" id="13_wa0pk"]
 [ext_resource type="Texture2D" uid="uid://bi5p28lkn37pj" path="res://environment/Decoration/web_1.png" id="13_x5sju"]
 [ext_resource type="PackedScene" uid="uid://o3kxoddfbj7" path="res://environment/possessables/Ingredients/IngredientCandle.tscn" id="13_yiffw"]
+[ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="14_6hitm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dm2lj"]
 size = Vector2(85.1628, 233.326)
@@ -124,28 +125,55 @@ position = Vector2(2281, 839)
 [node name="IngredientCandle" parent="EntityLayer" index="14" instance=ExtResource("13_yiffw")]
 position = Vector2(709, -879)
 
-[node name="Plant" parent="." index="14" instance=ExtResource("9_8kolq")]
+[node name="Plant2" parent="EntityLayer" index="15" instance=ExtResource("9_8kolq")]
 position = Vector2(2615, 1000)
 
-[node name="Pot" parent="." index="15" instance=ExtResource("6_fh4kk")]
+[node name="Pot3" parent="EntityLayer" index="16" instance=ExtResource("6_fh4kk")]
 position = Vector2(1387, 1696)
 
-[node name="Pot2" parent="." index="16" instance=ExtResource("6_fh4kk")]
+[node name="Pot4" parent="EntityLayer" index="17" instance=ExtResource("6_fh4kk")]
 position = Vector2(1387, 1696)
 
-[node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
-position = Vector2(2011, -732)
+[node name="EnemySpawner" parent="EnemySpawnPoints" index="0" instance=ExtResource("14_6hitm")]
+position = Vector2(1397, -1018)
 
-[node name="Marker2D2" type="Marker2D" parent="EnemySpawnPoints" index="1"]
-position = Vector2(-507, 136)
+[node name="EnemySpawner2" parent="EnemySpawnPoints" index="1" instance=ExtResource("14_6hitm")]
+position = Vector2(-110, -186)
+stage = 1
 
-[node name="Marker2D3" type="Marker2D" parent="EnemySpawnPoints" index="2"]
-position = Vector2(-589, -400)
+[node name="EnemySpawner3" parent="EnemySpawnPoints" index="2" instance=ExtResource("14_6hitm")]
+position = Vector2(1362, -186)
+stage = 2
 
-[node name="Marker2D4" type="Marker2D" parent="EnemySpawnPoints" index="3"]
-position = Vector2(426, 152)
+[node name="EnemySpawner4" parent="EnemySpawnPoints" index="3" instance=ExtResource("14_6hitm")]
+position = Vector2(42, -917)
+stage = 2
 
-[node name="Web1" type="Sprite2D" parent="." index="19"]
+[node name="EnemySpawner5" parent="EnemySpawnPoints" index="4" instance=ExtResource("14_6hitm")]
+position = Vector2(-1087, -96)
+stage = 3
+
+[node name="EnemySpawner6" parent="EnemySpawnPoints" index="5" instance=ExtResource("14_6hitm")]
+position = Vector2(-104, 504)
+stage = 3
+
+[node name="EnemySpawner7" parent="EnemySpawnPoints" index="6" instance=ExtResource("14_6hitm")]
+position = Vector2(1448, 489)
+stage = 4
+
+[node name="EnemySpawner8" parent="EnemySpawnPoints" index="7" instance=ExtResource("14_6hitm")]
+position = Vector2(2259, 1013)
+stage = 4
+
+[node name="EnemySpawner9" parent="EnemySpawnPoints" index="8" instance=ExtResource("14_6hitm")]
+position = Vector2(1427, 1517)
+stage = 4
+
+[node name="EnemySpawner10" parent="EnemySpawnPoints" index="9" instance=ExtResource("14_6hitm")]
+position = Vector2(575, 1043)
+stage = 4
+
+[node name="Web1" type="Sprite2D" parent="." index="16"]
 position = Vector2(1945, -1653)
 rotation = 0.91866
 scale = Vector2(0.5, 0.5)

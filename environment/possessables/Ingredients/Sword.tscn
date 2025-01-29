@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cb43dslg0xev7"]
+[gd_scene load_steps=14 format=3 uid="uid://cb43dslg0xev7"]
 
 [ext_resource type="Texture2D" uid="uid://b4isp2pv8qguu" path="res://environment/possessables/sword.png" id="1_it7xs"]
 [ext_resource type="PackedScene" uid="uid://742ncn8cl614" path="res://environment/possessables/Ingredients/SpellIngredient.tscn" id="1_sien2"]
@@ -65,24 +65,8 @@ tracks/2/keys = {
 "values": [true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_xpjs3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D/Hurtbox/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_82vfa"]
 _data = {
-"RESET": SubResource("Animation_xpjs3"),
 "swing": SubResource("Animation_bew1n")
 }
 
@@ -98,8 +82,7 @@ shape = SubResource("CircleShape2D_xg7dm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -2)
-rotation = 6.28319
-scale = Vector2(1.2, 1.5)
+rotation = 2.11359
 texture = ExtResource("1_it7xs")
 offset = Vector2(16.0236, 179.972)
 

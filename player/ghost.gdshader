@@ -12,4 +12,3 @@ void fragment() {
 	//COLOR = texture(noise_texture, uv).rgba;
 
 }
-

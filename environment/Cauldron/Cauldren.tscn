@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://brcvvwxlabycb"]
+[gd_scene load_steps=16 format=3 uid="uid://brcvvwxlabycb"]
 
 [ext_resource type="Texture2D" uid="uid://bd546u4si47sw" path="res://environment/Cauldron/emptry_cauldron.png" id="1_k81bt"]
 [ext_resource type="Shader" path="res://environment/Cauldron/goo.gdshader" id="2_i1qis"]
 [ext_resource type="Texture2D" uid="uid://b0bk1eu3i3062" path="res://environment/Cauldron/cauldron_goo.png" id="3_hg16e"]
 [ext_resource type="Texture2D" uid="uid://dkykokbj4s5yg" path="res://environment/Cauldron/cauldren_bubbles.png" id="4_vcp4y"]
+[ext_resource type="AudioStream" uid="uid://box4pfcnqe67o" path="res://environment/Cauldron/Cauldron.wav" id="5_783uf"]
 
 [sub_resource type="GDScript" id="GDScript_epx4o"]
 script/source = "extends Area2D
@@ -15,6 +16,7 @@ var goo_start : Vector2
 func _ready() -> void:
 	area_entered.connect(on_area_entered)
 	goo_start = goo.position
+	$AudioStreamPlayer2D.finished.connect(play_sound)
 	
 func _process(delta: float) -> void:
 	goo.position.y = goo_start.y - RoomController.ingredients_collected.size() * 25
@@ -22,7 +24,11 @@ func _process(delta: float) -> void:
 func on_area_entered(area: Area2D):
 	if area is SpellIngredient:
 		if RoomController.add_ingredient(area.ingredient):
+			SignalBuss.possessed.emit(false)
 			area.get_parent().queue_free()
+
+func play_sound():
+	$AudioStreamPlayer2D.play()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_imnex"]
@@ -109,3 +115,7 @@ offset_bottom = 23.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-276, 84, -192, 196, -24, 252, 152, 240, 244, 160, 260, 44, 212, -28, 88, -76, -52, -84, -180, -60, -244, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_783uf")
+autoplay = true

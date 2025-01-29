@@ -118,3 +118,12 @@ position = Vector2(-494, -297)
 
 [node name="EnemySpawner2" parent="EnemySpawnPoints" index="1" instance=ExtResource("15_abodv")]
 position = Vector2(432, 245)
+stage = 1
+
+[node name="EnemySpawner3" parent="EnemySpawnPoints" index="2" instance=ExtResource("15_abodv")]
+position = Vector2(-536, 237)
+stage = 2
+
+[node name="EnemySpawner4" parent="EnemySpawnPoints" index="3" instance=ExtResource("15_abodv")]
+position = Vector2(496, -439)
+stage = 3

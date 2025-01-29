@@ -49,9 +49,10 @@ func spawn_enemies():
 	var layer = get_tree().get_first_node_in_group("MainLayer")
 	for point: Node2D in spawn_points:
 		if point is EnemySpawner:
-			var enemy: Enemy = point.enemy_scene.instantiate()
-			enemy.global_position = point.global_position
-			layer.add_child(enemy)
+			if RoomController.ingredients_collected.size() >= point.stage:
+				var enemy: Enemy = point.enemy_scene.instantiate()
+				enemy.global_position = point.global_position
+				layer.add_child(enemy)
 		else:
 			var enemy: Enemy = ENEMY.instantiate()
 			enemy.global_position = point.global_position

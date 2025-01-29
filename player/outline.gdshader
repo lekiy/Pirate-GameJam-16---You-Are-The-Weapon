@@ -22,8 +22,8 @@ void fragment() {
 	if(bottom_alpha >= 0.9){
 		final_color.rgba = outline_color;
 	}
-	
-	
+
+
 	float top_right_aplha = texture(TEXTURE, vec2(UV.x+TEXTURE_PIXEL_SIZE.x*outline_width, UV.y+TEXTURE_PIXEL_SIZE.y*outline_width)).a;
 	if(top_right_aplha >= 0.9){
 		final_color.rgba = outline_color;
@@ -40,10 +40,10 @@ void fragment() {
 	if(bottom_left_alpha >= 0.9){
 		final_color.rgba = outline_color;
 	}
-	
-	if (COLOR.a >= 0.9){	
+
+	if (COLOR.a >= 0.9){
 		final_color.rgb = texture(TEXTURE, UV).rgb;
 	}
-	
+
 	COLOR = final_color;
 }

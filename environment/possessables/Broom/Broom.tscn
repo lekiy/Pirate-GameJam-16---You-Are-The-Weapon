@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://s5v7wlj8hcb8"]
+[gd_scene load_steps=11 format=3 uid="uid://s5v7wlj8hcb8"]
 
 [ext_resource type="Texture2D" uid="uid://bkaavo7kmvwhc" path="res://environment/possessables/Broom/broom.png" id="1_2qwm1"]
 [ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="1_ddp0i"]
@@ -61,24 +61,8 @@ tracks/2/keys = {
 "values": [true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_48kbx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D/Hurtbox/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_82vfa"]
 _data = {
-"RESET": SubResource("Animation_48kbx"),
 "swing": SubResource("Animation_bew1n")
 }
 
@@ -88,7 +72,7 @@ script = SubResource("GDScript_dfrlr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -2)
-rotation = 3.14159
+rotation = 2.11359
 texture = ExtResource("1_2qwm1")
 offset = Vector2(16.0236, 179.972)
 

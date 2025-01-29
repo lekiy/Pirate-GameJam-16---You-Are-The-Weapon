@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://i2c8yl3bnytr"]
+[gd_scene load_steps=16 format=4 uid="uid://i2c8yl3bnytr"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_pexa5"]
 [ext_resource type="PackedScene" uid="uid://t3q70iawxre0" path="res://environment/Decoration/Window.tscn" id="2_g0e53"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://c3kenhf8it0f7" path="res://environment/Decoration/web_2.png" id="10_1usfu"]
 [ext_resource type="PackedScene" uid="uid://ce714tamibj17" path="res://environment/possessables/Pot/pot.tscn" id="10_3b6bi"]
 [ext_resource type="PackedScene" uid="uid://bb2thm1d65iw2" path="res://environment/possessables/PaperStack.tscn" id="11_c3h8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqass"]
+size = Vector2(85.1628, 233.326)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wlgj"]
 size = Vector2(85.1628, 233.326)
@@ -32,18 +35,42 @@ tile_map_data = PackedByteArray("AAD5/wEAAgABAAAAAAD5/wAAAgABAAAAAAD5////AgABAAA
 [node name="Walllayer3" parent="." index="6"]
 tile_map_data = PackedByteArray("AAD4/wAAAgABAAAAAAD4////AgABAAAAAAD4//7/AgABAAAAAAD4//3/AgABAAAAAAD4//z/AgABAAAAAAD4//v/AgABAAAAAAD4//r/AgABAAAAAAD4//n/AgABAAAAAAD4//j/AgABAAAAAAD4//f/AgABAAAAAAD4//b/AgABAAAAAAD4//X/AgABAAAAAAD4//T/AgABAAAAAAD4//P/AgABAAAAAAD4//L/AgABAAAAAAD4//H/AgABAAAAAAD5//H/AgABAAAAAAD6//H/AgABAAAAAAD7//H/AgABAAAAAAD8//H/AgABAAAAAAD9//H/AgABAAAAAAD+//H/AgABAAAAAAD///H/AgABAAAAAAAAAPH/AgABAAAAAAA=")
 
-[node name="Window" parent="." index="7" instance=ExtResource("2_g0e53")]
+[node name="Web3" type="Sprite2D" parent="." index="7"]
+position = Vector2(1225, -246)
+rotation = 1.78866
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_1usfu")
+
+[node name="DoorSecret" parent="." index="8" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
+position = Vector2(-1152, -143)
+scale = Vector2(0.63, 0.63)
+entry_name = "library_to_secrit"
+target_entry_name = "secrit_to_library"
+room_name = "room_library"
+target_room_name = "room_secrit"
+entry_point = NodePath("Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorSecret" index="2"]
+position = Vector2(-88, -72)
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("RectangleShape2D_eqass")
+
+[node name="Marker2D" type="Marker2D" parent="DoorSecret" index="3"]
+position = Vector2(156, 104)
+
+[node name="Window" parent="." index="9" instance=ExtResource("2_g0e53")]
 position = Vector2(780, -1642)
 
-[node name="Window2" parent="." index="8" instance=ExtResource("2_g0e53")]
+[node name="Window2" parent="." index="10" instance=ExtResource("2_g0e53")]
 position = Vector2(-587, -839)
 
-[node name="Window3" parent="." index="9" instance=ExtResource("2_g0e53")]
+[node name="Window3" parent="." index="11" instance=ExtResource("2_g0e53")]
 position = Vector2(2285, -1708)
 rotation = 3.14159
 scale = Vector2(0.5, -0.5)
 
-[node name="DoorLibrary" parent="." index="11" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
+[node name="DoorLibrary" parent="." index="13" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
 position = Vector2(-650, 454)
 scale = Vector2(-1, 1)
 entry_name = "library_to_living"
@@ -59,7 +86,7 @@ skew = 0.523599
 shape = SubResource("RectangleShape2D_5wlgj")
 
 [node name="Marker2D" type="Marker2D" parent="DoorLibrary" index="3"]
-position = Vector2(-142, -79)
+position = Vector2(-183, -108)
 
 [node name="BookShelf2" parent="EntityLayer" index="0" instance=ExtResource("3_6ny1e")]
 position = Vector2(1438, -1564)
@@ -132,10 +159,10 @@ position = Vector2(157, -825)
 position = Vector2(-62, -694)
 
 [node name="BookShelf8" parent="EntityLayer" index="16" instance=ExtResource("3_6ny1e")]
-position = Vector2(-978, -148)
+position = Vector2(-1209, 1)
 
 [node name="BookShelf9" parent="EntityLayer" index="17" instance=ExtResource("3_6ny1e")]
-position = Vector2(-1205, -19)
+position = Vector2(-980, -130)
 
 [node name="Table" parent="EntityLayer" index="18" instance=ExtResource("4_dsutk")]
 position = Vector2(1258, -419)
@@ -174,7 +201,7 @@ texture = ExtResource("10_1usfu")
 [node name="LongTable" parent="EntityLayer" index="26" instance=ExtResource("9_2i2iw")]
 position = Vector2(-491, -493)
 
-[node name="PaperStack" parent="." index="13" instance=ExtResource("11_c3h8q")]
+[node name="PaperStack" parent="." index="15" instance=ExtResource("11_c3h8q")]
 position = Vector2(-237, 303)
 
 [node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
@@ -191,3 +218,8 @@ position = Vector2(1674, -305)
 
 [node name="Marker2D5" type="Marker2D" parent="EnemySpawnPoints" index="4"]
 position = Vector2(-369, -343)
+
+[node name="Web2" type="Sprite2D" parent="." index="18"]
+position = Vector2(-1258, -456)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_1usfu")
