@@ -8,13 +8,14 @@ func _ready() -> void:
 
 
 func on_burst():
-	$CollisionShape2D.disabled = false
-	$Line2D.visible = true
-	$Line2D.add_point(Vector2.ZERO)
-	$Line2D.add_point(spell_origin.global_position - global_position)
-	var particle = GOLD_BURST_PARTICLE.instantiate()
-	particle.global_position = global_position
-	particle.emitting = true
-	get_tree().get_first_node_in_group("MainLayer").add_child(particle)
-	await get_tree().create_timer(0.1).timeout
-	queue_free()
+	if is_instance_valid(spell_origin):
+		$CollisionShape2D.disabled = false
+		$Line2D.visible = true
+		$Line2D.add_point(Vector2.ZERO)
+		$Line2D.add_point(spell_origin.global_position - global_position)
+		var particle = GOLD_BURST_PARTICLE.instantiate()
+		particle.global_position = global_position
+		particle.emitting = true
+		get_tree().get_first_node_in_group("MainLayer").add_child(particle)
+		await get_tree().create_timer(0.1).timeout
+		queue_free()

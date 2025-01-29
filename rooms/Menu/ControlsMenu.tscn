@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmcxj4t8xbs1w"]
+
+[ext_resource type="Texture2D" uid="uid://crxf8xp7ge4eo" path="res://rooms/Menu/controls_page.png" id="1_ocuyg"]
+[ext_resource type="Texture2D" uid="uid://18y1h4irxpqk" path="res://rooms/Menu/exit_controls.png" id="2_276u5"]
+[ext_resource type="Texture2D" uid="uid://l20d2j6ksmiu" path="res://rooms/Menu/exit_controls_alt.png" id="3_bfrio"]
+[ext_resource type="Shader" path="res://rooms/background.gdshader" id="7_2ln3d"]
+
+[sub_resource type="GDScript" id="GDScript_j7cd0"]
+script/source = "extends Button
+
+@export var texture : Texture2D
+@export var texture_focus : Texture2D
+
+const TITLE_MENU = preload(\"res://rooms/Menu/TitleMenu.tscn\")
+
+func _ready() -> void:
+	mouse_entered.connect(on_mouse_entered)
+	mouse_exited.connect(on_mouse_exited)
+	focus_entered.connect(on_mouse_entered)
+	focus_exited.connect(on_mouse_exited)
+
+
+func on_mouse_entered():
+	icon = texture_focus
+
+
+func on_mouse_exited():
+	icon = texture
+
+
+func _pressed() -> void:
+	get_tree().change_scene_to_packed.call_deferred(TITLE_MENU)
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e7otj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_03rhj"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_e7otj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xgitp"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7h7kv"]
+seamless = true
+noise = SubResource("FastNoiseLite_xgitp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ge7f0"]
+shader = ExtResource("7_2ln3d")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_03rhj")
+shader_parameter/noise_texture_2 = SubResource("NoiseTexture2D_7h7kv")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yy65l"]
+size = Vector2(1440, 900)
+
+[node name="ControlsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1440.0
+offset_bottom = -900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 51.0
+offset_top = 30.0
+offset_right = 1407.0
+offset_bottom = 904.0
+texture = ExtResource("1_ocuyg")
+expand_mode = 1
+
+[node name="ButtonExit" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 817.0
+offset_top = 591.0
+offset_right = 2064.0
+offset_bottom = 1235.0
+scale = Vector2(0.387827, 0.35068)
+icon = ExtResource("2_276u5")
+flat = true
+script = SubResource("GDScript_j7cd0")
+texture = ExtResource("2_276u5")
+texture_focus = ExtResource("3_bfrio")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ge7f0")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_yy65l")

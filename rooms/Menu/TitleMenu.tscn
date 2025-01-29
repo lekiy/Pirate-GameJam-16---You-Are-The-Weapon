@@ -1,0 +1,163 @@
+[gd_scene load_steps=17 format=3 uid="uid://76vi858t25yo"]
+
+[ext_resource type="Texture2D" uid="uid://cktu6bxrr1q4i" path="res://rooms/Menu/title_menu.png" id="1_rr8eu"]
+[ext_resource type="Texture2D" uid="uid://c6jemqy5bknqt" path="res://rooms/Menu/start_game_button.png" id="2_8gu1o"]
+[ext_resource type="Script" path="res://rooms/Menu/button.gd" id="3_eixyw"]
+[ext_resource type="Texture2D" uid="uid://6cpp1ywmd5af" path="res://rooms/Menu/start_game_button_alt.png" id="4_e0qyl"]
+[ext_resource type="Texture2D" uid="uid://cfthm67mdbsw1" path="res://rooms/Menu/controls_button.png" id="5_ybr6s"]
+[ext_resource type="Texture2D" uid="uid://cnqbnstmtm5if" path="res://rooms/Menu/exit_game_button.png" id="6_w0xuc"]
+[ext_resource type="Shader" path="res://rooms/background.gdshader" id="7_2ln3d"]
+[ext_resource type="Texture2D" uid="uid://c2hklyygj4ass" path="res://rooms/Menu/exit_game_button_alt.png" id="7_pqges"]
+
+[sub_resource type="GDScript" id="GDScript_k24gh"]
+script/source = "extends Button
+
+@export var texture : Texture2D
+@export var texture_focus : Texture2D
+
+const CONTROLS_MENU = preload(\"res://rooms/Menu/ControlsMenu.tscn\")
+
+func _ready() -> void:
+	mouse_entered.connect(on_mouse_entered)
+	mouse_exited.connect(on_mouse_exited)
+	focus_entered.connect(on_mouse_entered)
+	focus_exited.connect(on_mouse_exited)
+
+
+func on_mouse_entered():
+	icon = texture_focus
+
+
+func on_mouse_exited():
+	icon = texture
+
+
+func _pressed() -> void:
+	get_tree().change_scene_to_packed.call_deferred(CONTROLS_MENU)
+"
+
+[sub_resource type="GDScript" id="GDScript_lrc7n"]
+script/source = "extends Button
+
+@export var texture : Texture2D
+@export var texture_focus : Texture2D
+
+
+func _ready() -> void:
+	mouse_entered.connect(on_mouse_entered)
+	mouse_exited.connect(on_mouse_exited)
+	focus_entered.connect(on_mouse_entered)
+	focus_exited.connect(on_mouse_exited)
+
+
+func on_mouse_entered():
+	icon = texture_focus
+
+
+func on_mouse_exited():
+	icon = texture
+
+
+func _pressed() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e7otj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_03rhj"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_e7otj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xgitp"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7h7kv"]
+seamless = true
+noise = SubResource("FastNoiseLite_xgitp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ge7f0"]
+shader = ExtResource("7_2ln3d")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_03rhj")
+shader_parameter/noise_texture_2 = SubResource("NoiseTexture2D_7h7kv")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yy65l"]
+size = Vector2(1440, 900)
+
+[node name="TitleMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1440.0
+offset_bottom = -900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 51.0
+offset_top = 30.0
+offset_right = 1407.0
+offset_bottom = 904.0
+texture = ExtResource("1_rr8eu")
+expand_mode = 1
+
+[node name="ButtonStart" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 145.0
+offset_right = 1899.0
+offset_bottom = 735.0
+scale = Vector2(0.369855, 0.341434)
+focus_neighbor_top = NodePath("../ButtonExit")
+focus_neighbor_bottom = NodePath("../ButtonControls")
+focus_next = NodePath("../ButtonControls")
+focus_previous = NodePath("../ButtonExit")
+icon = ExtResource("2_8gu1o")
+flat = true
+script = ExtResource("3_eixyw")
+texture = ExtResource("2_8gu1o")
+texture_focus = ExtResource("4_e0qyl")
+
+[node name="ButtonControls" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 726.0
+offset_top = 318.0
+offset_right = 1900.0
+offset_bottom = 908.0
+scale = Vector2(0.369855, 0.341434)
+focus_neighbor_top = NodePath("../ButtonStart")
+focus_neighbor_bottom = NodePath("../ButtonExit")
+focus_next = NodePath("../ButtonExit")
+focus_previous = NodePath("../ButtonStart")
+icon = ExtResource("5_ybr6s")
+flat = true
+script = SubResource("GDScript_k24gh")
+texture = ExtResource("5_ybr6s")
+texture_focus = ExtResource("5_ybr6s")
+
+[node name="ButtonExit" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 505.0
+offset_right = 1962.0
+offset_bottom = 1149.0
+scale = Vector2(0.369855, 0.341434)
+focus_neighbor_top = NodePath("../ButtonControls")
+focus_neighbor_bottom = NodePath("../ButtonStart")
+focus_next = NodePath("../ButtonStart")
+focus_previous = NodePath("../ButtonControls")
+icon = ExtResource("6_w0xuc")
+flat = true
+script = SubResource("GDScript_lrc7n")
+texture = ExtResource("6_w0xuc")
+texture_focus = ExtResource("7_pqges")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ge7f0")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_yy65l")
