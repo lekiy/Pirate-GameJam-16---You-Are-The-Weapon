@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s5v7wlj8hcb8"]
+[gd_scene load_steps=12 format=3 uid="uid://s5v7wlj8hcb8"]
 
 [ext_resource type="Texture2D" uid="uid://bkaavo7kmvwhc" path="res://environment/possessables/Broom/broom.png" id="1_2qwm1"]
 [ext_resource type="PackedScene" uid="uid://gyr2vpj00ouh" path="res://components/hurtbox/hurtbox.tscn" id="1_ddp0i"]
@@ -48,9 +48,37 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.5, 2), Vector2(1.2, 1.5), Vector2(1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D/Hurtbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_48kbx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D/Hurtbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_82vfa"]
 _data = {
+"RESET": SubResource("Animation_48kbx"),
 "swing": SubResource("Animation_bew1n")
 }
 
@@ -75,6 +103,7 @@ knock_back = 3000
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
 position = Vector2(-12, -217)
 shape = SubResource("RectangleShape2D_karga")
+disabled = true
 
 [node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("2_oj3vm")]
 sprite = NodePath("../Sprite2D")

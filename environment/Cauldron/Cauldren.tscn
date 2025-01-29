@@ -17,12 +17,12 @@ func _ready() -> void:
 	goo_start = goo.position
 	
 func _process(delta: float) -> void:
-	goo.position.y = goo_start.y - ingredients_in_cauldren.size() * 25
+	goo.position.y = goo_start.y - RoomController.ingredients_collected.size() * 25
 
 func on_area_entered(area: Area2D):
 	if area is SpellIngredient:
-		ingredients_in_cauldren.push_back(area.ingredient)
-		area.get_parent().queue_free()
+		if RoomController.add_ingredient(area.ingredient):
+			area.get_parent().queue_free()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_imnex"]

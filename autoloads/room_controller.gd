@@ -14,6 +14,8 @@ var current_room_name: String
 var current_entry_name: String
 
 var locked = false
+var ingredients_collected : Array[Ingredient] = []
+
 
 var room_dict = {
 	"room_test": ROOM_TEST,
@@ -24,6 +26,12 @@ var room_dict = {
 	"room_secrit": ROOM_SECRIT,
 	"room_study": ROOM_STUDY,
 }
+
+func add_ingredient(ingredient: Ingredient):
+	if not ingredients_collected.has(ingredient):
+		ingredients_collected.push_back(ingredient)
+		return true
+	return false
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Reset"):
