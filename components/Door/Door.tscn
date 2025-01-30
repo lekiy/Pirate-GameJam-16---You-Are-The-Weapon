@@ -27,28 +27,28 @@ void fragment() {
 }
 "
 
-[sub_resource type="Gradient" id="Gradient_8rqty"]
+[sub_resource type="Gradient" id="Gradient_d8jm8"]
 offsets = PackedFloat32Array(0.020979, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y6y4x"]
-gradient = SubResource("Gradient_8rqty")
+gradient = SubResource("Gradient_d8jm8")
 fill = 1
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_03db6"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fy8rr"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lar38"]
 seamless = true
 seamless_blend_skirt = 1.0
-noise = SubResource("FastNoiseLite_03db6")
+noise = SubResource("FastNoiseLite_fy8rr")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1c6jk"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eq1md"]
 frequency = 0.0386
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nia73"]
-noise = SubResource("FastNoiseLite_1c6jk")
+noise = SubResource("FastNoiseLite_eq1md")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28vwu"]
 resource_local_to_scene = true

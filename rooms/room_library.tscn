@@ -70,24 +70,6 @@ position = Vector2(2285, -1708)
 rotation = 3.14159
 scale = Vector2(0.5, -0.5)
 
-[node name="DoorLibrary" parent="." index="13" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
-position = Vector2(-650, 454)
-scale = Vector2(-1, 1)
-entry_name = "library_to_living"
-target_entry_name = "living_to_library"
-room_name = "room_library"
-target_room_name = "room_living"
-entry_point = NodePath("Marker2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLibrary" index="2"]
-position = Vector2(42, 63)
-rotation = 0.523599
-skew = 0.523599
-shape = SubResource("RectangleShape2D_5wlgj")
-
-[node name="Marker2D" type="Marker2D" parent="DoorLibrary" index="3"]
-position = Vector2(-183, -108)
-
 [node name="BookShelf2" parent="EntityLayer" index="0" instance=ExtResource("3_6ny1e")]
 position = Vector2(1438, -1564)
 
@@ -201,7 +183,7 @@ texture = ExtResource("10_1usfu")
 [node name="LongTable" parent="EntityLayer" index="26" instance=ExtResource("9_2i2iw")]
 position = Vector2(-491, -493)
 
-[node name="PaperStack" parent="." index="15" instance=ExtResource("11_c3h8q")]
+[node name="PaperStack" parent="." index="14" instance=ExtResource("11_c3h8q")]
 position = Vector2(-237, 303)
 
 [node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
@@ -218,6 +200,25 @@ position = Vector2(1674, -305)
 
 [node name="Marker2D5" type="Marker2D" parent="EnemySpawnPoints" index="4"]
 position = Vector2(-369, -343)
+
+[node name="DoorLibrary" parent="." index="17" node_paths=PackedStringArray("entry_point") instance=ExtResource("5_tqa8w")]
+position = Vector2(-650, 454)
+rotation = 3.14159
+scale = Vector2(1, -1)
+entry_name = "library_to_living"
+target_entry_name = "living_to_library"
+room_name = "room_library"
+target_room_name = "room_living"
+entry_point = NodePath("Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLibrary" index="2"]
+position = Vector2(42, 63)
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("RectangleShape2D_5wlgj")
+
+[node name="Marker2D" type="Marker2D" parent="DoorLibrary" index="3"]
+position = Vector2(-183, -108)
 
 [node name="Web2" type="Sprite2D" parent="." index="18"]
 position = Vector2(-1258, -456)

@@ -7,6 +7,7 @@ const ROOM_LIBRARY = preload("res://rooms/room_library.tscn")
 const ROOM_KITCHEN = preload("res://rooms/room_kitchen.tscn")
 const ROOM_SECRIT = preload("res://rooms/room_secrit.tscn")
 const ROOM_STUDY = preload("res://rooms/room_study.tscn")
+const ROOM_BED = preload("res://rooms/room_bed.tscn")
 
 var player: Player
 var spawn_position : Vector2 = Vector2.ZERO
@@ -25,6 +26,7 @@ var room_dict = {
 	"room_kitchen": ROOM_KITCHEN,
 	"room_secrit": ROOM_SECRIT,
 	"room_study": ROOM_STUDY,
+	"room_bed": ROOM_BED,
 }
 
 func add_ingredient(ingredient: Ingredient):

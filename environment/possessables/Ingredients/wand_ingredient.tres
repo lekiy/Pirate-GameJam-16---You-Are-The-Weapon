@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://dp465vmhbkg18"]
+
+[ext_resource type="Script" path="res://environment/possessables/Ingredients/ingredient.gd" id="1_lsmmw"]
+
+[resource]
+script = ExtResource("1_lsmmw")
+name = ""

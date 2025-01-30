@@ -40,7 +40,7 @@ func handle_movement():
 	velocity = move_direction*SPEED
 	move_and_slide()
 
-	if velocity.x > 0:
+	if move_direction.x > 0:
 		$Sprite2D.scale.x = -1
 	else:
 		$Sprite2D.scale.x = 1

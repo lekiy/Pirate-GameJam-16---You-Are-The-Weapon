@@ -44,14 +44,24 @@ tile_map_data = PackedByteArray("AAD3/wMAAgABAAAAAAD3/wIAAgABAAAAAAD3/wEAAgABAAA
 [node name="Walllayer3" parent="." index="7"]
 tile_map_data = PackedByteArray("AAD2/wIAAgABAAAAAAD2/wEAAgABAAAAAAD2/wAAAgABAAAAAAD2////AgABAAAAAAD2//7/AgABAAAAAAD2//3/AgABAAAAAAD2//z/AgABAAAAAAD2//v/AgABAAAAAAD2//r/AgABAAAAAAD2//n/AgABAAAAAAD2//j/AgABAAAAAAD2//f/AgABAAAAAAD2//b/AgABAAAAAAD2//X/AgABAAAAAAD2//T/AgABAAAAAAD2//P/AgABAAAAAAD2//L/AgABAAAAAAD3//L/AgABAAAAAAD4//L/AgABAAAAAAD5//L/AgABAAAAAAD6//L/AgABAAAAAAD7//L/AgABAAAAAAD8//L/AgABAAAAAAD9//L/AgABAAAAAAD+//L/AgABAAAAAAD///L/AgABAAAAAAAAAPL/AgABAAAAAAABAPL/AgABAAAAAAACAPL/AgABAAAAAAADAPL/AgABAAAAAAAEAPL/AgABAAAAAAAFAPL/AgABAAAAAAAGAPL/AgABAAAAAAA=")
 
-[node name="DoorBedroom" parent="." index="8" instance=ExtResource("4_jd2vw")]
+[node name="DoorBedroom" parent="." index="8" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(3315, -506)
 rotation = 3.14159
 scale = Vector2(1, -1)
-entry_name = "library"
-target_entry_name = "library"
+entry_name = "living_to_bed"
+target_entry_name = "bed_to_living"
 room_name = "room_living"
-target_room_name = "room_library"
+target_room_name = "room_bed"
+entry_point = NodePath("Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorBedroom" index="2"]
+position = Vector2(-102, -80.9993)
+rotation = 0.523599
+skew = 0.523599
+shape = SubResource("RectangleShape2D_3saag")
+
+[node name="Marker2D" type="Marker2D" parent="DoorBedroom" index="3"]
+position = Vector2(145, 85.9996)
 
 [node name="DoorLibrary" parent="." index="9" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(1705, -1419)
@@ -70,7 +80,7 @@ skew = 0.523599
 shape = SubResource("RectangleShape2D_3saag")
 
 [node name="Marker2D" type="Marker2D" parent="DoorLibrary" index="3"]
-position = Vector2(87.0001, 45.9998)
+position = Vector2(145, 85.9996)
 
 [node name="Web1" type="Sprite2D" parent="." index="10"]
 position = Vector2(-1098, -1073)
@@ -188,7 +198,7 @@ skew = 0.523599
 shape = SubResource("RectangleShape2D_3saag")
 
 [node name="Marker2D" type="Marker2D" parent="DoorKitchen" index="3"]
-position = Vector2(-146, -90)
+position = Vector2(-201, -133)
 
 [node name="DoorStudy" parent="." index="19" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(-1341, 515)
@@ -208,7 +218,7 @@ skew = 0.523599
 shape = SubResource("RectangleShape2D_ij5al")
 
 [node name="Marker2D" type="Marker2D" parent="DoorStudy" index="3"]
-position = Vector2(-98.9998, -65.0003)
+position = Vector2(-167, -110)
 
 [node name="DoorEntry" parent="." index="20" node_paths=PackedStringArray("entry_point") instance=ExtResource("4_jd2vw")]
 position = Vector2(304, 642)
@@ -225,4 +235,4 @@ skew = 0.523599
 shape = SubResource("RectangleShape2D_3saag")
 
 [node name="Marker2D" type="Marker2D" parent="DoorEntry" index="3"]
-position = Vector2(-142, -79)
+position = Vector2(-197, -119)
