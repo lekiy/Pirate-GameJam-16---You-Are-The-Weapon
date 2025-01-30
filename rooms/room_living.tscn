@@ -114,7 +114,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_n6lbi")
 
 [node name="Couch" parent="EntityLayer" index="6" instance=ExtResource("12_yjcux")]
-position = Vector2(-1136, -570)
+position = Vector2(-1111, -559)
 
 [node name="Broom" parent="EntityLayer" index="7" instance=ExtResource("7_u1ijc")]
 position = Vector2(1240, -1621)
@@ -152,7 +152,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_n6lbi")
 
 [node name="IngredientSpider" parent="EntityLayer" index="18" instance=ExtResource("18_aiexn")]
-position = Vector2(-1190, -607)
+position = Vector2(-1191, -615)
 
 [node name="EnemySpawner" parent="EnemySpawnPoints" index="0" instance=ExtResource("19_rpsqf")]
 position = Vector2(243, -575)

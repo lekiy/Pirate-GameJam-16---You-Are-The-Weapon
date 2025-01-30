@@ -51,9 +51,10 @@ hurtbox = NodePath("../Hurtbox")
 sprite = NodePath("../Sprite2D")
 velocity_component = NodePath("../VelocityComponent")
 
-[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action") instance=ExtResource("5_sel3o")]
+[node name="Posessable" parent="." node_paths=PackedStringArray("sprite", "attack_action", "collider") instance=ExtResource("5_sel3o")]
 sprite = NodePath("../Sprite2D")
 attack_action = NodePath("../Throwable")
+collider = NodePath("../CollisionPolygon2D")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_w0sgo")]
 
