@@ -69,3 +69,4 @@ explosiveness = 1.0
 randomness = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Effects"

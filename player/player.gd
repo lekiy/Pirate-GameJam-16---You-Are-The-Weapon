@@ -52,6 +52,7 @@ func on_possess(value):
 		$Node2D/PossessingSprite.visible = true
 		$AudioStreamPlayer.play()
 	else:
+		$AudioStreamPlayer2.play()
 		on_unpossess()
 	
 	

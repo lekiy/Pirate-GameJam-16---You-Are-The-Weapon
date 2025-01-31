@@ -19,6 +19,7 @@ config/icon="res://temp/icon.svg"
 
 RoomController="*res://autoloads/room_controller.gd"
 SignalBuss="*res://autoloads/signal_buss.gd"
+MusicPlayer="*res://autoloads/MusicPlayer.tscn"
 
 [debug]
 

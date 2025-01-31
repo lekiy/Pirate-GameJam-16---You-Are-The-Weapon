@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyangfybfp3ib"]
+
+[ext_resource type="AudioStream" uid="uid://cv2ryg7lgaacn" path="res://autoloads/Main Theme.mp3" id="1_kgtdt"]
+[ext_resource type="AudioStream" uid="uid://60sj801w6c0p" path="res://autoloads/Battle Theme.mp3" id="2_tqjhd"]
+
+[sub_resource type="GDScript" id="GDScript_fiinw"]
+script/source = "extends Node2D
+
+@onready var main_theme: AudioStreamPlayer = $MainTheme
+@onready var battle_theme: AudioStreamPlayer = $BattleTheme
+
+signal transition(value)
+
+var battle_active = false
+
+func _ready():
+	main_theme.play()
+	battle_theme.play()
+	fade_in(main_theme, 3)
+	
+	transition.connect(on_transition)
+	
+
+func on_transition(value):
+	if value:
+		transition_to_combat(1)
+	else:
+		transition_from_combat(1)
+
+func transition_to_combat(duration: float):
+	battle_active = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(battle_theme, \"volume_db\", 0, duration)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(main_theme, \"volume_db\", -80, duration*8)
+	
+func transition_from_combat(duration: float):
+	battle_active = false
+	var tween = get_tree().create_tween()
+	tween.tween_property(main_theme, \"volume_db\", 0, duration)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(battle_theme, \"volume_db\", -80, duration*8 )
+
+func fade_in(song: AudioStreamPlayer, duration: float):
+	var tween = get_tree().create_tween()
+	tween.tween_property(song, \"volume_db\", 0, duration)
+
+
+func fade_out(song: AudioStreamPlayer, duration: float):
+	var tween = get_tree().create_tween()
+	tween.tween_property(song, \"volume_db\", -80, duration)
+"
+
+[node name="MusicPlayer" type="Node2D"]
+script = SubResource("GDScript_fiinw")
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_kgtdt")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="BattleTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tqjhd")
+volume_db = -80.0
+bus = &"Music"

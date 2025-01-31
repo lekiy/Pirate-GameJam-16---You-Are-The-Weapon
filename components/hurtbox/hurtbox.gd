@@ -6,7 +6,7 @@ class_name HurtBox extends Area2D
 @export var velocity_component : VelocityComponent
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var sound_component: SoundComponent = $SoundComponent
 
 
 signal hit
@@ -27,8 +27,8 @@ func on_hitbox_area_entered(area: Area2D):
 			area.knock_back_force = knock_back
 
 		area.damage(attack)
-		if audio_stream_player:
-			audio_stream_player.play()
+		if sound_component:
+			sound_component.play()
 		hit.emit()
 
 		

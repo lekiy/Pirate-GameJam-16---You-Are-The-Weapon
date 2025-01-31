@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btvbpvtqygy61" path="res://environment/possessables/Table/Table.tscn" id="4_dsutk"]
 [ext_resource type="PackedScene" uid="uid://b8nyixvn0sn6b" path="res://environment/possessables/Plant/plant.tscn" id="4_ufn6a"]
 [ext_resource type="PackedScene" uid="uid://b3q6srvdo2owk" path="res://components/Door/Door.tscn" id="5_tqa8w"]
-[ext_resource type="Texture2D" uid="uid://d3g6ytug5xb8v" path="res://temp/sword_case_broken.png" id="8_6a6v8"]
+[ext_resource type="Texture2D" uid="uid://d3g6ytug5xb8v" path="res://environment/possessables/SwordCase/sword_case_broken.png" id="8_6a6v8"]
 [ext_resource type="PackedScene" uid="uid://bbdhobj71o44e" path="res://environment/possessables/SwordCase/SwordCase.tscn" id="8_pbucq"]
 [ext_resource type="PackedScene" uid="uid://b24vygc60fyex" path="res://environment/possessables/LongTable/LongTable.tscn" id="9_2i2iw"]
 [ext_resource type="Texture2D" uid="uid://bi5p28lkn37pj" path="res://environment/Decoration/web_1.png" id="9_fbaet"]

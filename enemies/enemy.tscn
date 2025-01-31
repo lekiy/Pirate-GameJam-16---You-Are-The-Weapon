@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://vx6xatp8vc82"]
+[gd_scene load_steps=32 format=3 uid="uid://vx6xatp8vc82"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_8lx8u"]
 [ext_resource type="Texture2D" uid="uid://b04xoxvm3fq7f" path="res://enemies/enemy_sprite.png" id="2_3mxg2"]
@@ -15,9 +15,10 @@
 [ext_resource type="Shader" path="res://player/ghost.gdshader" id="12_yjvv6"]
 [ext_resource type="Shader" path="res://player/hitflash.gdshader" id="14_5v858"]
 [ext_resource type="PackedScene" uid="uid://bujx8laprr3xe" path="res://components/SoundComponent.tscn" id="15_i5un8"]
-[ext_resource type="AudioStream" uid="uid://cyaqdisary0gw" path="res://enemies/EnemyHit1.wav" id="16_cvuwx"]
-[ext_resource type="AudioStream" uid="uid://cq8estw8rckur" path="res://enemies/EnemyHit2.wav" id="17_t1ur2"]
-[ext_resource type="AudioStream" uid="uid://cjqhydpwfh8mn" path="res://enemies/EnemyHit3.wav" id="18_v7xpd"]
+[ext_resource type="AudioStream" uid="uid://lwp18670407l" path="res://enemies/EnemyHit1.wav" id="16_cvuwx"]
+[ext_resource type="AudioStream" uid="uid://sexf761lsfx8" path="res://enemies/EnemyHit2.wav" id="17_t1ur2"]
+[ext_resource type="AudioStream" uid="uid://bhkecdud78b1e" path="res://enemies/EnemyHit3.wav" id="18_v7xpd"]
+[ext_resource type="AudioStream" uid="uid://boeexeskqe4yj" path="res://enemies/EnemyHit4.wav" id="19_cxwru"]
 
 [sub_resource type="Curve" id="Curve_mbns6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.122363, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -188,4 +189,4 @@ libraries = {
 }
 
 [node name="HurtSoundComponent" parent="." instance=ExtResource("15_i5un8")]
-sounds = Array[AudioStreamWAV]([ExtResource("16_cvuwx"), ExtResource("17_t1ur2"), ExtResource("18_v7xpd")])
+sounds = Array[AudioStreamWAV]([ExtResource("16_cvuwx"), ExtResource("17_t1ur2"), ExtResource("18_v7xpd"), ExtResource("19_cxwru")])

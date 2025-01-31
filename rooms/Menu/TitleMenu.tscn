@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://76vi858t25yo"]
+[gd_scene load_steps=19 format=3 uid="uid://76vi858t25yo"]
 
 [ext_resource type="Texture2D" uid="uid://cktu6bxrr1q4i" path="res://rooms/Menu/title_menu.png" id="1_rr8eu"]
 [ext_resource type="Texture2D" uid="uid://c6jemqy5bknqt" path="res://rooms/Menu/start_game_button.png" id="2_8gu1o"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cnqbnstmtm5if" path="res://rooms/Menu/exit_game_button.png" id="6_w0xuc"]
 [ext_resource type="Shader" path="res://rooms/background.gdshader" id="7_2ln3d"]
 [ext_resource type="Texture2D" uid="uid://c2hklyygj4ass" path="res://rooms/Menu/exit_game_button_alt.png" id="7_pqges"]
+[ext_resource type="Script" path="res://rooms/Menu/volume_slider.gd" id="8_r55dm"]
+[ext_resource type="AudioStream" uid="uid://r3ciddtfwgxe" path="res://player/PlayerHit1.wav" id="9_m5otq"]
 
 [sub_resource type="GDScript" id="GDScript_k24gh"]
 script/source = "extends Button
@@ -154,10 +156,52 @@ script = SubResource("GDScript_lrc7n")
 texture = ExtResource("6_w0xuc")
 texture_focus = ExtResource("7_pqges")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.276
+anchor_bottom = 0.064
+offset_left = 237.0
+offset_top = 597.0
+offset_right = 132.744
+offset_bottom = 643.064
+scale = Vector2(1.48, 1.48)
+
+[node name="MusicLable" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume
+"
+
+[node name="VolumeSlider" type="HSlider" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.8
+script = ExtResource("8_r55dm")
+bus_name = "Music"
+
+[node name="EffectsLabel" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Effects Volume
+"
+
+[node name="VolumeSlider2" type="HSlider" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.8
+script = ExtResource("8_r55dm")
+bus_name = "Effects"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureRect/VBoxContainer/VolumeSlider2"]
+stream = ExtResource("9_m5otq")
+bus = &"Effects"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_ge7f0")
+position = Vector2(-24, 5)
 scale = Vector2(2, 2)
 texture = SubResource("PlaceholderTexture2D_yy65l")
