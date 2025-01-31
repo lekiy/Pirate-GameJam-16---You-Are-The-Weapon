@@ -23,6 +23,7 @@ func on_death():
 	var particle = GHOST_BURST_PARTICLES.instantiate()
 	particle.global_position = global_position
 	get_parent().add_child(particle)
+	SignalBuss.game_over.emit()
 	
 func on_hit():
 	$HitFlash.play("hitflash")

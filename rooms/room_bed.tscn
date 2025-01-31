@@ -115,7 +115,7 @@ position = Vector2(2109, 412)
 position = Vector2(973, -500)
 
 [node name="EnemySpawner" parent="EnemySpawnPoints" index="0" instance=ExtResource("16_rdj4a")]
-position = Vector2(5, 76)
+position = Vector2(896, -210)
 stage = 3
 
 [node name="EnemySpawner2" parent="EnemySpawnPoints" index="1" instance=ExtResource("16_rdj4a")]
@@ -123,7 +123,7 @@ position = Vector2(-50, -338)
 stage = 2
 
 [node name="EnemySpawner3" parent="EnemySpawnPoints" index="2" instance=ExtResource("16_rdj4a")]
-position = Vector2(736, -318)
+position = Vector2(586, -389)
 
 [node name="EnemySpawner4" parent="EnemySpawnPoints" index="3" instance=ExtResource("16_rdj4a")]
 position = Vector2(817, 116)

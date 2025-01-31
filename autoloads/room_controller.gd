@@ -9,6 +9,9 @@ const ROOM_SECRIT = preload("res://rooms/room_secrit.tscn")
 const ROOM_STUDY = preload("res://rooms/room_study.tscn")
 const ROOM_BED = preload("res://rooms/room_bed.tscn")
 
+const LOSE_SCREEN = preload("res://rooms/Menu/LoseScreen.tscn")
+const WIN_SCREEN = preload("res://rooms/Menu/WinScreen.tscn")
+
 var player: Player
 var spawn_position : Vector2 = Vector2.ZERO
 var current_room_name: String
@@ -31,11 +34,28 @@ var room_dict = {
 	"room_bed": ROOM_BED,
 }
 
+func _ready() -> void:
+	SignalBuss.game_over.connect(game_lost)
+
+
+func game_lost():
+	await get_tree().create_timer(3).timeout
+	get_tree().change_scene_to_packed(LOSE_SCREEN)
+
+
+func game_won():
+	await get_tree().create_timer(1).timeout
+	ingredients_collected = []
+	get_tree().change_scene_to_packed(WIN_SCREEN)
+	
+
 func add_ingredient(ingredient: Ingredient):
 	if not ingredients_collected.has(ingredient):
 		ingredients_collected.push_back(ingredient)
 		return true
+		
 	return false
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Reset"):
@@ -47,6 +67,10 @@ func _process(delta: float) -> void:
 		locked = false
 	
 	check_combat()
+	
+	if ingredients_collected.size() >= 4:
+		game_won()
+		
 		
 func check_combat():
 	if get_tree().get_nodes_in_group("Enemy").size() > 0:
@@ -56,6 +80,7 @@ func check_combat():
 		if MusicPlayer.battle_active:
 			MusicPlayer.transition.emit(false)
 		in_combat = false
+
 
 func move_to_room(room_name, entry_name):
 	print("moving to room "+str(room_name)+" at entry "+str(entry_name))

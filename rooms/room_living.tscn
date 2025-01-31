@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dutkbke3mt88x" path="res://components/EnemySpawner/enemy_spawner.tscn" id="19_rpsqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3saag"]
-size = Vector2(85.1628, 233.326)
+size = Vector2(91.8707, 233.326)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij5al"]
 size = Vector2(85.1628, 233.326)
@@ -55,7 +55,7 @@ target_room_name = "room_bed"
 entry_point = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorBedroom" index="2"]
-position = Vector2(-102, -80.9993)
+position = Vector2(-67.0002, -54.9998)
 rotation = 0.523599
 skew = 0.523599
 shape = SubResource("RectangleShape2D_3saag")
@@ -74,7 +74,7 @@ target_room_name = "room_library"
 entry_point = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLibrary" index="2"]
-position = Vector2(-102, -80.9993)
+position = Vector2(-67.0002, -48.9999)
 rotation = 0.523599
 skew = 0.523599
 shape = SubResource("RectangleShape2D_3saag")
@@ -212,7 +212,7 @@ can_be_locked = false
 entry_point = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorStudy" index="2"]
-position = Vector2(58.9999, 60.0001)
+position = Vector2(46, 35.0001)
 rotation = 0.523599
 skew = 0.523599
 shape = SubResource("RectangleShape2D_ij5al")

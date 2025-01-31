@@ -8,6 +8,7 @@ var player: Player
 func _ready() -> void:
 	spawn_player(RoomController.spawn_position)
 	spawn_enemies()
+	$TransitionFX/AnimationPlayer.play("fade_in")
 
 func get_spawn_position():
 	var entry: EntryTrigger = RoomController.get_entry()

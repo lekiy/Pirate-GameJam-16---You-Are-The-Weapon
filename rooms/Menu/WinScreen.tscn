@@ -1,0 +1,155 @@
+[gd_scene load_steps=19 format=3 uid="uid://tkcgbryrmk7l"]
+
+[ext_resource type="Shader" path="res://rooms/background.gdshader" id="1_wuhjm"]
+[ext_resource type="Texture2D" uid="uid://de7sxskguolrc" path="res://rooms/Menu/You_Win.png" id="2_0yn25"]
+[ext_resource type="Texture2D" uid="uid://f2go1yyvmht1" path="res://rooms/Menu/resume_button_alt.png" id="3_vrlkd"]
+[ext_resource type="Texture2D" uid="uid://cnqbnstmtm5if" path="res://rooms/Menu/exit_game_button.png" id="4_w5w5e"]
+[ext_resource type="Texture2D" uid="uid://c2hklyygj4ass" path="res://rooms/Menu/exit_game_button_alt.png" id="5_pye45"]
+[ext_resource type="Texture2D" uid="uid://bad8pubprglpv" path="res://player/player_ghost_sprite.png" id="5_sjlmo"]
+[ext_resource type="Texture2D" uid="uid://f18cnj7aoosp" path="res://environment/possessables/Ingredients/spider.png" id="6_shsta"]
+[ext_resource type="Texture2D" uid="uid://da8gcjaw4orvx" path="res://environment/possessables/Ingredients/candles.png" id="7_qgn81"]
+[ext_resource type="Texture2D" uid="uid://de3rg4tp8kfcc" path="res://environment/possessables/Ingredients/wand.png" id="8_245kb"]
+[ext_resource type="Texture2D" uid="uid://b4isp2pv8qguu" path="res://environment/possessables/sword.png" id="9_tr5ta"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k6njp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tdx8n"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_k6njp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qe1y0"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5qhhv"]
+seamless = true
+noise = SubResource("FastNoiseLite_qe1y0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1knr"]
+shader = ExtResource("1_wuhjm")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tdx8n")
+shader_parameter/noise_texture_2 = SubResource("NoiseTexture2D_5qhhv")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sdvva"]
+size = Vector2(1440, 900)
+
+[sub_resource type="GDScript" id="GDScript_1c8bj"]
+script/source = "extends Button
+@export var texture : Texture2D
+@export var texture_focus : Texture2D
+
+const TITLE_MENU = preload(\"res://rooms/Menu/TitleMenu.tscn\")
+
+func _ready() -> void:
+	mouse_entered.connect(on_mouse_entered)
+	mouse_exited.connect(on_mouse_exited)
+	focus_entered.connect(on_mouse_entered)
+	focus_exited.connect(on_mouse_exited)
+
+
+func on_mouse_entered():
+	icon = texture_focus
+
+
+func on_mouse_exited():
+	icon = texture
+
+
+func _pressed() -> void:
+	get_tree().change_scene_to_packed(TITLE_MENU)
+"
+
+[sub_resource type="GDScript" id="GDScript_vy1qd"]
+script/source = "extends Button
+
+@export var texture : Texture2D
+@export var texture_focus : Texture2D
+
+func _ready() -> void:
+	mouse_entered.connect(on_mouse_entered)
+	mouse_exited.connect(on_mouse_exited)
+	focus_entered.connect(on_mouse_entered)
+	focus_exited.connect(on_mouse_exited)
+
+
+func on_mouse_entered():
+	icon = texture_focus
+
+
+func on_mouse_exited():
+	icon = texture
+
+
+func _pressed() -> void:
+	get_tree().quit()
+"
+
+[node name="WinScreen" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_d1knr")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_sdvva")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 703.0
+offset_top = 169.0
+offset_right = 1950.0
+offset_bottom = 1461.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.44, 0.44)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ButtonResume" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("2_0yn25")
+flat = true
+script = SubResource("GDScript_1c8bj")
+texture = ExtResource("2_0yn25")
+texture_focus = ExtResource("3_vrlkd")
+
+[node name="ButtonExit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_w5w5e")
+flat = true
+script = SubResource("GDScript_vy1qd")
+texture = ExtResource("4_w5w5e")
+texture_focus = ExtResource("5_pye45")
+
+[node name="PlayerGhostSprite" type="Sprite2D" parent="."]
+position = Vector2(368, 474)
+texture = ExtResource("5_sjlmo")
+
+[node name="Spider" type="Sprite2D" parent="."]
+position = Vector2(586, 210)
+texture = ExtResource("6_shsta")
+
+[node name="Candles" type="Sprite2D" parent="."]
+position = Vector2(182, 196)
+rotation = 0.87441
+texture = ExtResource("7_qgn81")
+
+[node name="Wand" type="Sprite2D" parent="."]
+position = Vector2(561, 683)
+rotation = -2.51327
+texture = ExtResource("8_245kb")
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(184, 687)
+rotation = -0.764454
+texture = ExtResource("9_tr5ta")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dpjo0a23r6vhd"]
+[gd_scene load_steps=18 format=4 uid="uid://dpjo0a23r6vhd"]
 
 [ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="1_6gti2"]
 [ext_resource type="Script" path="res://rooms/room_base.gd" id="1_eya12"]
@@ -10,7 +10,7 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ire4w"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tdx8n"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1po1y"]
 seamless = true
 seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_ire4w")
@@ -18,17 +18,71 @@ noise = SubResource("FastNoiseLite_ire4w")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_nybg1"]
 frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5qhhv"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jsv38"]
 seamless = true
 noise = SubResource("FastNoiseLite_nybg1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5gyge"]
 shader = ExtResource("2_4iiu2")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_tdx8n")
-shader_parameter/noise_texture_2 = SubResource("NoiseTexture2D_5qhhv")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_1po1y")
+shader_parameter/noise_texture_2 = SubResource("NoiseTexture2D_jsv38")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gj1st"]
 size = Vector2(1440, 900)
+
+[sub_resource type="Animation" id="Animation_0vtss"]
+resource_name = "fade_in"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2rclb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vmrkj"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ugcu4"]
+_data = {
+"RESET": SubResource("Animation_2rclb"),
+"fade_in": SubResource("Animation_0vtss"),
+"fade_out": SubResource("Animation_vmrkj")
+}
 
 [node name="RoomBase" type="Node2D"]
 script = ExtResource("1_eya12")
@@ -105,3 +159,18 @@ y_sort_enabled = true
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_3a34i")]
+
+[node name="TransitionFX" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionFX"]
+root_node = NodePath("../ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_ugcu4")
+}
+
+[node name="ColorRect" type="ColorRect" parent="TransitionFX"]
+offset_left = -152.0
+offset_top = -205.0
+offset_right = 1567.0
+offset_bottom = 973.0
+color = Color(0, 0, 0, 1)
