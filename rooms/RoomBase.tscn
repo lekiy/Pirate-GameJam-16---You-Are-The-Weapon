@@ -158,8 +158,6 @@ y_sort_enabled = true
 
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_3a34i")]
-
 [node name="TransitionFX" type="CanvasLayer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionFX"]
@@ -174,3 +172,5 @@ offset_top = -205.0
 offset_right = 1567.0
 offset_bottom = 973.0
 color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_3a34i")]
