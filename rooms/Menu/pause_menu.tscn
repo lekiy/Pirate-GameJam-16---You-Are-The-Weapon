@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://dn5n4mn7dbrhe"]
+
+[ext_resource type="Texture2D" uid="uid://dsht5wh3kvrv1" path="res://rooms/Menu/resume_button.png" id="1_2aghr"]
+[ext_resource type="Script" path="res://rooms/Menu/pause_menu.gd" id="1_blgj2"]
+[ext_resource type="Texture2D" uid="uid://f2go1yyvmht1" path="res://rooms/Menu/resume_button_alt.png" id="2_02sre"]
+[ext_resource type="Texture2D" uid="uid://cnqbnstmtm5if" path="res://rooms/Menu/exit_game_button.png" id="3_16c7y"]
+[ext_resource type="Texture2D" uid="uid://c2hklyygj4ass" path="res://rooms/Menu/exit_game_button_alt.png" id="4_bd0wp"]
+
+[sub_resource type="GDScript" id="GDScript_yx2p8"]
+script/source = "extends Button
+@export var texture : Texture2D
+@export var texture_focus : Texture2D
+
+
+func _ready() -> void:
+	mouse_entered.connect(on_mouse_entered)
+	mouse_exited.connect(on_mouse_exited)
+	focus_entered.connect(on_mouse_entered)
+	focus_exited.connect(on_mouse_exited)
+
+
+func on_mouse_entered():
+	icon = texture_focus
+
+
+func on_mouse_exited():
+	icon = texture
+
+
+func _pressed() -> void:
+	$\"../../..\".set_paused(false)
+"
+
+[sub_resource type="GDScript" id="GDScript_f0ya7"]
+script/source = "extends Button
+
+@export var texture : Texture2D
+@export var texture_focus : Texture2D
+
+func _ready() -> void:
+	mouse_entered.connect(on_mouse_entered)
+	mouse_exited.connect(on_mouse_exited)
+	focus_entered.connect(on_mouse_entered)
+	focus_exited.connect(on_mouse_exited)
+
+
+func on_mouse_entered():
+	icon = texture_focus
+
+
+func on_mouse_exited():
+	icon = texture
+
+
+func _pressed() -> void:
+	get_tree().quit()
+"
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_blgj2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -286.0
+offset_right = 948.0
+offset_bottom = 1006.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.44, 0.44)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ButtonResume" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("1_2aghr")
+flat = true
+script = SubResource("GDScript_yx2p8")
+texture = ExtResource("1_2aghr")
+texture_focus = ExtResource("2_02sre")
+
+[node name="ButtonExit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_16c7y")
+flat = true
+script = SubResource("GDScript_f0ya7")
+texture = ExtResource("3_16c7y")
+texture_focus = ExtResource("4_bd0wp")

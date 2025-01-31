@@ -1,14 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://dpjo0a23r6vhd"]
+[gd_scene load_steps=13 format=4 uid="uid://dpjo0a23r6vhd"]
 
 [ext_resource type="PackedScene" uid="uid://pg8y518i5byy" path="res://components/Camera/main_camera.tscn" id="1_6gti2"]
 [ext_resource type="Script" path="res://rooms/room_base.gd" id="1_eya12"]
 [ext_resource type="Shader" path="res://rooms/background.gdshader" id="2_4iiu2"]
 [ext_resource type="TileSet" uid="uid://c7gko7aw3jt0b" path="res://rooms/floor.tres" id="2_40tv3"]
-[ext_resource type="Texture2D" uid="uid://dsht5wh3kvrv1" path="res://rooms/Menu/resume_button.png" id="6_obtf0"]
-[ext_resource type="Texture2D" uid="uid://f2go1yyvmht1" path="res://rooms/Menu/resume_button_alt.png" id="7_7b6kd"]
-[ext_resource type="Texture2D" uid="uid://cnqbnstmtm5if" path="res://rooms/Menu/exit_game_button.png" id="8_oxkew"]
+[ext_resource type="PackedScene" uid="uid://dn5n4mn7dbrhe" path="res://rooms/Menu/pause_menu.tscn" id="6_3a34i"]
 [ext_resource type="Script" path="res://rooms/health_bar.gd" id="9_p7dr6"]
-[ext_resource type="Texture2D" uid="uid://c2hklyygj4ass" path="res://rooms/Menu/exit_game_button_alt.png" id="9_pf4s8"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ire4w"]
 
@@ -31,56 +28,6 @@ shader_parameter/noise_texture_2 = SubResource("NoiseTexture2D_5qhhv")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gj1st"]
 size = Vector2(1440, 900)
-
-[sub_resource type="GDScript" id="GDScript_yx2p8"]
-script/source = "extends Button
-@export var texture : Texture2D
-@export var texture_focus : Texture2D
-
-
-func _ready() -> void:
-	mouse_entered.connect(on_mouse_entered)
-	mouse_exited.connect(on_mouse_exited)
-	focus_entered.connect(on_mouse_entered)
-	focus_exited.connect(on_mouse_exited)
-
-
-func on_mouse_entered():
-	icon = texture_focus
-
-
-func on_mouse_exited():
-	icon = texture
-
-
-func _pressed() -> void:
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_f0ya7"]
-script/source = "extends Button
-
-@export var texture : Texture2D
-@export var texture_focus : Texture2D
-
-func _ready() -> void:
-	mouse_entered.connect(on_mouse_entered)
-	mouse_exited.connect(on_mouse_exited)
-	focus_entered.connect(on_mouse_entered)
-	focus_exited.connect(on_mouse_exited)
-
-
-func on_mouse_entered():
-	icon = texture_focus
-
-
-func on_mouse_exited():
-	icon = texture
-
-
-func _pressed() -> void:
-	get_tree().exit()
-"
 
 [node name="RoomBase" type="Node2D"]
 script = ExtResource("1_eya12")
@@ -150,26 +97,4 @@ y_sort_enabled = true
 
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 
-[node name="PauseMenu" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer"]
-layout_mode = 2
-
-[node name="ButtonResume" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
-layout_mode = 2
-icon = ExtResource("6_obtf0")
-script = SubResource("GDScript_yx2p8")
-texture = ExtResource("6_obtf0")
-texture_focus = ExtResource("7_7b6kd")
-
-[node name="ButtonExit" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
-layout_mode = 2
-icon = ExtResource("8_oxkew")
-script = SubResource("GDScript_f0ya7")
-texture = ExtResource("8_oxkew")
-texture_focus = ExtResource("9_pf4s8")
+[node name="PauseMenu" parent="." instance=ExtResource("6_3a34i")]

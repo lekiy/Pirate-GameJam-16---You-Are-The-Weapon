@@ -18,6 +18,7 @@ var locked = false
 var ingredients_collected : Array[Ingredient] = []
 var book_discovered := false
 var in_combat := false
+var paused = false
 
 var room_dict = {
 	"room_test": ROOM_TEST,
@@ -78,4 +79,5 @@ func get_entry():
 				
 	return null
 	
+
 	
