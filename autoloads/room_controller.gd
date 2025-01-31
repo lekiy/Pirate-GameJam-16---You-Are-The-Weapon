@@ -59,7 +59,8 @@ func check_combat():
 
 func move_to_room(room_name, entry_name):
 	print("moving to room "+str(room_name)+" at entry "+str(entry_name))
-	
+	in_combat = false
+	MusicPlayer.battle_active = false
 	player.get_parent().remove_child(player)
 	var room = room_dict[room_name]
 	if room:

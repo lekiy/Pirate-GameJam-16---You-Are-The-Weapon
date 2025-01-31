@@ -44,13 +44,13 @@ target_room_name = "room_living"
 entry_point = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door" index="2"]
-position = Vector2(-79, -44)
+position = Vector2(-58.0001, -32.9999)
 rotation = 0.523599
 skew = 0.523599
 shape = SubResource("RectangleShape2D_pu2y1")
 
 [node name="Marker2D" type="Marker2D" parent="Door" index="3"]
-position = Vector2(59, 57)
+position = Vector2(106, 69.9998)
 
 [node name="Shelf" parent="." index="8" instance=ExtResource("4_hgcej")]
 position = Vector2(1716, -732)

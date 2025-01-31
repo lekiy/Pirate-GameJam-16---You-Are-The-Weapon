@@ -4,9 +4,9 @@ class_name HurtBox extends Area2D
 @export var knock_back := 2000
 @export var destroy_on_collide : bool = false
 @export var velocity_component : VelocityComponent
+@export var sound_component: SoundComponent
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var sound_component: SoundComponent = $SoundComponent
 
 
 signal hit

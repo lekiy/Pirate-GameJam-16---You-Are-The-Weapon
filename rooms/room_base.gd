@@ -12,7 +12,6 @@ func _ready() -> void:
 func get_spawn_position():
 	var entry: EntryTrigger = RoomController.get_entry()
 	if entry: 
-		print(entry.entry_point.global_position)
 		return entry.entry_point.global_position
 
 func _process(delta: float) -> void:

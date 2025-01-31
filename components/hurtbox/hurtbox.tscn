@@ -7,8 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://c22epkuc3trds" path="res://components/hurtbox/Impact3.wav" id="5_emb1x"]
 [ext_resource type="AudioStream" uid="uid://ddqfhklc4pqv8" path="res://components/hurtbox/Impact4.wav" id="6_0x36e"]
 
-[node name="Hurtbox" type="Area2D"]
+[node name="Hurtbox" type="Area2D" node_paths=PackedStringArray("sound_component")]
 script = ExtResource("1_mn3ue")
+sound_component = NodePath("SoundComponent")
 
 [node name="SoundComponent" parent="." instance=ExtResource("3_msctm")]
 sounds = Array[AudioStreamWAV]([ExtResource("4_0bvrj"), ExtResource("5_emb1x"), ExtResource("6_0x36e"), ExtResource("2_dlvnd")])

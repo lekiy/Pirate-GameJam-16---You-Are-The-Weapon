@@ -27,5 +27,13 @@ func attack(callback: Callable):
 			var layer = get_tree().get_first_node_in_group("MainLayer")
 			layer.add_child(bullet)
 			current_ammo -= 1
+			SignalBuss.ammo_changed.emit(ammo.amount, current_ammo, ammo.texture)
 			fire.emit()
 			await get_tree().create_timer(ammo.fire_rate).timeout
+
+func on_possessed():
+	SignalBuss.ammo_changed.emit(ammo.amount, current_ammo, ammo.texture)
+	
+	
+func on_unpossessed():
+	SignalBuss.ammo_changed.emit(0, 0, ammo.texture)

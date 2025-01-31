@@ -46,7 +46,9 @@ func possess(node: Node2D):
 		node.global_position = get_parent().global_position
 		SignalBuss.possessed.emit(true)
 		get_parent().reparent(node)
-		
+		if attack_action:
+			if attack_action.has_method("on_possessed"):
+				attack_action.on_possessed()
 		var anim_possess: Animation = $AnimationPlayer.get_animation("possession")
 		anim_possess.track_set_path(0, "../Sprite2D:position")
 		anim_possess.track_set_path(2, "../Sprite2D:rotation")
@@ -72,6 +74,9 @@ func _on_unpossess():
 			collider.disabled = false
 	SignalBuss.possessed.emit(false)
 	get_parent().reparent(get_tree().get_first_node_in_group("MainLayer"))
+	if attack_action:
+		if attack_action.has_method("on_unpossessed"):
+			attack_action.on_unpossessed()
 
 func _on_unpossess_instant():
 	$AnimationPlayer.stop()
@@ -81,6 +86,9 @@ func _on_unpossess_instant():
 			collider.disabled = false
 	SignalBuss.possessed.emit(false)
 	get_parent().reparent(get_tree().get_first_node_in_group("MainLayer"))
+	if attack_action:
+		if attack_action.has_method("on_unpossessed"):
+			attack_action.on_unpossessed()
 	
 
 func play_possession_idle():
