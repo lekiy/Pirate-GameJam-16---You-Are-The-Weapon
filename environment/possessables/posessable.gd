@@ -45,7 +45,13 @@ func possess(node: Node2D):
 			collider.disabled = true
 		node.global_position = get_parent().global_position
 		SignalBuss.possessed.emit(true)
-		get_parent().reparent(node)
+		var others = node.holder.get_children()
+		if others.size() > 0:
+			var child = others[0].find_child("Posessable")
+			if child:
+				if child.has_method("_on_unpossess"):
+					child._on_unpossess()
+		get_parent().reparent(node.holder)
 		if attack_action:
 			if attack_action.has_method("on_possessed"):
 				attack_action.on_possessed()

@@ -279,3 +279,5 @@ bus = &"Effects"
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_qfnny")
 bus = &"Effects"
+
+[node name="PossessionHolder" type="Node2D" parent="."]

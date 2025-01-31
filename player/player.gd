@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+@onready var holder: Node2D = $PossessionHolder
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 const GHOST_BURST_PARTICLES = preload("res://player/ghost_burst_particles.tscn")
@@ -33,6 +35,10 @@ func _physics_process(delta: float) -> void:
 	
 	$Node2D/PossessingSprite.rotation_degrees -= 360*delta
 	
+func _process(delta: float) -> void:
+	if $PossessionHolder.get_child_count() > 0:
+		$Sprite2D.visible = false
+		$Node2D/PossessingSprite.visible = true
 					
 func handle_movement():
 	var move_direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
@@ -47,6 +53,7 @@ func handle_movement():
 		
 
 func on_possess(value):
+	possessing = value
 	if value:
 		sprite.visible = false
 		$Node2D/PossessingSprite.visible = true
