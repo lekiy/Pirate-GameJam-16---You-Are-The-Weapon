@@ -35,8 +35,6 @@ func _on_interact():
 
 func on_fire():
 	$Sprite2D/Node2D.get_child(0).queue_free()
-	if $Shootable.current_ammo == 1:
-		$Shootable.ammo.damage = 30
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpyck"]
@@ -50,12 +48,6 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 12
 script = SubResource("GDScript_ldmnu")
-
-[node name="Shootable" parent="." node_paths=PackedStringArray("bullet_spawn_point") instance=ExtResource("1_5ckup")]
-ammo = ExtResource("2_lbc6u")
-bullet_spawn_point = NodePath("Marker2D")
-
-[node name="Marker2D" type="Marker2D" parent="Shootable"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-128, 304, 346, 34, 98, -104, -380, 162)
@@ -123,3 +115,9 @@ position = Vector2(-2, -34)
 shape = SubResource("CircleShape2D_ot6dd")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_2cdg7")]
+
+[node name="Shootable" parent="." node_paths=PackedStringArray("bullet_spawn_point") instance=ExtResource("1_5ckup")]
+ammo = ExtResource("2_lbc6u")
+bullet_spawn_point = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Shootable"]

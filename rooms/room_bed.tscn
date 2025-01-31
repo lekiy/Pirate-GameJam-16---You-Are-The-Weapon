@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b7banjxiqxjmd"]
+[gd_scene load_steps=20 format=4 uid="uid://b7banjxiqxjmd"]
 
 [ext_resource type="PackedScene" uid="uid://dpjo0a23r6vhd" path="res://rooms/RoomBase.tscn" id="1_qx2vp"]
 [ext_resource type="Texture2D" uid="uid://dterldaxix7a0" path="res://environment/Decoration/Painting/painting_sunset.png" id="2_lhy34"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cbf7nco5q13rl" path="res://environment/Decoration/Shelf.tscn" id="4_2nixj"]
 [ext_resource type="Texture2D" uid="uid://bi5p28lkn37pj" path="res://environment/Decoration/web_1.png" id="5_v8oki"]
 [ext_resource type="PackedScene" uid="uid://bxr75i7ury2oo" path="res://environment/possessables/Bookshelf/BookShelf.tscn" id="6_j65to"]
+[ext_resource type="PackedScene" uid="uid://di5ag722rpw3q" path="res://environment/possessables/Bed/Bed.tscn" id="6_ry7we"]
 [ext_resource type="PackedScene" uid="uid://b24vygc60fyex" path="res://environment/possessables/LongTable/LongTable.tscn" id="7_rsrs6"]
 [ext_resource type="Texture2D" uid="uid://biq4dwra2n0j0" path="res://environment/Decoration/rug.png" id="8_juoqv"]
 [ext_resource type="PackedScene" uid="uid://dgvwe6eu4aiei" path="res://environment/possessables/Chair/Chair.tscn" id="9_8qvyx"]
@@ -60,55 +61,58 @@ rotation = -1.382
 scale = Vector2(0.773815, 0.493169)
 texture = ExtResource("5_v8oki")
 
-[node name="Shelf" parent="EntityLayer" index="0" instance=ExtResource("4_2nixj")]
+[node name="Bed" parent="EntityLayer" index="0" instance=ExtResource("6_ry7we")]
+position = Vector2(1020, -528)
+
+[node name="Shelf" parent="EntityLayer" index="1" instance=ExtResource("4_2nixj")]
 position = Vector2(-65, -1315)
 
-[node name="Shelf2" parent="EntityLayer" index="1" instance=ExtResource("4_2nixj")]
+[node name="Shelf2" parent="EntityLayer" index="2" instance=ExtResource("4_2nixj")]
 position = Vector2(-1093, -747)
 
-[node name="BookShelf" parent="EntityLayer" index="2" instance=ExtResource("6_j65to")]
+[node name="BookShelf" parent="EntityLayer" index="3" instance=ExtResource("6_j65to")]
 position = Vector2(-245, -816)
 
-[node name="LongTable" parent="EntityLayer" index="3" instance=ExtResource("7_rsrs6")]
+[node name="LongTable" parent="EntityLayer" index="4" instance=ExtResource("7_rsrs6")]
 position = Vector2(-530, -756)
 
-[node name="BookShelf2" parent="EntityLayer" index="4" instance=ExtResource("6_j65to")]
+[node name="BookShelf2" parent="EntityLayer" index="5" instance=ExtResource("6_j65to")]
 position = Vector2(-826, -477)
 
-[node name="Chair" parent="EntityLayer" index="5" instance=ExtResource("9_8qvyx")]
+[node name="Chair" parent="EntityLayer" index="6" instance=ExtResource("9_8qvyx")]
 position = Vector2(2220, 248)
 
-[node name="Dresser" parent="EntityLayer" index="6" instance=ExtResource("10_7hxlc")]
-position = Vector2(1227, -485)
+[node name="Dresser" parent="EntityLayer" index="7" instance=ExtResource("10_7hxlc")]
+position = Vector2(1452, -362)
 rotation = 3.14159
 scale = Vector2(0.5, -0.5)
 
-[node name="EndTable" parent="EntityLayer" index="7" instance=ExtResource("11_wht4w")]
+[node name="EndTable" parent="EntityLayer" index="8" instance=ExtResource("11_wht4w")]
 position = Vector2(2406, 235)
 
-[node name="Book" type="Sprite2D" parent="EntityLayer" index="8"]
+[node name="Book" type="Sprite2D" parent="EntityLayer" index="9"]
 position = Vector2(2029, 290)
 rotation = 2.18783
 scale = Vector2(0.642244, 0.613806)
 texture = ExtResource("12_kb03d")
 
-[node name="Chair2" parent="EntityLayer" index="9" instance=ExtResource("9_8qvyx")]
+[node name="Chair2" parent="EntityLayer" index="10" instance=ExtResource("9_8qvyx")]
 position = Vector2(-419, -663)
 
-[node name="Plant" parent="EntityLayer" index="10" instance=ExtResource("13_fgdv6")]
+[node name="Plant" parent="EntityLayer" index="11" instance=ExtResource("13_fgdv6")]
 position = Vector2(-1264, -260)
 
-[node name="Pot" parent="EntityLayer" index="11" instance=ExtResource("14_ee073")]
+[node name="Pot" parent="EntityLayer" index="12" instance=ExtResource("14_ee073")]
 position = Vector2(-604, -741)
 
-[node name="Pot2" parent="EntityLayer" index="12" instance=ExtResource("14_ee073")]
-position = Vector2(1068, -625)
+[node name="Pot2" parent="EntityLayer" index="13" instance=ExtResource("14_ee073")]
+position = Vector2(1627, -297)
 
-[node name="Plant2" parent="EntityLayer" index="13" instance=ExtResource("13_fgdv6")]
+[node name="Plant2" parent="EntityLayer" index="14" instance=ExtResource("13_fgdv6")]
 position = Vector2(2109, 412)
 
-[node name="Wand" parent="EntityLayer" index="14" instance=ExtResource("15_s0st3")]
-position = Vector2(467, -105)
+[node name="Wand" parent="EntityLayer" index="15" instance=ExtResource("15_s0st3")]
+position = Vector2(973, -500)
 
 [node name="EnemySpawner" parent="EnemySpawnPoints" index="0" instance=ExtResource("16_rdj4a")]
 position = Vector2(5, 76)
@@ -119,7 +123,7 @@ position = Vector2(-50, -338)
 stage = 2
 
 [node name="EnemySpawner3" parent="EnemySpawnPoints" index="2" instance=ExtResource("16_rdj4a")]
-position = Vector2(802, -358)
+position = Vector2(736, -318)
 
 [node name="EnemySpawner4" parent="EnemySpawnPoints" index="3" instance=ExtResource("16_rdj4a")]
 position = Vector2(817, 116)
